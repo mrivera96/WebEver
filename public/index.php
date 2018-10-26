@@ -14,6 +14,10 @@ $app -> get('/', function (Request $request, Response $response){
     return $this->renderer->render($response, "/inicio.php");
 
 });
+$app -> get('/login', function (Request $request, Response $response){
+    return $this->renderer->render($response, "/login.php");
+
+});
 
 $app -> get('/{usuario}', function (Request $request, Response $response, $args){
     $modelo = new ModeloUsuarios();
