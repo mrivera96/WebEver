@@ -1,0 +1,129 @@
+
+
+
+.login{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+#contenedor{
+    padding-top:38px;
+    height: 420px;
+    max-width: 320px;
+    -moz-box-shadow: 0px 0px 18px 0px rgba(48,50,50,0.48);
+    -webkit-box-shadow: 0px 0px 18px 0px rgba(48,50,50,0.48);
+    box-shadow: 0px 0px 18px 0px rgba(48,50,50,0.48);
+    border-radius: 4%;
+    background-color: white;
+
+}
+
+#imagen{
+    width: 96px;
+    height: 96px;
+    margin: 0px auto 10px;
+    display: block;
+    border-radius: 50%;
+}
+
+#btn-card:hover{
+    background-color: #005662;
+    transform: translateY(-5px);
+    box-shadow: rgba(0,0,0,0.2) 8px 8px 8px;
+    transition: all 400ms;
+}
+
+/* form starting stylings ------------------------------- */
+.group{ 
+    position:relative; 
+    margin-bottom:30px; 
+}
+input{
+    font-size:13px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:100%;
+    border:none;
+    border-bottom:1px solid #757575;
+}
+input:focus     { outline:none; }
+
+
+/* LABEL ======================================= */
+label          {
+    color:#999; 
+    font-size:13px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:20px;
+    transition:0.2s ease all; 
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label     {
+    top:-20px;
+    font-size:13px;
+    color:#005662;
+}
+/* BOTTOM BARS ================================= */
+.bar  { position:relative; display:block; width:780x; }
+.bar:before, .bar:after   {
+    content:'';
+    height:2px; 
+    width:0;
+    bottom:1px; 
+    position:absolute;
+    background:#005662; 
+    transition:0.2s ease all; 
+}
+.bar:before {
+    left:50%;
+}
+.bar:after {
+    right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position:absolute;
+    height:50%; 
+
+    top:20%; 
+    left:0;
+    pointer-events:none;
+    opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+    animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@keyframes inputHighlighter {
+    from  { background:#005662; }
+    to    { width:0; background:transparent; }
+}
+
+
+/*----boton --------------------------------*/
+*{padding:0;margin:0;}
+
+body{
+    font-family:Verdana, Geneva, sans-serif;
+    background-color:#005662;
+}
+
+.card {
+        margin: 90 auto; 
+        float: none; 
+        margin-bottom: 10px; 
+}

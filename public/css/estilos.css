@@ -1,0 +1,198 @@
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+body {
+    background-image:  url('../imagenes/fondo.png');
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*colo de la barra superior*/
+.navbar{
+    background-color: #005662; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*tamaño del texto de la barra navbar*/
+.navbar-brand{
+    font-size: 12.59px;
+}
+.navbar-collapse{
+    font-size: 12.59px;
+}
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*Diseño de los componetes de la barra superior*/
+.navbar-brand:link, .navbar-brand:visited{
+    color: white !important;
+}
+.navbar-brand:hover, .navbar-brand:active{
+    color: deepskyblue !important;
+}
+
+#navbar li a:link, #navbar li a:visited{
+    color: white !important;
+}
+
+#navbar li a:hover, #navbar li a:active{
+    color: deepskyblue !important;   
+}
+
+
+
+
+
+
+/*color cuando se despliege la opcion de panel de control*/
+#despliege {
+    background-color: #005662;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*tamaño de la barra*/
+.navbar-header{
+    height: 60px;
+
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+#estilo-contenedor-textocategoria{
+    background-color: white;
+    border-radius: 8px;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/* Footer  inicio*/
+/* espacio del texto con la barra */
+section {
+    padding: 20px 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+
+}
+
+/* color del footer */
+#footer {
+    background: #005662 !important;
+    height: 50px;
+}
+
+/* diseño de los titulos del footer */
+#footer span{
+    padding-left:4px;
+    padding-bottom: 4px;
+    color:#ffffff;
+    font-size: 13px;
+
+}
+
+#coloayuda{
+    color: #ffffff;
+}
+/* color de los link de email */
+.coloremail:hover{
+    color: orange;
+    text-shadow: 0.5px 0.5px 1px #02550;  
+}
+
+
+/* color de los link de web,desarrolladores,email */
+#footer a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    style-width: 80%;
+
+}
+
+/* Footer fin */
+
+/* movimiento del icono de agenda */
+
+.btn-card:hover{
+    transform: translateY(-5px);
+    transition: all 400ms;
+}
+
+
+#nombreCategoria{
+    color: white;
+}
+
+.btn-buscar{
+    background: #005662;
+    color:#ffffff ;
+}
+/*Estilos de PerfilOrganizacionSheyli*/
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*Nombre de Perfil Organizacion ,color de fondo y color de titulo*/
+.colorNombreOrganizacion{
+    color:#fff;
+}
+
+.bordeTitulo{
+    height: 60px; 
+    vertical-align:middle;
+    border-radius: 8px;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*Tamanio de Imagen de la Organizacion*/
+.tamanioImagenPO{
+    width: 100%; 
+    max-height: 340px;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*tamanio de panel*/
+.panelTexto{ 
+    height: 500px;
+    background:#FFF;
+}  
+
+
+
+#encabezado_contactos
+{
+    height: 10px; 
+    vertical-align:middle;
+
+    border-radius: 8px;
+} 
+
+
+#contenedor_contactosPerfiles{
+    width: 86%;
+}
+#encabezado_resultado{
+ background-color: #005662; 
+     
+    margin-top:auto;
+            margin-bottom:auto;
+            text-align:center;
+    border-radius: 8px;
+}
+#contenedor_resultado{
+     background-color: white;
+    border-radius: 8px;
+}
+
+
+#separador{
+    display:block; 
+    margin-bottom: 2px;
+    
+      
+};

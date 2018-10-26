@@ -1,0 +1,224 @@
+/*color de los paneles de cada tarjeta*/
+.panel-heading{
+    background-color:  #005662!important;
+    color: white !important ;
+}
+
+
+/*Diseño de la tarjeta de las categorias*/
+#panel_default{
+    -webkit-box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.65);
+    box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.65);
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*tamaño de las cartas de categorias*/
+#tamaño{
+    height: 140px;
+
+
+}
+/*Diseño de la tarjeta de las categorias*/
+.thumbnail{
+    margin: 10px;
+    padding: 0px;
+    background: deepskyblue;
+    -webkit-box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.65);
+    box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.65);
+
+
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*Diseño del separador de los usuarios de panel de control*/
+#disUsusarios{
+
+
+    background: #005662;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+/*colo de la plantilla de los usuarios del panel de control*/
+#colorUsuarios{
+    color: black;
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+/*colo de la plantilla de los usuarios del panel de control*/
+#colortipUsuario{
+    color:#999;
+    padding-left: 10px;
+    font-size: 12px;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*Para el contenedor de las tarjetas inclulle el tamaño */
+#estilo-contenedor{
+    margin-bottom:auto;
+
+    style-width: 90%;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*diseño del contenedor de los usuarios panel de control*/
+#contenedor_usuarios{
+    style-width: 90%;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+.panel-heading{
+    height: 60px;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/* form starting stylings ------------------------------- */
+.group{ 
+    position:relative; 
+    margin-bottom:30px; 
+}
+input{
+    font-size:13px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:100%;
+    border:none;
+    border-bottom:1px solid #757575;
+}
+input:focus     { outline:none; }
+
+
+/* LABEL ======================================= */
+label          {
+    color:#999; 
+    font-size:13px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:20px;
+    transition:0.2s ease all; 
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label     {
+    top:-20px;
+    font-size:13px;
+    color:#005662;
+}
+/* BOTTOM BARS ================================= */
+.bar  { position:relative; display:block; width:780x; }
+.bar:before, .bar:after   {
+    content:'';
+    height:2px; 
+    width:0;
+    bottom:1px; 
+    position:absolute;
+    background:#005662; 
+    transition:0.2s ease all; 
+}
+.bar:before {
+    left:50%;
+}
+.bar:after {
+    right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position:absolute;
+    height:50%; 
+
+    top:20%; 
+    left:0;
+    pointer-events:none;
+    opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+    animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@keyframes inputHighlighter {
+    from  { background:#005662; }
+    to    { width:0; background:transparent; }
+}
+
+
+/*----boton --------------------------------*/
+*{padding:0;margin:0;}
+
+body{
+    font-family:Verdana, Geneva, sans-serif;
+    background-color:#005662;
+}
+
+.float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:60px;
+    right:40px;
+    background-color:#005662;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+
+}
+
+.my-float{
+    margin-top:22px !important;
+}
+
+.panel-body >form{
+    padding-top: 15px
+}
+.oculto {
+    width:0; 
+    height:0; 
+    border:0; 
+    border:none;
+}
+
+/*diseño de la lupa de el buscador de usuarios*/
+.form-control {
+    padding-right: 30px;
+}
+
+.form-control + .glyphicon {
+    position: absolute;
+    right: 0;
+    padding: 8px 27px;
+    color: black;
+}
+
+#diseñobuscarusuario{
+    height: 40px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#diseñotituloUsuario{
+    color: white; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+   
+}

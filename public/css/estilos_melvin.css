@@ -1,0 +1,323 @@
+
+body {
+    background-image:  url('../imagenes/fondo.png');
+}
+
+/*color de los paneles de cada tarjeta*/
+.panel-heading{
+    background-color:  #005662!important;
+    color: white !important ;
+}
+
+/*colo de la barra superior*/
+.navbar{
+    background-color: #005662; 
+}
+
+/*Diseño de los componetes de la barra superior*/
+.navbar-brand:link, .navbar-brand:visited{
+    color: white !important;
+
+}
+.navbar-brand:hover, .navbar-brand:active{
+    color: deepskyblue !important;
+}
+
+#navbar li a:link, #navbar li a:visited{
+    color: white !important;
+}
+
+#navbar li a:hover, #navbar li a:active{
+    color: deepskyblue !important;   
+}
+
+
+/*Diseño del nombre categorias*/
+.iluminada:hover{
+    color: #005662;
+
+}
+
+/*Diseño de la tarjeta de las categorias*/
+.thumbnail{
+    margin: 10px;
+    padding: 0px;
+    background: deepskyblue;
+    -webkit-box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.65);
+    box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.65);
+
+
+}
+
+
+
+.panel-heading{
+    height: 60px;
+}
+/* Footer  inicio*/
+/* espacio del texto con la barra */
+section {
+    padding: 20px 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+
+}
+
+/* color del footer */
+#footer {
+    background: #005662 !important;
+    height: 50px;
+}
+
+/* diseño de los titulos del footer */
+#footer span{
+    padding-left:4px;
+    padding-bottom: 4px;
+    color:#ffffff;
+    font-size: 13px;
+
+}
+
+#coloayuda{
+    color: #ffffff;
+}
+/* color de los link de email */
+.coloremail:hover{
+    color: orange;
+    text-shadow: 0.5px 0.5px 1px #02550;  
+}
+
+
+/* color de los link de web,desarrolladores,email */
+#footer a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    style-width: 80%;
+
+}
+
+
+/* Footer fin */
+
+/* movimiento del icono de agenda */
+
+.btn-card:hover{
+    transform: translateY(-5px);
+    transition: all 400ms;
+}
+
+
+
+#contenedor_perfiles{
+
+    background-color: white;
+    border-radius: 8px;
+
+}
+
+#encabezado_lista_contactos{
+    background-color: #005662; 
+
+    margin-top:auto;
+    margin-bottom:auto;
+    text-align:center;
+    border-radius: 8px;
+}
+#encabezado_contactos_activos{
+    background-color: #005662;    
+    vertical-align: middle;
+    border-radius: 8px;
+    padding-top: 3px; 
+    padding-bottom: 3px;
+    height: 40px;
+}
+
+#nombreCategoria{
+    color: white;
+}
+
+
+/*Estilo Material*/
+.group            { 
+    position:relative !important; 
+    margin-bottom:45px !important; 
+}
+input               {
+    font-size:18px !important;
+    padding:10px 10px 10px 5px !important;
+    display:block !important;
+    width:100% !important;
+    border:none !important;
+    border-bottom:1px solid #757575 !important;
+}
+input:focus         { outline:none; }
+
+/* LABEL ======================================= */
+label                {
+    color:#999 !important; 
+    font-size:18px !important;
+    font-weight:normal !important;
+    position:absolute !important;
+    pointer-events:none !important;
+    left:5px !important;
+    top:10px !important;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label        {
+    top:-20px !important;
+    font-size:14px !important;
+    color:#005662 !important;
+}
+
+/* BOTTOM BARS ================================= */
+.bar    { position:relative; display:block; width:100%; }
+.bar:before, .bar:after     {
+    content:'';
+    height:2px; 
+    width:0;
+    bottom:1px; 
+    position:absolute;
+    background:#005662; 
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+.bar:before {
+    left:50%;
+}
+.bar:after {
+    right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50% !important;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position:absolute !important;
+    height:60% !important; 
+    width:100px !important; 
+    top:25% !important; 
+    left:0 !important;
+    pointer-events:none !important;
+    opacity:0.5 !important;
+}
+
+/* active state */
+input:focus ~ .highlight {
+    -webkit-animation:inputHighlighter 0.3s ease;
+    -moz-animation:inputHighlighter 0.3s ease;
+    animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from { background:#005662; }
+    to    { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+    from { background:#005662; }
+    to    { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+    from { background:#005662; }
+    to    { width:0; background:transparent; }
+}  
+
+.circle-img {
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+}
+
+.circle-img img {
+    height: 100%;
+    transform: translateX(-50%);
+    margin-left: 50%;
+}
+
+.oculto {
+    width:0; 
+    height:0; 
+    border:0; 
+    border:none;
+}
+
+
+.float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:60px;
+    right:40px;
+    background-color:#005662;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+
+}
+.floatfoto{
+    position: absolute;
+    top: 85%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-size: 16px;
+    cursor: pointer;
+    width:60px;
+    height:60px;
+    bottom:1050px;
+    right:350px;
+    background-color:#005662;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999 !important;
+
+}
+
+.my-float{
+    margin-top:22px !important;
+}
+
+.inner-addon {
+    position: relative;
+}
+
+/* style glyph */
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+
+/* align glyph */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+
+
+
+
+
+
+
+
