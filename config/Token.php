@@ -60,7 +60,6 @@ class Token{
         $resultado -> bind_param("s", $usr);
         $resultado -> execute();
         $results = $resultado->get_result();
-        $this->objeto_conexion -> cerrarConexion();
 
         while($row=$results->fetch_assoc()){
             

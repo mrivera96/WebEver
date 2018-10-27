@@ -46,7 +46,8 @@ class ModeloPerfiles{
         }else{
             return new ApiResponse(
                 500,
-                "error en la base de datos"
+                "error en la base de datos",
+                null
             );
         }
     }
@@ -73,7 +74,8 @@ class ModeloPerfiles{
         }else{
             return new ApiResponse(
                 500,
-                "error en la base de datos"
+                "error en la base de datos",
+                null
             );
         }
     }
@@ -104,7 +106,8 @@ class ModeloPerfiles{
                 }else{
                     return new ApiResponse(
                         500,
-                        "error en la base de datos"
+                        "error en la base de datos",
+                        null
                     );
                 }
             } else if ($categoria != 0) {
@@ -130,7 +133,8 @@ class ModeloPerfiles{
                 }else{
                     return new ApiResponse(
                         500,
-                        "error en la base de datos"
+                        "error en la base de datos",
+                        null
                     );
                 }
             }
@@ -160,7 +164,8 @@ class ModeloPerfiles{
                 }else{
                     return new ApiResponse(
                         500,
-                        "error en la base de datos"
+                        "error en la base de datos",
+                        null
                     );
                 }
             } else if ($categoria != 0) {
@@ -187,7 +192,8 @@ class ModeloPerfiles{
                 }else{
                     return new ApiResponse(
                         500,
-                        "error en la base de datos"
+                        "error en la base de datos",
+                        null
                     );
                 }
             }
