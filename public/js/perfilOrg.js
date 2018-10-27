@@ -21,11 +21,13 @@ var cto = $_GET('cto');
     {
         $.ajax({
             type: "get",
-            url: "../WebServices/mostrar_perfil.php",
-            data: {'id_contacto':cto}
-        }).done(function (data)
-        {
-            var informacionContacto = JSON.parse(data);
+            url: "obtenerPerfil",
+            data: {'id_contacto':cto},
+            statusCode:{
+              200: function(data){
+                var array = data.content;
+        
+            var informacionContacto = data.content;
             var imagen;
             var telefono;
             var celular;
@@ -85,15 +87,15 @@ var cto = $_GET('cto');
                 $("#filaPorg").append(
                         '<img style="width: 250px; height: 250px" class="img-circle img-circle" class="img-rounded" src=' + imagen + '>'
                         );
-                
+
                  /************************************************************************************************/
                  $("#ubicacion").append('<a class="enlaces_de_listas_contactos float" href="../Vistas/mapa.php?numct='+informacionContacto[i].id_contacto+'">' +
                                     '<i class="glyphicon glyphicon-map-marker my-float"></i>'+' </a>'
                  );
-         
+
          $("#filatxt").append(
                   ' <div class="col-md-12">' +
-                        
+
                         '<div class="panel panel-default">' +
                         ' <div class="panel-body">' +
                         '<h4><strong><span class="glyphicon glyphicon-earphone"></span>&nbspTélefono:</strong></h4>' +
@@ -108,6 +110,11 @@ var cto = $_GET('cto');
                         '<h5>' + descripcion + '</h5>'
                  );
             }
-        });
-    }
+          },
+          500: function(data){
+            alert(data.message);
+          }
+            }
 
+        });
+    };
