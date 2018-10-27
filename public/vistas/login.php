@@ -16,9 +16,9 @@ if (isset($_POST['tkn']) && !empty($_POST['tkn'])) {
 if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
 
     if (($_SESSION['rol'] == 2)) {
-        header('Location: /webaeo/Vistas/contactosUsuario.php');
+        header('Location: ../Vistas/contactosUsuario.php');
     } else if (($_SESSION['rol'] == 1)) {
-        header('Location: /webaeo/Vistas/mostrar_usuarios.php');
+        header('Location: ../Vistas/mostrar_usuarios.php');
     } else {
         $message = 'Usuario o Contraseña incorrectas ';
     }
@@ -43,7 +43,7 @@ if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
     </div>
     <form class="form" name="log" id="modal_login" method="POST">
         <div class="group">
-            <input  type="text" required    name="usern" pattern="|^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ_-0-9]*$|" title="No se permiten espacios">
+            <input  type="text" required    name="usern"  title="No se permiten espacios">
             <span class="highlight"></span>
             <span class="bar"></span>
             <label  for="usern">  <span class="glyphicon glyphicon-user"></span> Usuario</label>
@@ -132,17 +132,18 @@ if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
             var contrasena = document.log.pass.value;
             $.ajax({
                 type: "POST",
-                url: "../WebServices/validar_usuario.php",
-                data: {'nombre_usuario': usuario, 'contrasena': contrasena}
-            }).done(function (data) {
-                var dataParse = JSON.parse(data);
+                url: "../loginUsuario",
+                data: {'nombre_usuario': usuario, 'contrasena': contrasena},
+                statusCode:{
+                  200: function(data){
+                    var array = data.content;
 
-                if (dataParse != "Credenciales incorrectos") {
+                if (array != "Credenciales incorrectos") {
 
-                    $("#tkn").val(dataParse.token);
-                    $("#rol").val(dataParse.rol);
-                    $("#id").val(dataParse.idUrs);
-                    $("#stado").val(dataParse.ste);
+                    $("#tkn").val(array.token);
+                    $("#rol").val(array.rol);
+                    $("#id").val(array.idUrs);
+                    $("#stado").val(array.ste);
 
 
                     $("#form").submit();
@@ -152,13 +153,18 @@ if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
             mostrarError(document.log.pass,<?php print json_encode(ERROR14); ?>);
                 }
 
+            },//data
+              500: function(data){
+              alert(data.message);
             }
-            );
-        }
-        ;
+              }
+
+        });
 
         return;
     }
+  };
+
 
 </script>
 

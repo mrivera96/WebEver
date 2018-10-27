@@ -50,7 +50,7 @@
                                     }else{
                                         telefono=perfiles[i].numero_movil;
                                     };
-                                    $("#fila").append('<a href="Vistas/PerfilOrganizacion.php?cto='+perfiles[i].id_contacto+'"><div class = "col-md-12">' +
+                                    $("#fila").append('<a href="PerfilOrganizacion.php?cto='+perfiles[i].id_contacto+'"><div class = "col-md-12">' +
                                               '<div class="media">' +
                                               '<div class="media-left">' +
                                               '<img style="width:130px ; heigh:130px ;"  class="media-object img-circle" src='+ imagen+'> ' +

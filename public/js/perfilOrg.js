@@ -50,7 +50,7 @@ var cto = $_GET('cto');
                 if (informacionContacto[i].imagen != "") {
                     imagen = informacionContacto[i].imagen;
                 } else {
-                    imagen = "https://cdn.icon-icons.com/icons2/37/PNG/512/contacts_3695.png";
+                    imagen = "../imagenes/iconocontactowhite.png";
                 }
 
                 if (informacionContacto[i].numero_fijo != "") {
