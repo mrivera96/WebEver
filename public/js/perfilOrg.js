@@ -21,12 +21,12 @@ var cto = $_GET('cto');
     {
         $.ajax({
             type: "get",
-            url: "obtenerPerfil",
-            data: {'id_contacto':cto},
+            url: "../obtenerPerfil",
+            data: {'cto':cto},
             statusCode:{
               200: function(data){
                 var array = data.content;
-        
+
             var informacionContacto = data.content;
             var imagen;
             var telefono;
