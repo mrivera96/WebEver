@@ -1,5 +1,5 @@
 <?php
-    include_once '../config/ConexionABaseDeDatos.php';
+    include_once '../../config/ConexionABaseDeDatos.php';
     include_once '../plantillas/documento-inicio.inc.php';
     include_once '../plantillas/barra-de-navegacion-navbar.inc.php';
     include_once '../plantillas/buscador.inc.php';
@@ -27,14 +27,18 @@
                 var loadData = function(){
                           $.ajax({
                               type:"GET",
-                              url:"../WebServices/buscar.php",
-                              data: {'busqueda':'<?php echo $_GET['busqueda']?>','region':"<?php echo $_GET['region']?>",'categoria':"<?php echo $_GET['categoria']?>"}
-                            }).done(function(data){
-                                     
-                                var perfiles = JSON.parse(data);
+                              url:"../buscar",
+                              data: {'busqueda':'<?php echo $_GET['busqueda']?>','region':"<?php echo $_GET['region']?>",'categoria':"<?php echo $_GET['categoria']?>"},
+
+                              statusCode:{
+                                200: function(data){
+                                  var array = data.content;
+
+
+                              var perfiles = data.content;
                                 var imagen;
                                 var telefono;
-                                
+
                                 for (var i in perfiles){
                                     if(perfiles[i].imagen!=""){
                                         imagen=perfiles[i].imagen;
@@ -61,11 +65,18 @@
                                                   '</div></a>'
                                       );
                                 }
+                              },
+                              500: function(data){
+                                alert(data.message);
+                              }
+
+
+                            }
                             });
                 }
-             
+
           </script>
-      </div>   
+      </div>
       </div>
   </div>
   </div>
