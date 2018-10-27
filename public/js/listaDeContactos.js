@@ -24,13 +24,16 @@ $(document).on("ready", function () {
 //Carga los perfiles de cierta categoria
 var loadData = function () {
     $.ajax({
-
         type: "get",
-        url: "../WebServices/listarPerfiles.php",
-        data: {'ctg': cty}
-    }).done(function (data) {
+        url: "../listarPerfiles",
+        data: {'ctg': cty},
+        
+        statusCode:{
+          200: function(data){
+            var array = data.content;
 
-        var perfiles = JSON.parse(data);
+
+        var perfiles = data.content;
         var imagen;
         var telefono;
 
@@ -62,5 +65,13 @@ var loadData = function () {
                     '</div></a>'
                     );
         }
+      },
+      500: function(data){
+        alert(data.message);
+      }
+
+
+    }
+
     });
 };
