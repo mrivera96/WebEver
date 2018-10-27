@@ -3,7 +3,7 @@
 $titulo = 'Acceder a la cuenta';
 include_once '../plantillas/documento-inicio.inc.php';
 include_once '../plantillas/barra-de-navegacion-navbar.inc.php';
-include '../config/Errores.inc.php';
+include '../Errores.inc.php';
 
 if (isset($_POST['tkn']) && !empty($_POST['tkn'])) {
 
