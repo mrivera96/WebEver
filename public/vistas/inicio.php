@@ -15,18 +15,19 @@
         <link rel="shortcut icon" href="../imagenes/aeo.ico" />
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/estilos.css" rel="stylesheet">
+        <script src="./js/jquery-2.2.4.min.js" ></script>
+        <link href="css/estilos_alan.css" rel="stylesheet">
     </head>
     <body>
 <!fin documento inicio>
 
-    <!Barra de navegacion Navbar>
+<!Barra de navegacion Navbar>
         <?php
  session_start();
 ?>
 <nav class="navbar navbar-default ">
     <div class="container">
         <div class="navbar-header">
-
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only"></span>
                 <span class="icon-bar"></span>
@@ -40,17 +41,12 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                  <?php
-
-        if(isset($_SESSION['token']) && !empty($_SESSION['token'])){
-          if(isset($_SESSION['rol']) && !empty($_SESSION['rol']) && $_SESSION['rol']==2){
-            ?>
-
-                        <!--   header('Location: /webaeo/contactosUsuario.php');
-                        } else if (($_SESSION['normal'] == 1) && ($_SESSION['actividad'] == 1)) {
-                            header('Location: /webaeo/mostrar_usuarios.php'); -->
+                    if(isset($_SESSION['token']) && !empty($_SESSION['token'])){
+                    if(isset($_SESSION['rol']) && !empty($_SESSION['rol']) && $_SESSION['rol']==2){
+                  ?>
                            <li id="boton" class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <strong>Panel de Control</strong><span class="caret"></span></a>
-                            <ul id="despliege"class="dropdown-menu" role="menu">
+                               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <strong>Panel de Control</strong><span class="caret"></span></a>
+                               <ul id="despliege"class="dropdown-menu" role="menu">
                                 <li> <a id = "colorIniciosecion" href = "Vistas/login.php"><img src="imagenes/config.png" height="15"></img> <strong>Panel de Control </strong></a></li>
                                 <li><a href="Vistas/editarUsuarioNormal.php"><img src="imagenes/administracioncuenta.jpg" height="15"></img> <strong>Edición de Cuenta</strong></a></li>
                             </ul>
@@ -58,23 +54,21 @@
                           <li> <a id="colorIniciosecion" href="config/cerrarSessionLogin.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <strong>Cerrar Sesión</strong></a></li>
 
                         <?php
-                    } else {
+                        } else {
                         ?><li id="boton" class="dropdown">
-                            <!--<a id = "colorIniciosecion" href = "login.php"><span class = "glyphicon glyphicon-cog" aria-hidden = "true"></span> <strong>Panel de Control</strong></a>-->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <strong>Panel de Control</strong><span class="caret"></span></a>
                             <ul id="despliege"class="dropdown-menu" role="menu">
                                 <li><a href="Vistas/mostrar_usuarios.php"><img src="imagenes/administracioncuenta.jpg" height="15"></img> <strong>Administración de Cuenta</strong></a></li>
                                 <li><a href="Vistas/administracion-de-perfiles.php"><img src="imagenes/administracionperfil.jpg" height="15"></img> <strong>Administración de Perfil</strong></a></li>
                             </ul>
-                        </li>
+                          </li>
                         <li> <a id="colorIniciosecion" href="config/cerrarSessionLogin.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <strong>Cerrar Sesión</strong></a></li>
                         <?php
                         $message = 'Usuario o Contraseña incorrectas desde la sesion';
-                    }
-                    ?>
-
-                    <?php
-                } else {
+                        }
+                        ?>
+                        <?php
+                      } else {
                     ?>
                         <li> <a id = "colorIniciosecion" href = "Vistas/login.php"><span class = "glyphicon glyphicon-log-in" aria-hidden = "true"></span> <strong>Iniciar Sesión</strong></a></li>
                         <li> <a id = "colorIniciosecion" href = "Vistas/registrarCuentaUsuario.php"><span class = "glyphicon glyphicon-plus" aria-hidden = "true"></span> <strong>Registrarse</strong></a></li>
@@ -84,25 +78,23 @@
             </ul>
         </div>
     </div>
-
 </nav>
-    <!Fin de navbar>
+<!Fin de navbar>
 
     <!Inicio del buscador >
-    <div class="container" style="padding-top: 3px;padding-bottom: 3px;" >
-        <div class="form-group" >
-        <form role="form" method="get" action="Vistas/resultado_busqueda.php" >
-      <div class="row"    >
-
-                <div id="diseñobuscarusuario" class="panel-heading" >
+    <div class="container" style="padding-top: 3px;padding-bottom: 3px;">
+      <div class="form-group">
+        <form role="form" method="get" action="Vistas/resultado_busqueda.php">
+          <div class="row">
+              <div id="diseñobuscarusuario" class="panel-heading">
                     <div class="col-md-6 col-xs-6 col-sm-6 inner-addon right-addon">
-                      <div class="input-group">
-                        <span class="input-group-btn">
-                          <button id="separador"  type="submit" style=" color: white" class="btn btn-warning form-control "><strong><span class="glyphicon glyphicon-search"></span></strong></button>
-                        </span>
-                          <input id="busqueda" type="text" class="form-control" name="busqueda"  placeholder="Contacto a buscar"
-                          required oninvalid="setCustomValidity('Ingrese la busqueda.')" oninput="setCustomValidity('')">
-                      </div>
+                        <div class="input-group">
+                          <span class="input-group-btn">
+                            <button id="separador"  type="submit"  style=" color: black; background:#F2F2F2" class="btn btn-light form-control "><strong><span class="glyphicon glyphicon-search" style="padding: 1px ; width: 2px"></span></strong></button>
+                          </span>
+                            <input id="busqueda" type="text" class="form-control" name="busqueda"  placeholder="Contacto a buscar"
+                            required oninvalid="setCustomValidity('Ingrese la busqueda.')" oninput="setCustomValidity('')">
+                        </div>
                     </div>
                     <div class="col-md-3 col-xs-3 col-sm-3 inner-addon right-addon">
                       <select class="form-control" name="categoria">
@@ -120,29 +112,25 @@
                           <option value="11">Funeraria</option>
                       </select>
                         </div>
-
                         <div class="col-md-3 col-xs-3 col-sm-3 inner-addon right-addon">
                           <select class="form-control" name="region">
                               <option value="0" >Todas las Regiones</option>
                               <option value="4" >El Paraíso</option>
                               <option value="3">Danlí</option>
                           </select>
-                      </div>
-
+                        </div>
                 </div>
-
           </div>
         </form>
-      </div>
     </div>
+</div>
 <!fin del buscador>
 
 <?php
 
 
 ?>
-<script src="./js/jquery-2.2.4.min.js" ></script>
-<link href="css/estilos_alan.css" rel="stylesheet">
+
 
 <div id="estilo-contenedor-textocategoria"class="container">
     <div class="row"  id="fila"  >
@@ -163,7 +151,7 @@
 
 <div     id="estilo-contenedor" class="container"  >
     <div class="row" style="margin-top: 10px;" id="fila">
-        <script>
+        <script>//escrip de listar todas las categorias
             $(document).on("ready", function () {
                 loadData();
             });
@@ -187,60 +175,43 @@
                                 '</div>'
                                 );
                               }
-                    },
+                    },//fin de fucion data
                     500: function(data){
                       alert(data.message);
                     }
-
-
-                  }
-
-                });
-
-              };
-
-
-        </script>
-
+                  }//fin de estatus code
+              });
+          };
+         </script><!--fin de escript de mostrar categorias-->
     </div>
 </div>
 
-<!Inicio de footer>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<br>
-<br>
-
-<!-- Footer -->
+<!Documento de cierre>
 <div class="navbar navbar-default navbar-fixed-bottom" id="footer">
     <div class="container">
         <div class="row text-center text-xs-center text-sm-left text-md-left ">
             <div  class="col-xs-6 col-sm-6 col-md-4" >
-                <a  href="Vistas/acercadeweb.php"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <strong class="opcion coloremail">Acerca de Desarrolladores</strong></a>
+                <a  href="../Vistas/acercadeweb.php"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <strong class="opcion coloremail">Acerca de Desarrolladores</strong></a>
             </div>
 
             <div  class="col-xs-6 col-sm-6 col-md-4" >
                 <a  href="#"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> <strong class="opcion coloremail">Descarga la App</strong></a>
+                  <ul class="list-unstyled quick-links">
+                  <div class="principal">
+                  </div>
+                  </ul>
+             </div>
 
-                <ul class="list-unstyled quick-links">
+            <div  class="col-xs-6 col-sm-6 col-md-4" >
+                <span  class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> <strong id="coloayuda">Ayuda y Contacto</strong></a>
+                 <ul class="list-unstyled quick-links">
+                  <a  href="#"><span  aria-hidden="true"></span> <strong class="opcion coloremail"><small>aeodanli@gmail.com</small></strong></a>
+                </ul>
+            </div>
 
-                    <div class="principal"
-                </div>
-
-                <!--LIK DE DESCARGA DE LA APP-->
-            </ul>
-        </div>
-        <div  class="col-xs-6 col-sm-6 col-md-4" >
-            <span  class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> <strong id="coloayuda">Ayuda y Contacto</strong></a>
-
-            <ul class="list-unstyled quick-links">
-                <a  href="#"><span  aria-hidden="true"></span> <strong class="opcion coloremail"><small>aeodanli@gmail.com</small></strong></a>
-
-
-            </ul>
-        </div>
+          </div>
+       </div>
     </div>
-</div>
-</div>
-</body>
+   </body>
 </html>
+<!fin de documento de cierre>
