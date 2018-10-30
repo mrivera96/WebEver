@@ -160,7 +160,7 @@ session_start();
 <div class="container" id="ubicacion">
 
   </div>
-<?php
+
 <!Documento de cierre>
 <div class="navbar navbar-default navbar-fixed-bottom" id="footer">
     <div class="container">
@@ -190,4 +190,3 @@ session_start();
    </body>
 </html>
 <!fin de documento de cierre>
-?>
