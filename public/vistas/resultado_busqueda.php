@@ -1,9 +1,7 @@
 <?php
 session_start();
 ?>
-<?php
-    include_once '../../config/ConexionABaseDeDatos.php';
-  ?>
+
 <!Documento de Inicio>
 <html  lang="es">
     <head>
