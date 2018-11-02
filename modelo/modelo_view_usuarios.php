@@ -5,8 +5,8 @@ class ViewUsuarios extends Model{
 
     public static function todos(){
         try{
-            $usr = new ModeloUsuarios();
-            $usuarios = $usr ->where('estado_usuario','=',1)->get();
+            $usr = new ViewUsuarios();
+            $usuarios = $usr::all();
             return new ApiResponse(
                 200,
                 "OK",
@@ -15,7 +15,7 @@ class ViewUsuarios extends Model{
         }catch (Exception $e){
             return new ApiResponse(
                 500,
-                "error en la base de datos",
+                $e->getMessage(),
                 null
             );
         }
