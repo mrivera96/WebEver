@@ -63,7 +63,7 @@ class controladorUsuarios{
             }
 
             if ($error_correo === false){
-                if(isset($request_data['usuariosroles']) && empty($request_data['usuariosroles'])){
+                if(isset($request_data['usuariosroles']) && !empty($request_data['usuariosroles'])){
                     $rol = $request_data['usuariosroles'];
                 }else{
                     $rol = 2;
