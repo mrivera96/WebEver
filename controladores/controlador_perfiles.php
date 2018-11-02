@@ -1,7 +1,7 @@
 <?php
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-require_once '../modelo/modelo_perfiles.php';
+require_once '../modelo/modelo_view_perfiles.php';
 class controladorPerfiles{
     function haveEmptyParameters($params,$request,$response){
         $error = false;
@@ -27,21 +27,23 @@ class controladorPerfiles{
     }
 
     public function listarPerfiles(Request $request, Response $response){
-        if(!$this->haveEmptyParameters(array('ctg'), $request, $response)){
+
             $request_data = $request->getParams();
-            $ctg = $request_data['ctg'];
-            $perf= new ModeloPerfiles() ;
-            $respuesta = $perf-> listarPerfiles($ctg);
+            if(isset($request_data['ctg'])){
+                $ctg = $request_data['ctg'];
+            }else{
+                $ctg=null;
+            }
+
+
+            $respuesta = ModeloPerfiles::listarPerfiles($ctg);
 
 
             $response -> write(json_encode($respuesta ->toArray2()));
             return $response ->withHeader('Content-type','application/json')
                 ->withStatus($respuesta ->getStatus());
 
-        }else{
-            return $response -> withHeader('Content-type','application/json')
-                -> withStatus(400);
-        }
+
     }
 
     public function obtenerPerfil(Request $request, Response $response){

@@ -1,16 +1,13 @@
 <?php
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-use Psr\Container\ContainerInterface;
 require_once '../modelo/modelo_usuarios.php';
+require_once '../modelo/Token.php';
+require_once '../modelo/modelo_view_usuarios.php';
 require_once '../php-jwt-master/src/JWT.php';
 require_once '../php-jwt-master/src/BeforeValidException.php';
 require_once '../php-jwt-master/src/ExpiredException.php';
 require_once '../php-jwt-master/src/SignatureInvalidException.php';
-
-use Firebase\JWT\JWT;
-
-require '../config/Token.php';
 
 class controladorUsuarios{
 
@@ -72,8 +69,8 @@ class controladorUsuarios{
                     $rol = 2;
                 }
 
-                $modelo = new ModeloUsuarios();
-                $resp = $modelo->crearUsuario($usr,$nom,$mail,$pass,$rol);
+
+                $resp = ModeloUsuarios::crearUsuario($usr,$nom,$mail,$pass,$rol);
 
                 $response -> write(json_encode($resp ->toArray()));
                 return $response ->withHeader('Content-type','application/json')
@@ -110,6 +107,44 @@ class controladorUsuarios{
                 $resp = $modelo->eliminarUsuario($usr);
 
                 $response -> write(json_encode($resp ->toArray()));
+                return $response ->withHeader('Content-type','application/json')
+                    ->withStatus($resp ->getStatus());
+
+        }else {
+            return $response->withHeader('Content-type', 'application/json')
+                ->withStatus(400);
+        }
+
+
+
+    }
+    public function existeUsuario(Request $request, Response $response){
+        if(!$this->haveEmptyParameters(array('usuario'), $request, $response)){
+
+            $request_data = $request->getParsedBody();
+            $usr = $request_data['usuario'];
+                $resp = ModeloUsuarios::usuarioExiste($usr);
+
+                $response -> write(json_encode($resp->toArray2() ));
+                return $response ->withHeader('Content-type','application/json')
+                    ->withStatus($resp ->getStatus());
+
+        }else {
+            return $response->withHeader('Content-type', 'application/json')
+                ->withStatus(400);
+        }
+
+
+
+    }
+    public function existeEmail(Request $request, Response $response){
+        if(!$this->haveEmptyParameters(array('usuarioemail'), $request, $response)){
+
+            $request_data = $request->getParsedBody();
+            $mail = $request_data['usuarioemail'];
+                $resp = ModeloUsuarios::emailExiste($mail);
+
+                $response -> write(json_encode($resp->toArray2() ));
                 return $response ->withHeader('Content-type','application/json')
                     ->withStatus($resp ->getStatus());
 
@@ -177,9 +212,7 @@ class controladorUsuarios{
             $usr = $request_data['nombre_usuario'];
             $pass = $request_data['contrasena'];
 
-
-            $modelo = new ModeloUsuarios();
-            $resp = $modelo->loginUsuario($usr, $pass);
+            $resp = ModeloUsuarios::loginUsuario($usr, $pass);
 
             $response -> write(json_encode($resp ->toArray2()));
             return $response ->withHeader('Content-type','application/json')
@@ -193,6 +226,39 @@ class controladorUsuarios{
 
 
     }
+
+
+    public function pruebas(Request $request, Response $response){
+        if(!$this->haveEmptyParameters(array('tkn','id'), $request, $response)){
+
+            $request_data = $request->getParsedBody();
+            $tkn = $request_data['tkn'];
+            $id = $request_data['id'];
+
+
+            $resp = Token::generarToken($id);
+
+            $response -> write(json_encode($resp ->toArray2()));
+            return $response ->withHeader('Content-type','application/json')
+                ->withStatus($resp ->getStatus());
+
+        }else {
+            return $response->withHeader('Content-type', 'application/json')
+                ->withStatus(400);
+        }
+    }
+
+    public function todos(Request $request, Response $response){
+
+        $resp = ViewUsuarios::todos();
+
+        $response -> write(json_encode($resp ->toArray2()));
+        return $response ->withHeader('Content-type','application/json')
+                ->withStatus($resp ->getStatus());
+
+
+    }
+
 
 
 }
