@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
     include_once '../../config/ConexionABaseDeDatos.php';
   ?>
 <!Documento de Inicio>
@@ -23,9 +26,7 @@
 <!Fin de documento de Inicio>
 
 <!inicio de barra de navegacion>
-<?php
-session_start();
-?>
+
 <nav class="navbar navbar-default ">
     <div class="container">
         <div class="navbar-header">

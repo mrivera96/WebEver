@@ -25,8 +25,7 @@ var cto = $_GET('cto');
             data: {'cto':cto},
             statusCode:{
               200: function(data){
-                var array = data.content;
-
+            
             var informacionContacto = data.content;
             var imagen;
             var telefono;
