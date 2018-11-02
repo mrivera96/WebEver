@@ -113,29 +113,56 @@ if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
 
                     //FUNCTION QUE MUSTRA TODOS LOS USUARIOS REGUISTRADOS EN LA BASE DE DATOS.
 
-                    $(document).on("ready", function () {
-                        loadData();
-                    });
-                    var loadData = function () {
-                        $.ajax({
-                            type: "POST",
-                            url: "../WebServices/ConsultarTodosLosUsuarios.php",
-                            data: {'estado': '1','tkn':"<?php echo $_SESSION['token'] ?>"}
-                        }).done(function (data) {
-                            var usuarios = JSON.parse(data);
-                            for (var i in usuarios) {
-                                $("#fila").append('</div>' +
-                                        '<a class="enlase_usuarios" href="../Vistas/editar_usuarios.php?usuario=' + usuarios[i].id_usuario + '"><h3 id="colorUsuarios" ><strong>' + usuarios[i].nombre_usuario + '</strong></h3>' +
-                                        '<p href="../Vistas/editar_usuarios.php?usuario=' + usuarios[i].id_usuario + '"><h4 id="colortipUsuario"><strong>' + usuarios[i].descripcion_rol + '</strong></h4></p>' +
-                                        '<hr id="disUsusarios">' +
-                                        '</a>'
-                                        );
+                      $(document).on("ready", function () {
+                          loadData();
+                      });
+                      var loadData = function () {
+                          $.ajax({
+                              type: "GET",
+                              url: "../todosUsuarios",
+                              data: {'estado': '1','tkn':"<?php echo $_SESSION['token'] ?>"},
+                              statusCode:{
+                                200: function(data){
+                                  var usuarios = data.content;
+                                  for (var i in usuarios) {
+
+                           var imagen;
+                           if (usuarios[i].descripcion_rol=='Administrador') {
+                             imagen = "../imagenes/admin.png";
+                           } else if(usuarios[i].descripcion_rol=='Cliente') {
+                               imagen = "../imagenes/cliente.png";
+                           }
+                             $("#fila").append('</div>' +
+                               '<a class="enlase_usuarios" href="../Vistas/editar_usuarios.php?usuario=' + usuarios[i].id_usuario + '"><div class = "col-md-6 col-sm-6">'+
+                              '<div class="media">' +
+                             '<div class="media-left">' +
+                             '<img style="width:60px ; heigh:60px ;"  class="media-object img-circle circle-img" src="'+imagen+'">' +
+                             '</div>' +
+                              '<div class="media-body">' +
+                                  '<h4  id="colorUsuarios" ><strong>' + usuarios[i].nombre_usuario + '</strong></h4>' +
+                                     '<p href="../Vistas/editar_usuarios.php?usuario=' + usuarios[i].id_usuario + '"></p>'+
+                                     '<h4 id="colortipUsuario"><strong>' + usuarios[i].descripcion_rol + '</strong></h4>' +
+                                     '<hr id="disUsusarios">' +
+                                     '</div>'+
+                                     '</div>' +
+                                 '</div>' +
+                                   '</a>'
+
+                                  );
+                                }
+                            },
+                            500: function(data){
+                              alert(data.message);
                             }
+
+                          }
+
                         });
-                    }
-                </script>
-            </div>
-        </div>
+
+                      };
+                  </script>
+              </div>
+          </div>
 
         <a  href="../Vistas/formulario_registro.php" class="float">
             <i class="glyphicon glyphicon-plus my-float"></i>
