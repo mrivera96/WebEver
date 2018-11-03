@@ -35,62 +35,70 @@ class controladorUsuarios{
     }
 
     public function crearUsuario(Request $request, Response $response){
-        if(!$this->haveEmptyParameters(array(
-            'usuarionombre',
-            'usuariopropio',
-            'usuarioemail',
-            'usuariopassword'), $request, $response)){
 
-            $request_data = $request->getParsedBody();
-            $error_correo = false;
-            $usr = $request_data['usuarionombre'];
-            $nom = $request_data['usuariopropio'];
-            $mail = $request_data['usuarioemail'];
-            $pass = $request_data['usuariopassword'];
+        if ($request->hasHeader('tkn')) {
+            if(!$this->haveEmptyParameters(array(
+                'usuarionombre',
+                'usuariopropio',
+                'usuarioemail',
+                'usuariopassword'), $request, $response)){
+
+                $request_data = $request->getParsedBody();
+                $error_correo = false;
+                $usr = $request_data['usuarionombre'];
+                $nom = $request_data['usuariopropio'];
+                $mail = $request_data['usuarioemail'];
+                $pass = $request_data['usuariopassword'];
 
 
 
-            if (strpos($mail, "@") === false || strpos($mail, ".") === false) {
-                $error_correo = true;
-                $err= new ApiResponse(
-                    400,
-                    "email inválido",
-                    null
-                );
-                $response -> write(json_encode($err ->toArray()));
-                return $response ->withHeader('Content-type','application/json')
-                    ->withStatus($err ->getStatus());
-            }
-
-            if ($error_correo === false){
-                if(isset($request_data['usuariosroles']) && !empty($request_data['usuariosroles'])){
-                    $rol = $request_data['usuariosroles'];
-                }else{
-                    $rol = 2;
+                if (strpos($mail, "@") === false || strpos($mail, ".") === false) {
+                    $error_correo = true;
+                    $err= new ApiResponse(
+                        400,
+                        "email inválido",
+                        null
+                    );
+                    $response -> write(json_encode($err ->toArray()));
+                    return $response ->withHeader('Content-type','application/json')
+                        ->withStatus($err ->getStatus());
                 }
 
+                if ($error_correo === false){
+                    if(isset($request_data['usuariosroles']) && !empty($request_data['usuariosroles'])){
+                        $rol = $request_data['usuariosroles'];
+                    }else{
+                        $rol = 2;
+                    }
 
-                $resp = ModeloUsuarios::crearUsuario($usr,$nom,$mail,$pass,$rol);
 
-                $response -> write(json_encode($resp ->toArray()));
-                return $response ->withHeader('Content-type','application/json')
-                    ->withStatus($resp ->getStatus());
-            }else{
-                $err= new ApiResponse(
-                    400,
-                    "email inválido",
-                    null
-                );
+                    $resp = ModeloUsuarios::crearUsuario($usr,$nom,$mail,$pass,$rol);
 
-                $response -> write(json_encode($err ->toArray()));
-                return $response ->withHeader('Content-type','application/json')
-                    ->withStatus($err ->getStatus());
+                    $response -> write(json_encode($resp ->toArray()));
+                    return $response ->withHeader('Content-type','application/json')
+                        ->withStatus($resp ->getStatus());
+                }else{
+                    $err= new ApiResponse(
+                        400,
+                        "email inválido",
+                        null
+                    );
+
+                    $response -> write(json_encode($err ->toArray()));
+                    return $response ->withHeader('Content-type','application/json')
+                        ->withStatus($err ->getStatus());
+                }
+
+            }else {
+                return $response->withHeader('Content-type', 'application/json')
+                    ->withStatus(400);
             }
-
-        }else {
+        }else{
             return $response->withHeader('Content-type', 'application/json')
-                ->withStatus(400);
+                ->withStatus(401);
         }
+
+
 
 
 
