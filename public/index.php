@@ -30,6 +30,9 @@ $app -> get('/login', function (Request $request, Response $response){
 $app -> get('/perfiles', function (Request $request, Response $response){
     return $this->renderer->render($response, "/listaDeContactos.php");
 });
+$app -> get('/usuarios', function (Request $request, Response $response){
+    return $this->renderer->render($response, "/mostrar_usuarios.php");
+});
 
 
 

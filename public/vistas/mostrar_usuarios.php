@@ -7,8 +7,8 @@ if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
       include_once 'barra-de-navegacion-navbar.inc.php';
     ?>
 
-      <link href="../css/estilos_alan.css" rel="stylesheet">
-      <link href="../css/estiloslogin.css" rel="stylesheet">
+      <link href="css/estilos_alan.css" rel="stylesheet">
+      <link href="css/estiloslogin.css" rel="stylesheet">
 
 
       <div  id="contenedor_usuarios"class="container" >
@@ -62,7 +62,7 @@ if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
           var loadData = function () {
             $.ajax({
               type: "GET",
-              url: "../todosUsuarios",
+              url: "todosUsuarios",
               data: {'estado': '1','tkn':"<?php echo $_SESSION['token'] ?>"},
               statusCode:{
                 200: function(data){
@@ -71,9 +71,9 @@ if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
 
                     var imagen;
                     if (usuarios[i].descripcion_rol=='Administrador') {
-                      imagen = "../imagenes/admin.png";
+                      imagen = "imagenes/admin.png";
                     } else if(usuarios[i].descripcion_rol=='Cliente') {
-                      imagen = "../imagenes/cliente.png";
+                      imagen = "imagenes/cliente.png";
                     }
                     $("#fila").append('</div>' +
                     '<a class="enlase_usuarios" href="../Vistas/editar_usuarios.php?usuario=' + usuarios[i].id_usuario + '"><div class = "col-md-6 col-sm-6">'+

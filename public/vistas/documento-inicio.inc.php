@@ -13,8 +13,8 @@
         <title>Agenda Electrónica Oriental</title>
 
         <link rel="shortcut icon" href="../imagenes/aeo.ico" />
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/estilos.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/estilos.css" rel="stylesheet">
     </head>
     <body>
-    <script src="../js/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery-2.2.4.min.js"></script>
