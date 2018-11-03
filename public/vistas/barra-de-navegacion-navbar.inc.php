@@ -4,7 +4,6 @@ session_start();
 <nav class="navbar navbar-default ">
     <div class="container">
         <div class="navbar-header">
-
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only"></span>
                 <span class="icon-bar"></span>
@@ -33,19 +32,17 @@ session_start();
                         <?php
                     } else {
                         ?><li id="boton" class="dropdown">
-          <!--<a id = "colorIniciosecion" href = "login.php"><span class = "glyphicon glyphicon-cog" aria-hidden = "true"></span> <strong>Panel de Control</strong></a>-->
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <strong>Panel de Control</strong><span class="caret"></span></a>
-                            <ul id="despliege"class="dropdown-menu" role="menu">
-                                <li><a href="../Vistas/mostrar_usuarios.php"><img src="../imagenes/administracioncuenta.jpg" height="15"></img> <strong>Administración de Cuenta</strong></a></li>
-                                <li><a href="../Vistas/administracion-de-perfiles.php"><img src="../imagenes/administracionperfil.jpg" height="15"></img> <strong>Administración de Perfil</strong></a></li>
-                            </ul>
+                               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <strong>Panel de Control</strong><span class="caret"></span></a>
+                               <ul id="despliege"class="dropdown-menu" role="menu">
+                                 <li><a href="../Vistas/mostrar_usuarios.php"><img src="../imagenes/administracioncuenta.jpg" height="15"></img> <strong>Administración de Cuenta</strong></a></li>
+                                 <li><a href="../Vistas/administracion-de-perfiles.php"><img src="../imagenes/administracionperfil.jpg" height="15"></img> <strong>Administración de Perfil</strong></a></li>
+                             </ul>
                         </li>
                         <li> <a id="colorIniciosecion" href="../cerrarSessionLogin.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <strong>Cerrar Sesión</strong></a></li>
                         <?php
                         $message = 'Usuario o Contraseña incorrectas desde la sesion';
-                    }
-                    ?>
-
+                           }
+                           ?>
                     <?php
                 } else {
                     ?>
@@ -53,7 +50,7 @@ session_start();
                     <li> <a id = "colorIniciosecion" href = "../Vistas/registrarCuentaUsuario.php"><span class = "glyphicon glyphicon-plus" aria-hidden = "true"></span> <strong>Registrarse</strong></a></li>
                         <?php
                     }
-                    ?>   <!--va iniciar secion o registrarce -->
+                    ?>   
             </ul>
         </div>
     </div>
