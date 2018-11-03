@@ -106,7 +106,7 @@ if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
                                     <span class="bar"></span>
                                     <label>Repite la Contraseña</label>
                                 </div>
-                              
+
                                 <select name="usuariosroles" class="form-control" id="id_rol_usuario">
                                 </select>
                                 <br>
@@ -200,18 +200,24 @@ if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
                 $.ajax({
                     type: "GET",
 
-                    url: "../WebServices/verificar_email.php?verificaemail=" + $('#correo').val(),
-                }).done(function (data) {
+                    url: "../existeEmail?verificaemail=" + $('#correo').val(),
+
+                statusCode:{
+                  200: function(data){
+                    var array = data.content;
                     console.log(data);
                     if (data == 1) {
                         $('#correo').css("color", "red");
                         mostrarError(document.formulario.usuarioemail,<?php print json_encode(ERROR31); ?>);
-
-
-
                     } else
                         $('#correo').css("color", "black");
+                      },
+                      500: function(data){
+                        alert(data.message);
+                      }
 
+
+                    }
                 });
             }
             document.getElementById("guardar").onclick = function () {
@@ -291,11 +297,7 @@ if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
                                     data:{'usuarionombre':nombre,'usuariopropio':nombrepropio,'usuarioemail':email,'usariopassword':pass,'usuariosroles':roles,'tkn':"<?php echo $_SESSION['token'] ?>"},
                                     statusCode:{
                                       200: function(data){
-                                        var array = data.content;
-
-
                                     var users = data.content;
-
                                     if(users=="El token recibido NO existe en la base de datos."|| users == "El Token ya expiró." ){
                                     document.getElementById("colorIniciosecion").click();
                                     }else{
