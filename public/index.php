@@ -20,10 +20,18 @@ $app = new \Slim\App(['settings'=>['displayErrorDetails' => true,]]);
 $container = $app->getContainer();
 $container['renderer'] = new PhpRenderer("./vistas");
 
-
+//VISTAS
 $app -> get('/', function (Request $request, Response $response){
     return $this->renderer->render($response, "/inicio.php");
 });
+$app -> get('/login', function (Request $request, Response $response){
+    return $this->renderer->render($response, "/login.php");
+});
+$app -> get('/perfiles', function (Request $request, Response $response){
+    return $this->renderer->render($response, "/listaDeContactos.php");
+});
+
+
 
 
 $app -> get('/categorias', \controladorCategorias::class . ':obtenerCategorias');
