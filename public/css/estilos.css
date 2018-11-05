@@ -104,7 +104,7 @@ section .section-title {
 /* color de los link de email */
 .coloremail:hover{
     color: orange;
-    text-shadow: 0.5px 0.5px 1px #02550;  
+    text-shadow: 0.5px 0.5px 1px;
 }
 
 
@@ -195,4 +195,4 @@ section .section-title {
     margin-bottom: 2px;
     
       
-};
+}

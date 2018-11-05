@@ -128,7 +128,6 @@ section .section-title {
     margin-top:auto;
     margin-bottom:auto;
     text-align:center;
-    border-radius: 8px;
 }
 #encabezado_contactos_activos{
     background-color: #005662;    

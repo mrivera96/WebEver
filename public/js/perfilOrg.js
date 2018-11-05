@@ -1,18 +1,3 @@
-function $_GET(param) {
-  var vars = {};
-  window.location.href.replace(location.hash, '').replace(
-    /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-    function (m, key, value) { // callback
-      vars[key] = value !== undefined ? value : '';
-    }
-  );
-
-  if (param) {
-    return vars[param] ? vars[param] : null;
-  }
-  return vars;
-}
-var cto = $_GET('cto');
 
 $(document).on("ready", function () {
   loadData();
@@ -21,7 +6,7 @@ var loadData = function ()
 {
   $.ajax({
     type: "get",
-    url: "../obtenerPerfil",
+    url: 'obtenerPerfil',
     data: {'cto':cto},
     statusCode:{
       200: function(data){
@@ -49,7 +34,7 @@ var loadData = function ()
           if (informacionContacto[i].imagen != "") {
             imagen = informacionContacto[i].imagen;
           } else {
-            imagen = "../imagenes/iconocontactowhite.png";
+            imagen = "imagenes/iconocontactowhite.png";
           }
 
           if (informacionContacto[i].numero_fijo != "") {
@@ -88,7 +73,7 @@ var loadData = function ()
           );
 
           /************************************************************************************************/
-          $("#ubicacion").append('<a class="enlaces_de_listas_contactos float" href="../Vistas/mapa.php?numct='+informacionContacto[i].id_contacto+'">' +
+          $("#ubicacion").append('<a class="enlaces_de_listas_contactos float" href="mapa?numct='+informacionContacto[i].id_contacto+'">' +
           '<i class="glyphicon glyphicon-map-marker my-float"></i>'+' </a>'
         );
 

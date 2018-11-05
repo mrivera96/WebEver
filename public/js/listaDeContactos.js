@@ -1,22 +1,3 @@
-/**********************************************************************************************
- *            Método para acceder a los parametros en $_GET
- **********************************************************************************************/
-function $_GET(param) {
-    var vars = {};
-    window.location.href.replace(location.hash, '').replace(
-            /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-            function (m, key, value) { // callback
-                vars[key] = value !== undefined ? value : '';
-            }
-    );
-
-    if (param) {
-        return vars[param] ? vars[param] : null;
-    }
-    return vars;
-}
-var cty = $_GET('cty');
-
 $(document).on("ready", function () {
     loadData();
 });
@@ -25,9 +6,9 @@ $(document).on("ready", function () {
 var loadData = function () {
     $.ajax({
         type: "get",
-        url: "../listarPerfiles",
+        url: "listarPerfiles",
         data: {'ctg': cty},
-        
+
         statusCode:{
           200: function(data){
             var array = data.content;
@@ -41,7 +22,7 @@ var loadData = function () {
             if (perfiles[i].imagen != "") {
                 imagen = perfiles[i].imagen;
             } else {
-                imagen = "../imagenes/iconocontactowhite.png";
+                imagen = "imagenes/iconocontactowhite.png";
             }
             ;
             if (perfiles[i].numero_fijo != "") {
@@ -50,7 +31,7 @@ var loadData = function () {
                 telefono = perfiles[i].numero_movil;
             }
             ;
-            $("#fila").append('<a class="enlaces_de_listas_contactos" href="PerfilOrganizacion.php?cto=' + perfiles[i].id_contacto + '"><div class = "col-md-4 col-sm-6">' +
+            $("#fila").append('<a class="enlaces_de_listas_contactos" href="perfil?cto=' + perfiles[i].id_contacto + '"><div class = "col-md-4 col-sm-6">' +
                     '<div class="media-list">' +
                     '<div class="media-left">' +
                     '<img  class="media-object img-circle circle-img" src=' + imagen + '> ' +
