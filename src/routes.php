@@ -31,6 +31,9 @@ $app -> get('/perfil', function ( $request,  $response){
 $app -> get('/mapa', function ( $request,  $response){
     return $this->renderer->render($response, "/mapa.php");
 });
+$app -> get('/registro', function ( $request,  $response){
+    return $this->renderer->render($response, "/registrarCuentaUsuario.php");
+});
 
 
 
@@ -160,8 +163,8 @@ $app -> post('/existeEmail', 'controladorUsuarios:existeEmail');
 $app -> post('/obtenerUsuario', 'controladorUsuarios:obtenerUsuario');
 $app -> post('/todosUsuarios', 'controladorUsuarios:todos');
 $app -> get('/cerrarSession', 'controladorUsuarios:cerrarSesion');
-
 $app -> post('/roles', 'controladorRoles:todosRoles');
+$app -> get('/regiones', 'controladorRegiones:todasRegiones');
 
 /**
  * **************************************************************************************

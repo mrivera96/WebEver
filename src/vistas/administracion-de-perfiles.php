@@ -69,10 +69,7 @@ include_once 'documento-inicio.inc.php';
 
 </div>
 
-<script src="js/administracionPerfiles.js"></script>
-
-
-
 <?php
 include_once 'documento-cierre.inc.php';
 ?>
+<script src="js/administracionPerfiles.js"></script>

@@ -26,12 +26,11 @@ $(document).on("ready", function () {
      **********************************************************************************************/
 var loadData = function () {
     $.ajax({
-        type: "post",
-        url: "../WebServices/consultarPerfilesParaAdministracionPerfiles.php",
-        data: {'ste': '2'}
+        type: "GET",
+        url: "listarPerfiles"
     }).done(function (data) {
 
-        var perfiles = JSON.parse(data);
+        var perfiles = data.content;
         var imagen;
 
 
@@ -39,7 +38,7 @@ var loadData = function () {
             if (perfiles[i].imagen !== "") {
                 imagen = perfiles[i].imagen;
             } else {
-                imagen = "../imagenes/iconocontactowhite.png";
+                imagen = "imagenes/iconocontactowhite.png";
             }
             ;
 
