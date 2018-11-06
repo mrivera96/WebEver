@@ -83,9 +83,9 @@
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 /* form starting stylings ------------------------------- */
-.group{ 
-    position:relative; 
-    margin-bottom:30px; 
+.group{
+    position:relative;
+    margin-bottom:30px;
 }
 input{
     font-size:13px;
@@ -100,14 +100,14 @@ input:focus     { outline:none; }
 
 /* LABEL ======================================= */
 label          {
-    color:#999; 
+    color:#999;
     font-size:13px;
     font-weight:normal;
     position:absolute;
     pointer-events:none;
     left:5px;
     top:20px;
-    transition:0.2s ease all; 
+    transition:0.2s ease all;
 }
 
 /* active state */
@@ -120,18 +120,18 @@ input:focus ~ label, input:valid ~ label     {
 .bar  { position:relative; display:block; width:780x; }
 .bar:before, .bar:after   {
     content:'';
-    height:2px; 
+    height:2px;
     width:0;
-    bottom:1px; 
+    bottom:1px;
     position:absolute;
-    background:#005662; 
-    transition:0.2s ease all; 
+    background:#005662;
+    transition:0.2s ease all;
 }
 .bar:before {
     left:50%;
 }
 .bar:after {
-    right:50%; 
+    right:50%;
 }
 
 /* active state */
@@ -142,9 +142,9 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
 /* HIGHLIGHTER ================================== */
 .highlight {
     position:absolute;
-    height:50%; 
+    height:50%;
 
-    top:20%; 
+    top:20%;
     left:0;
     pointer-events:none;
     opacity:0.5;
@@ -192,9 +192,9 @@ body{
     padding-top: 15px
 }
 .oculto {
-    width:0; 
-    height:0; 
-    border:0; 
+    width:0;
+    height:0;
+    border:0;
     border:none;
 }
 
@@ -217,8 +217,50 @@ body{
 }
 
 #diseñotituloUsuario{
-    color: white; 
+    color: white;
     padding-top: 3px;
     padding-bottom: 3px;
-   
+
 }
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*Estilos que usan los contenedores de melvin */
+#contenedor_perfiles{
+    background-color: white;
+    border-radius: 8px;
+
+}
+
+#encabezado_lista_contactos{
+    background-color: #005662;
+    margin-top:auto;
+    margin-bottom:auto;
+    text-align:center;
+}
+#encabezado_contactos_activos{
+    background-color: #005662;
+    vertical-align: middle;
+    border-radius: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    height: 40px;
+}
+
+#nombreCategoria{
+    color: white;
+}
+
+.circle-img {
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+}
+
+.circle-img img {
+    height: 100%;
+    transform: translateX(-50%);
+    margin-left: 50%;
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/

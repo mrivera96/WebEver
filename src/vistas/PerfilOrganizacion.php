@@ -7,10 +7,9 @@ include_once 'buscador.inc.php';
 <?php $titulo = 'Perfil de Contacto'; ?>
 
 
-  <head>
-    <link href="css/estilos_melvin.css" rel="stylesheet">
-  </head>
-
+<head>
+    <link href="css/estilos_alan.css" rel="stylesheet">
+</head>
 
 
   <!--Contenedor Titulo de La organizacion-->

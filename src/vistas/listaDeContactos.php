@@ -6,8 +6,9 @@
 ?>
 
 <head>
-    <link href="css/estilos_melvin.css" rel="stylesheet">
+    <link href="css/estilos_alan.css" rel="stylesheet">
 </head>
+
 
   <div id="encabezado_lista_contactos" class="container"><h4 id="nombreCategoria"><?php echo $_GET['name_cty'] ?></h4></div>
 
