@@ -14,7 +14,7 @@
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul id="enlaces" class="nav navbar-nav navbar-right">
                 <?php
                 if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
                     if (isset($_SESSION['rol']) && !empty($_SESSION['rol']) && $_SESSION['rol'] == 2) {

@@ -25,6 +25,12 @@ $(document).on("ready", function () {
      *            FUNCIÓN AJAX PARA MOSTRAR LOS PERFILES ACTIVOS
      **********************************************************************************************/
 var loadData = function () {
+
+    $('\n' +
+        '                <li><a href="nuevas-solicitudes.php"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Nuevas Solicitudes</a></li>\n' +
+        '                <li><a href="solicitudes-rechazadas.php"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Solicitudes Rechazadas</a></li>\n' +
+        '                <li><a href="perfiles-eliminados.php"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Perfiles Eliminados</a></li>'
+        ).insertBefore("#boton");
     $.ajax({
         type: "GET",
         url: "listarPerfiles"
