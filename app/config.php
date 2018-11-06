@@ -38,6 +38,9 @@ $container['controladorUsuarios']= function ($container){
 $container['controladorRoles']= function ($container){
     return new App\controladores\controladorRoles;
 };
+$container['controladorRegiones']= function ($container){
+    return new App\controladores\controladorRegiones;
+};
 
 $container['renderer'] = new PhpRenderer(__DIR__ . "/../src/vistas");
 

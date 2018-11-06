@@ -25,13 +25,18 @@ $(document).on("ready", function () {
      *            FUNCIÓN AJAX PARA MOSTRAR LOS PERFILES ACTIVOS
      **********************************************************************************************/
 var loadData = function () {
+
+    $('\n' +
+        '                <li><a href="nuevas-solicitudes.php"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Nuevas Solicitudes</a></li>\n' +
+        '                <li><a href="solicitudes-rechazadas.php"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Solicitudes Rechazadas</a></li>\n' +
+        '                <li><a href="perfiles-eliminados.php"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Perfiles Eliminados</a></li>'
+        ).insertBefore("#boton");
     $.ajax({
-        type: "post",
-        url: "../WebServices/consultarPerfilesParaAdministracionPerfiles.php",
-        data: {'ste': '2'}
+        type: "GET",
+        url: "listarPerfiles"
     }).done(function (data) {
 
-        var perfiles = JSON.parse(data);
+        var perfiles = data.content;
         var imagen;
 
 
@@ -39,7 +44,7 @@ var loadData = function () {
             if (perfiles[i].imagen !== "") {
                 imagen = perfiles[i].imagen;
             } else {
-                imagen = "../imagenes/iconocontactowhite.png";
+                imagen = "imagenes/iconocontactowhite.png";
             }
             ;
 

@@ -1,7 +1,5 @@
 
-body {
-    background-image:  url('../imagenes/fondo.png');
-}
+
 
 /*color de los paneles de cada tarjeta*/
 .panel-heading{
@@ -9,111 +7,15 @@ body {
     color: white !important ;
 }
 
-/*colo de la barra superior*/
-.navbar{
-    background-color: #005662; 
-}
-
-/*Diseño de los componetes de la barra superior*/
-.navbar-brand:link, .navbar-brand:visited{
-    color: white !important;
-
-}
-.navbar-brand:hover, .navbar-brand:active{
-    color: deepskyblue !important;
-}
-
-#navbar li a:link, #navbar li a:visited{
-    color: white !important;
-}
-
-#navbar li a:hover, #navbar li a:active{
-    color: deepskyblue !important;   
-}
-
-
-/*Diseño del nombre categorias*/
-.iluminada:hover{
-    color: #005662;
-
-}
-
-/*Diseño de la tarjeta de las categorias*/
-.thumbnail{
-    margin: 10px;
-    padding: 0px;
-    background: deepskyblue;
-    -webkit-box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.65);
-    box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.65);
-
-
-}
-
-
 
 .panel-heading{
     height: 60px;
 }
-/* Footer  inicio*/
-/* espacio del texto con la barra */
-section {
-    padding: 20px 0;
-}
 
-section .section-title {
-    text-align: center;
-    color: #007b5e;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-
-}
-
-/* color del footer */
-#footer {
-    background: #005662 !important;
-    height: 50px;
-}
-
-/* diseño de los titulos del footer */
-#footer span{
-    padding-left:4px;
-    padding-bottom: 4px;
-    color:#ffffff;
-    font-size: 13px;
-
-}
 
 #coloayuda{
     color: #ffffff;
 }
-/* color de los link de email */
-.coloremail:hover{
-    color: orange;
-    text-shadow: 0.5px 0.5px 1px #02550;  
-}
-
-
-/* color de los link de web,desarrolladores,email */
-#footer a {
-    color: #ffffff;
-    text-decoration: none !important;
-    background-color: transparent;
-    -webkit-text-decoration-skip: objects;
-    style-width: 80%;
-
-}
-
-
-/* Footer fin */
-
-/* movimiento del icono de agenda */
-
-.btn-card:hover{
-    transform: translateY(-5px);
-    transition: all 400ms;
-}
-
-
 
 #contenedor_perfiles{
 
