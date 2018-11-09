@@ -289,6 +289,8 @@ $app -> post('/roles', 'controladorRoles:todosRoles');
 $app -> get('/regiones', 'controladorRegiones:todasRegiones');
 //Perfiles
 $app -> post('/crearPerfil', 'controladorPerfiles:crearPerfil');
+$app -> post('/eliminarPerfil', 'controladorPerfiles:eliminarPerfil');
+$app -> post('/actualizarPerfil', 'controladorPerfiles:actualizarPerfil');
 
 /**
  * **************************************************************************************
