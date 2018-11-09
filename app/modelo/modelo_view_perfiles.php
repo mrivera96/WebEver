@@ -75,9 +75,9 @@ class ModeloPerfiles extends Model{
 
                 try{
                     $perfs=new ModeloPerfiles();
-                       $perfiles=$perfs::where('nombre_organizacion','like',"%{$busqueda}%")
-                           ->orWhere('numero_fijo','like',"%{$busqueda}%")
-                           ->orWhere('numero_movil','like',"%{$busqueda}%")
+                       $perfiles=$perfs::where([['nombre_organizacion','like',"%{$busqueda}%"],['id_estado','=',2]])
+                           ->orWhere([['numero_fijo','like',"%{$busqueda}%"],['id_estado','=',2]])
+                           ->orWhere([['numero_movil','like',"%{$busqueda}%"],['id_estado','=',2]])
                            ->get();
                     return new ApiResponse(
                         200,
@@ -97,9 +97,9 @@ class ModeloPerfiles extends Model{
 
                 try{
                     $perfs=new ModeloPerfiles();
-                    $perfiles=$perfs::where([['nombre_organizacion','like',"%{$busqueda}%"],['id_categoria','=',$categoria]])
-                        ->orWhere([['numero_fijo','like',"%{$busqueda}%"],['id_categoria','=',$categoria]])
-                        ->orWhere([['numero_movil','like',"%{$busqueda}%"],['id_categoria','=',$categoria]])
+                    $perfiles=$perfs::where([['nombre_organizacion','like',"%{$busqueda}%"],['id_categoria','=',$categoria],['id_estado','=',2]])
+                        ->orWhere([['numero_fijo','like',"%{$busqueda}%"],['id_categoria','=',$categoria],['id_estado','=',2]])
+                        ->orWhere([['numero_movil','like',"%{$busqueda}%"],['id_categoria','=',$categoria],['id_estado','=',2]])
                         ->get();
                     return new ApiResponse(
                         200,
@@ -121,9 +121,9 @@ class ModeloPerfiles extends Model{
             if ($categoria == 0) {
                 try{
                     $perfs=new ModeloPerfiles();
-                    $perfiles=$perfs::where([['nombre_organizacion','like',"%{$busqueda}%"],['id_region','=',$region]])
-                        ->orWhere([['numero_fijo','like',"%{$busqueda}%"],['id_region','=',$region]])
-                        ->orWhere([['numero_movil','like',"%{$busqueda}%"],['id_region','=',$region]])
+                    $perfiles=$perfs::where([['nombre_organizacion','like',"%{$busqueda}%"],['id_region','=',$region],['id_estado','=',2]])
+                        ->orWhere([['numero_fijo','like',"%{$busqueda}%"],['id_region','=',$region],['id_estado','=',2]])
+                        ->orWhere([['numero_movil','like',"%{$busqueda}%"],['id_region','=',$region],['id_estado','=',2]])
                         ->get();
                     return new ApiResponse(
                         200,
@@ -142,9 +142,9 @@ class ModeloPerfiles extends Model{
             } else if ($categoria != 0) {
                 try{
                     $perfs=new ModeloPerfiles();
-                    $perfiles=$perfs::where([['nombre_organizacion','like',"%{$busqueda}%"], ['id_region','=',$region], ['id_categoria','=',$categoria]])
-                        ->orWhere([['numero_fijo','like',"%{$busqueda}%"],['id_region','=',$region], ['id_categoria','=',$categoria]])
-                        ->orWhere([['numero_movil','like',"%{$busqueda}%"],['id_region','=',$region], ['id_categoria','=',$categoria]])
+                    $perfiles=$perfs::where([['nombre_organizacion','like',"%{$busqueda}%"], ['id_region','=',$region], ['id_categoria','=',$categoria],['id_estado','=',2]])
+                        ->orWhere([['numero_fijo','like',"%{$busqueda}%"],['id_region','=',$region], ['id_categoria','=',$categoria],['id_estado','=',2]])
+                        ->orWhere([['numero_movil','like',"%{$busqueda}%"],['id_region','=',$region], ['id_categoria','=',$categoria],['id_estado','=',2]])
                         ->get();
                     return new ApiResponse(
                         200,

@@ -17,25 +17,25 @@ class controladorPerfiles{
 
     public function listarPerfiles(Request $request,Response  $response){
 
-            $request_data = $request->getParams();
-            if(isset($request_data['ctg'])){
-                $ctg = $request_data['ctg'];
-            }else{
-                $ctg=null;
-            }
-            if(isset($request_data['ste'])){
-                $ste = $request_data['ste'];
-            }else{
-                $ste=null;
-            }
+        $request_data = $request->getParams();
+        if(isset($request_data['ctg'])){
+            $ctg = $request_data['ctg'];
+        }else{
+            $ctg=null;
+        }
+        if(isset($request_data['ste'])){
+            $ste = $request_data['ste'];
+        }else{
+            $ste=null;
+        }
 
 
-            $respuesta = ModeloPerfiles::listarPerfiles($ctg,$ste);
+        $respuesta = ModeloPerfiles::listarPerfiles($ctg,$ste);
 
 
-            $response -> write(json_encode($respuesta ->toArray2()));
-            return $response ->withHeader('Content-type','application/json')
-                ->withStatus($respuesta ->getStatus());
+        $response -> write(json_encode($respuesta ->toArray2()));
+        return $response ->withHeader('Content-type','application/json')
+            ->withStatus($respuesta ->getStatus());
 
 
     }
@@ -204,7 +204,7 @@ class controladorPerfiles{
                     $resp = Perfiles::crearPerfil(
                         $nomborg_rec, $numtel_rec, $numcel_rec, $direccion_rec, $email_rec,
                         $desc_rec, $id_categoria, $lat_rec, $longitud_rec, $id_region, $id_usuario,
-                         $id_estado, $ruta_img);
+                        $id_estado, $ruta_img);
 
                     $response->write(json_encode($resp->toArray()));
                     return $response->withHeader('Content-type', 'application/json')

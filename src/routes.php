@@ -59,8 +59,6 @@ $app -> get('/login', function ($request, $response){
 });
 
 
-
-
 $app -> get('/usuarios', function ( $request,  $response){
 
     switch (verificarLogin()){
@@ -113,6 +111,37 @@ $app -> get('/administrarPerfiles', function ( $request,  $response){
     switch (verificarLogin()){
         case 1:
             return $this->renderer->render($response, "/administracion-de-perfiles.php");
+            break;
+        case 2:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+
+$app -> get('/nuevoPerfilAdmin', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $this->renderer->render($response, "/nuevo-perfil.php");
+            break;
+        case 2:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+$app -> get('/editarPerfilAdmin', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $this->renderer->render($response, "/editar-perfil.php");
             break;
         case 2:
             return $response ->withHeader('Location','inicio');
@@ -236,6 +265,36 @@ $app -> get('/editarUsuarioCliente', function ( $request,  $response){
             break;
         case 2:
             return $this->renderer->render($response, "/editarUsuarioNormal.php");
+            break;
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+$app -> get('/editarPerfilCliente', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 2:
+            return $this->renderer->render($response, "/edicionDePerfilUsuarioNormal.php");
+            break;
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+$app -> get('/nuevoPerfilCliente', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 2:
+            return $this->renderer->render($response, "/nuevoContacto.php");
             break;
         case 0:
             return $response ->withHeader('Location','inicio');
