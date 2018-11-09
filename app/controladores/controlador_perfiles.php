@@ -23,9 +23,14 @@ class controladorPerfiles{
             }else{
                 $ctg=null;
             }
+            if(isset($request_data['ste'])){
+                $ste = $request_data['ste'];
+            }else{
+                $ste=null;
+            }
 
 
-            $respuesta = ModeloPerfiles::listarPerfiles($ctg);
+            $respuesta = ModeloPerfiles::listarPerfiles($ctg,$ste);
 
 
             $response -> write(json_encode($respuesta ->toArray2()));

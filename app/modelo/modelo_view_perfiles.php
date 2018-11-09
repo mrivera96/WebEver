@@ -5,12 +5,12 @@ use App\ApiResponse;
 class ModeloPerfiles extends Model{
     protected $table='view_perfiles';
 
-    public static function listarPerfiles($categoria){
+    public static function listarPerfiles($categoria, $estado){
         if(isset($categoria) && !empty($categoria) && $categoria!=null){
             try{
                 $perfs=new ModeloPerfiles();
 
-                $filtrada= $perfs->where("id_categoria","=",$categoria)
+                $filtrada= $perfs->where([["id_categoria","=",$categoria],['id_estado','=',2]])
                     ->get();
                 return new ApiResponse(200, "OK",
                     $filtrada
@@ -23,10 +23,10 @@ class ModeloPerfiles extends Model{
                 );
             }
 
-        }else{
+        }else {
             try{
                 $perfs=new ModeloPerfiles();
-                $perfiles = $perfs::all();
+                $perfiles = $perfs->where('id_estado','=',$estado)->get();
                 return new ApiResponse(200, "OK",
                     $perfiles
                 );
@@ -41,12 +41,14 @@ class ModeloPerfiles extends Model{
 
     }
 
+
+
     public static function getPerfilPorId($id_contacto){
 
         try{
             $perfs = new ModeloPerfiles();
 
-            $perfiles=$perfs::where("id_contacto","=",$id_contacto)
+            $perfiles=$perfs::where(["id_contacto","=",$id_contacto],['id_estado','=',2])
             ->get();
 
             return new ApiResponse(
