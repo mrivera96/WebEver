@@ -48,7 +48,7 @@ class ModeloPerfiles extends Model{
         try{
             $perfs = new ModeloPerfiles();
 
-            $perfiles=$perfs::where(["id_contacto","=",$id_contacto],['id_estado','=',2])
+            $perfiles=$perfs::where([["id_contacto","=",$id_contacto],['id_estado','=',2]])
             ->get();
 
             return new ApiResponse(
