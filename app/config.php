@@ -29,8 +29,9 @@ $container = $app->getContainer();
 $container['controladorCategorias']= function ($container){
     return new App\controladores\controladorCategorias;
 };
+$container['upload_directory'] = __DIR__ .'/../public/imagenes';
 $container['controladorPerfiles']= function ($container){
-    return new App\controladores\controladorPerfiles;
+    return new App\controladores\controladorPerfiles($container['upload_directory']);
 };
 $container['controladorUsuarios']= function ($container){
     return new App\controladores\controladorUsuarios;
@@ -41,6 +42,7 @@ $container['controladorRoles']= function ($container){
 $container['controladorRegiones']= function ($container){
     return new App\controladores\controladorRegiones;
 };
+
 
 $container['renderer'] = new PhpRenderer(__DIR__ . "/../src/vistas");
 

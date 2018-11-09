@@ -16,6 +16,7 @@ return array(
     'App\\modelo\\ModeloCategorias' => $baseDir . '/app/modelo/modelo_categorias.php',
     'App\\modelo\\ModeloPerfiles' => $baseDir . '/app/modelo/modelo_view_perfiles.php',
     'App\\modelo\\ModeloUsuarios' => $baseDir . '/app/modelo/modelo_usuarios.php',
+    'App\\modelo\\Perfiles' => $baseDir . '/app/modelo/modelo_perfiles.php',
     'App\\modelo\\Regiones' => $baseDir . '/app/modelo/Regiones.php',
     'App\\modelo\\Roles' => $baseDir . '/app/modelo/Roles.php',
     'App\\modelo\\Token' => $baseDir . '/app/modelo/Token.php',

@@ -52,7 +52,7 @@ $app -> get('/login', function ($request, $response){
             return $response->withHeader('Location','usuarios');
             break;
         case 2:
-            echo '<h1>Estamos trabajando en ello ;-)</h1>';//$response->withHeader('Location','usuarios');
+            return $response->withHeader('Location','panelControlCliente');
             break;
 
     };
@@ -70,7 +70,7 @@ $app -> get('/usuarios', function ( $request,  $response){
         case 2:
             return $response ->withHeader('Location','inicio');
             break;
-        default:
+        case 0:
             return $response ->withHeader('Location','inicio');
             break;
     }
@@ -85,7 +85,7 @@ $app -> get('/nuevoUsuario', function ( $request,  $response){
         case 2:
             return $response ->withHeader('Location','inicio');
             break;
-        default:
+        case 0:
             return $response ->withHeader('Location','inicio');
             break;
     }
@@ -101,7 +101,7 @@ $app -> get('/editarUsuario', function ( $request,  $response){
         case 2:
             return $response ->withHeader('Location','inicio');
             break;
-        default:
+        case 0:
             return $response ->withHeader('Location','inicio');
             break;
     }
@@ -117,7 +117,127 @@ $app -> get('/administrarPerfiles', function ( $request,  $response){
         case 2:
             return $response ->withHeader('Location','inicio');
             break;
-        default:
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+$app -> get('/solicitudesNuevas', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $this->renderer->render($response, "/nuevas-solicitudes.php");
+            break;
+        case 2:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+$app -> get('/solicitudesRechazadas', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $this->renderer->render($response, "/solicitudes-rechazadas.php");
+            break;
+        case 2:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+$app -> get('/perfilesEliminados', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $this->renderer->render($response, "/perfiles-eliminados.php");
+            break;
+        case 2:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+$app -> get('/panelControlCliente', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 2:
+            return $this->renderer->render($response, "/contactosUsuario.php");
+            break;
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+$app -> get('/contactosAprobadosCliente', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 2:
+            return $this->renderer->render($response, "/contactosUsuarioAprobado.php");
+            break;
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+$app -> get('/contactosEliminadosCliente', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 2:
+            return $this->renderer->render($response, "/contactosUsuarioEliminado.php");
+            break;
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+$app -> get('/contactosPendientesCliente', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 2:
+            return $this->renderer->render($response, "/contactosUsuariosPendientes.php");
+            break;
+        case 0:
+            return $response ->withHeader('Location','inicio');
+            break;
+    }
+
+});
+$app -> get('/editarUsuarioCliente', function ( $request,  $response){
+
+    switch (verificarLogin()){
+        case 1:
+            return $response ->withHeader('Location','inicio');
+            break;
+        case 2:
+            return $this->renderer->render($response, "/editarUsuarioNormal.php");
+            break;
+        case 0:
             return $response ->withHeader('Location','inicio');
             break;
     }
@@ -159,12 +279,16 @@ $app -> post('/actualizarUsuario', 'controladorUsuarios:actualizarUsuario');
 $app -> post('/loginUsuario', 'controladorUsuarios:loginUsuario');
 $app -> post('/existeUsuario', 'controladorUsuarios:existeUsuario');
 $app -> post('/existeEmail', 'controladorUsuarios:existeEmail');
-//$app -> post('/pruebas', 'controladorUsuarios:pruebas');
+
 $app -> post('/obtenerUsuario', 'controladorUsuarios:obtenerUsuario');
 $app -> post('/todosUsuarios', 'controladorUsuarios:todos');
 $app -> get('/cerrarSession', 'controladorUsuarios:cerrarSesion');
+//Roles
 $app -> post('/roles', 'controladorRoles:todosRoles');
+//Regiones
 $app -> get('/regiones', 'controladorRegiones:todasRegiones');
+//Perfiles
+$app -> post('/crearPerfil', 'controladorPerfiles:crearPerfil');
 
 /**
  * **************************************************************************************

@@ -211,6 +211,7 @@ class ComposerStaticInit1c3e28489a290368bf6994184e8ccbe2
         'App\\modelo\\ModeloCategorias' => __DIR__ . '/../..' . '/app/modelo/modelo_categorias.php',
         'App\\modelo\\ModeloPerfiles' => __DIR__ . '/../..' . '/app/modelo/modelo_view_perfiles.php',
         'App\\modelo\\ModeloUsuarios' => __DIR__ . '/../..' . '/app/modelo/modelo_usuarios.php',
+        'App\\modelo\\Perfiles' => __DIR__ . '/../..' . '/app/modelo/modelo_perfiles.php',
         'App\\modelo\\Regiones' => __DIR__ . '/../..' . '/app/modelo/Regiones.php',
         'App\\modelo\\Roles' => __DIR__ . '/../..' . '/app/modelo/Roles.php',
         'App\\modelo\\Token' => __DIR__ . '/../..' . '/app/modelo/Token.php',
