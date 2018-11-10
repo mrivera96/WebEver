@@ -27,18 +27,18 @@ $(document).on("ready", function () {
 var loadData = function () {
 
     $('\n' +
-        '                <li><a href="nuevas-solicitudes.php"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Nuevas Solicitudes</a></li>\n' +
-        '                <li><a href="solicitudes-rechazadas.php"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Solicitudes Rechazadas</a></li>\n' +
-        '                <li><a href="perfiles-eliminados.php"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Perfiles Eliminados</a></li>'
+        '                <li><a href="solicitudesNuevas"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Nuevas Solicitudes</a></li>\n' +
+        '                <li><a href="solicitudesRechazadas"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Solicitudes Rechazadas</a></li>\n' +
+        '                <li><a href="perfilesEliminados"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Perfiles Eliminados</a></li>'
         ).insertBefore("#boton");
     $.ajax({
         type: "GET",
-        url: "listarPerfiles"
-    }).done(function (data) {
-
-        var perfiles = data.content;
+        url: "listarPerfiles",
+        data:{'ste':2},
+        statusCode:{
+            200: function(data){
+            var perfiles = data.content;
         var imagen;
-
 
         for (var i in perfiles) {
             if (perfiles[i].imagen !== "") {
@@ -65,5 +65,19 @@ var loadData = function () {
                     '</a>'
                     );
         }
-    });
-};
+      },
+      500: function(){
+          alert(ERROR40);
+      },
+      401:function () {
+
+          alert(ERROR39);
+          document.getElementById("colorIniciosecion").click();
+
+      }
+
+  }
+
+  });
+
+  };

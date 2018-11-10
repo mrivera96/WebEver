@@ -30,7 +30,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
     </div>
 
-    <a href="nuevo-perfil.php" class="float">
+    <a href="nuevoPerfilAdmin" class="float">
         <i class="glyphicon glyphicon-plus my-float"></i>
     </a>
 
