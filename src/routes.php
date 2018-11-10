@@ -338,14 +338,16 @@ $app -> post('/actualizarUsuario', 'controladorUsuarios:actualizarUsuario');
 $app -> post('/loginUsuario', 'controladorUsuarios:loginUsuario');
 $app -> post('/existeUsuario', 'controladorUsuarios:existeUsuario');
 $app -> post('/existeEmail', 'controladorUsuarios:existeEmail');
-
 $app -> post('/obtenerUsuario', 'controladorUsuarios:obtenerUsuario');
 $app -> post('/todosUsuarios', 'controladorUsuarios:todos');
 $app -> get('/cerrarSession', 'controladorUsuarios:cerrarSesion');
+
 //Roles
 $app -> post('/roles', 'controladorRoles:todosRoles');
+
 //Regiones
 $app -> get('/regiones', 'controladorRegiones:todasRegiones');
+
 //Perfiles
 $app -> post('/crearPerfil', 'controladorPerfiles:crearPerfil');
 $app -> post('/eliminarPerfil', 'controladorPerfiles:eliminarPerfil');

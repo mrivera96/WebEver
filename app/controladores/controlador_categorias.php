@@ -1,6 +1,9 @@
 <?php
 namespace App\controladores;
 use App\modelo\ModeloCategorias;
+/******************************************************************************************
+ *                              CONTROLADOR PARA LAS CATEGORIAS                           *
+ ******************************************************************************************/
 class controladorCategorias{
 
     public function obtenerCategorias( $request,  $response){

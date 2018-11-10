@@ -2,6 +2,9 @@
 namespace App\controladores;
 use App\modelo\Regiones;
 use App\controladores\Utilities;
+/******************************************************************************************
+ *                              CONTROLADOR PARA REGIONES                                 *
+ ******************************************************************************************/
 class controladorRegiones{
     public function todasRegiones($request,  $response){
         if(!Utilities::verificaToken($request,$response)){
