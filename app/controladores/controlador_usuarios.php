@@ -245,7 +245,8 @@ class controladorUsuarios
                     $resp->getMessage(),
                     array('rol' => $_SESSION['rol'],
                         'idUrs' => $_SESSION['idUrs'],
-                        'ste' => $resp->getContent()['ste'])
+                        'ste' => $resp->getContent()['ste'],
+                        'tkn'=>$_SESSION['token'])
                 );
 
                 $response->write(json_encode($respuesta->toArray2()));
@@ -310,13 +311,23 @@ class controladorUsuarios
     public function cerrarSesion($request, $response)
     {
 
-        Token::revocarToken($_SESSION['token']);
-        session_unset();
+        if(!Utilities::verificaToken($request,$response)){
+            Token::revocarToken($_SESSION['token']);
+            session_unset();
 
-        session_destroy();
+            session_destroy();
 
-        return $response->withHeader('Location', 'inicio');
-        exit();
+            $err = new ApiResponse(
+                200,
+                "Sesión concluida.",
+                null
+            );
+            $response->write(json_encode($err->toArray()));
+            return $response->withHeader('Content-type', 'application/json')
+                ->withStatus($err->getStatus());
+
+        }
+
 
     }
 

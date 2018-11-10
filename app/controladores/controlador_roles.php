@@ -2,6 +2,9 @@
 namespace App\controladores;
 use App\modelo\Roles;
 use App\controladores\Utilities;
+/******************************************************************************************
+ *                              CONTROLADOR PARA ROLES                                    *
+ ******************************************************************************************/
 class controladorRoles{
     public function todosRoles($request,  $response){
         if(!Utilities::verificaToken($request,$response)){

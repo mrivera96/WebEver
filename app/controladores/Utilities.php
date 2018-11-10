@@ -2,6 +2,9 @@
 namespace App\controladores;
 use App\modelo\Token;
 use App\ApiResponse;
+/******************************************************************************************
+ *                              UTILIDADES PARA LA API                                    *
+ ******************************************************************************************/
 class Utilities{
     /**
      * VERIFICA SI EL REQUEST TIENE PARÁMETROS VACÍOS O HACEN FALTA
@@ -33,6 +36,7 @@ class Utilities{
      **/
      static function verificaToken($request, $response){
         $error = false;
+         $request_data=$request->getParsedBody();
 
         if(isset($_SESSION['token']) && !empty($_SESSION['token'])){
 
@@ -43,6 +47,13 @@ class Utilities{
                 $error=true;
             }
 
+        }else if(isset($request_data['tkn']) &&!empty($request_data['tkn'])){
+            $tokenAuth =$request_data['tkn'];
+            if (Token::existeToken($tokenAuth) ){
+
+            }else{
+                $error=true;
+            }
         }else{
             $error=true;
         }

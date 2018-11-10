@@ -7,13 +7,14 @@ use App\modelo\Perfiles;
 use Slim\Http\Request as Request;
 use Slim\Http\Response as Response;
 use Slim\Http\UploadedFile;
-
+/******************************************************************************************
+ *                              CONFTROLADOR PARA LOS PERFILES                            *
+ ******************************************************************************************/
 class controladorPerfiles{
     private $upload_directory;
     function __construct($upload_directory) {
         $this->upload_directory = $upload_directory;
     }
-
 
     public function listarPerfiles(Request $request,Response  $response){
 
@@ -384,6 +385,4 @@ class controladorPerfiles{
         }
 
     }
-
-
 }

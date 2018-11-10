@@ -1,12 +1,13 @@
 <?php
+
+/******************************************************************************************
+ *                              CONFIGURACIÓN DE LA API                                   *
+ ******************************************************************************************/
 session_start();
 require __DIR__ . '/../vendor/autoload.php';
 use Illuminate\Database\Capsule\Manager as Database;
 use Slim\Views\PhpRenderer;
 require __DIR__ . '/credenciales_bd.php';
-
-
-// Instantiate the app
 
 $app = new \Slim\App([
     'settings'=>['displayErrorDetails' => true,
@@ -26,10 +27,14 @@ $app = new \Slim\App([
 ]);
 
 $container = $app->getContainer();
+/******************************************************************************************
+ *                              DEFINICIÓN DE LOS CONTROLADORES                           *
+ ******************************************************************************************/
 $container['controladorCategorias']= function ($container){
     return new App\controladores\controladorCategorias;
 };
 $container['upload_directory'] = __DIR__ .'/../public/imagenes';
+
 $container['controladorPerfiles']= function ($container){
     return new App\controladores\controladorPerfiles($container['upload_directory']);
 };
@@ -46,6 +51,9 @@ $container['controladorRegiones']= function ($container){
 
 $container['renderer'] = new PhpRenderer(__DIR__ . "/../src/vistas");
 
+/******************************************************************************************
+ *                  CONFIGURACIÓN DE ELOQUENT PARA LA BASE DE DATOS                       *
+ ******************************************************************************************/
 $database = new Database;
 $database ->addConnection($container['settings']['db']);
 
