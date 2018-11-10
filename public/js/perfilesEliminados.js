@@ -24,6 +24,12 @@ $(document).on("ready", function () {
  * FUNCIÓN AJAX PARA MOSTRAR LOS PERFILES ELIMINADOS
  ******************************************************************************************/
 var loadData = function () {
+  $('\n' +
+  '      <li><a href="administrarPerfiles"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Perfiles activos</a></li>'+
+  '      <li><a href="solicitudesRechazadas"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Solicitudes Rechazadas</a></li>'+
+  '      <li><a href="perfilesEliminados"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Perfiles Eliminados</a></li>'
+
+      ).insertBefore("#boton");
     $.ajax({
         type: "post",
         url: "../WebServices/consultarPerfilesParaAdministracionPerfiles.php",

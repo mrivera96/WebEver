@@ -16,6 +16,13 @@ $(document).on("ready", function () {
     loadData();
 });
 var loadData = function () {
+  $('\n' +
+  '      <li><a href="administrarPerfiles"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Perfiles activos</a></li>'+
+  '      <li><a href="solicitudesRechazadas"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Nuevas Solicitudes </a></li>'+
+  '      <li><a href="perfilesEliminados"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Perfiles Eliminados</a></li>'
+
+
+      ).insertBefore("#boton");
     $.ajax({
         type: "post",
         url: "../WebServices/consultarPerfilesParaAdministracionPerfiles.php",
