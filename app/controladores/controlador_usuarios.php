@@ -114,7 +114,27 @@ class controladorUsuarios
      **/
     public function existeUsuario(Request $request,Response $response)
     {
-        if (!Utilities::verificaToken($request, $response)) {
+        if(isset($_SESSION['token']) && !empty($_SESSION['token'])){
+            if (!Utilities::verificaToken($request, $response)) {
+                if (!Utilities::haveEmptyParameters(array('usuario'), $request, $response)) {
+
+                    $request_data = $request->getParsedBody();
+                    $usr = $request_data['usuario'];
+                    $resp = ModeloUsuarios::usuarioExiste($usr);
+
+                    $response->write(json_encode($resp->toArray2()));
+                    return $response->withHeader('Content-type', 'application/json')
+                        ->withStatus($resp->getStatus());
+
+                } else {
+                    return $response->withHeader('Content-type', 'application/json')
+                        ->withStatus(400);
+                }
+            } else {
+                return $response->withHeader('Content-type', 'application/json')
+                    ->withStatus(401);
+            }
+        }else{
             if (!Utilities::haveEmptyParameters(array('usuario'), $request, $response)) {
 
                 $request_data = $request->getParsedBody();
@@ -129,10 +149,8 @@ class controladorUsuarios
                 return $response->withHeader('Content-type', 'application/json')
                     ->withStatus(400);
             }
-        } else {
-            return $response->withHeader('Content-type', 'application/json')
-                ->withStatus(401);
         }
+
 
 
     }
@@ -142,7 +160,27 @@ class controladorUsuarios
      **/
     public function existeEmail(Request $request,Response $response)
     {
-        if (!Utilities::verificaToken($request, $response)) {
+        if(isset($_SESSION['token'])&&!empty($_SESSION['token'])){
+            if (!Utilities::verificaToken($request, $response)) {
+                if (!Utilities::haveEmptyParameters(array('usuarioemail'), $request, $response)) {
+
+                    $request_data = $request->getParsedBody();
+                    $mail = $request_data['usuarioemail'];
+                    $resp = ModeloUsuarios::emailExiste($mail);
+
+                    $response->write(json_encode($resp->toArray2()));
+                    return $response->withHeader('Content-type', 'application/json')
+                        ->withStatus($resp->getStatus());
+
+                } else {
+                    return $response->withHeader('Content-type', 'application/json')
+                        ->withStatus(400);
+                }
+            } else {
+                return $response->withHeader('Content-type', 'application/json')
+                    ->withStatus(401);
+            }
+        }else{
             if (!Utilities::haveEmptyParameters(array('usuarioemail'), $request, $response)) {
 
                 $request_data = $request->getParsedBody();
@@ -157,10 +195,8 @@ class controladorUsuarios
                 return $response->withHeader('Content-type', 'application/json')
                     ->withStatus(400);
             }
-        } else {
-            return $response->withHeader('Content-type', 'application/json')
-                ->withStatus(401);
         }
+
 
     }
 
