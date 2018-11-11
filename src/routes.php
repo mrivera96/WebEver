@@ -318,6 +318,7 @@ $app -> get('/nuevoPerfilCliente', function ( $request,  $response){
          **/
 //Categorias
 $app -> get('/categorias', 'controladorCategorias:obtenerCategorias');
+$app -> get('/prueba', 'controladorUsuarios:pruebas');
 
 //Perfiles
 $app -> get('/listarPerfiles', 'controladorPerfiles:listarPerfiles');
