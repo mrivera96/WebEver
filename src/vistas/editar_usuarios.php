@@ -1,8 +1,5 @@
 <?php
 $titulo = 'Edición de Cuenta';
-
-include_once 'Errores.inc.php';
-
 include_once 'documento-inicio.inc.php';
 include_once 'barra-de-navegacion-navbar.inc.php';
 ?>

@@ -28,8 +28,8 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
   </div>
 </div>
-<script src="../js/solicitudesRechazadas.js"></script>
 <?php
 include_once 'documento-cierre.inc.php';
 ?>
 <script type="text/javascript" src="js/Errores.js"></script>
+<script src="js/solicitudesRechazadas.js"></script>

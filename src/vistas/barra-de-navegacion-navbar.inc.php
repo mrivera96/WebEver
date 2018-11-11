@@ -26,7 +26,7 @@
                                 <li><a href="./editarUsuarioCliente"><img src="imagenes/administracioncuenta.jpg" height="15"></img> <strong>Edición de Cuenta</strong></a></li>
                             </ul>
                         </li>
-<li> <a id="colorIniciosecion" href="cerrarSession"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <strong>Cerrar Sesión</strong></a></li>
+<li> <a id="colorIniciosecion" href="cerrarSession"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <strong></strong></a></li>
                         <?php
                     } else {
                         ?><li id="boton" class="dropdown">
@@ -36,7 +36,7 @@
                                 <li><a href="administrarPerfiles"><img src="imagenes/administracionperfil.jpg" height="15"></img> <strong>Administración de Perfil</strong></a></li>
                             </ul>
                         </li>
-                        <li> <a id="colorIniciosecion" href="cerrarSession"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <strong>Cerrar Sesión</strong></a></li>
+                        <li> <a id="colorIniciosecion" href="cerrarSession"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <strong></strong></a></li>
                         <?php
                         $message = 'Usuario o Contraseña incorrectas desde la sesion';
                     }
