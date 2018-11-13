@@ -88,6 +88,34 @@ class Perfiles extends Model{
         }
 
     }
+    static function gestionarSolicitud($id_perf, $opr){
+        $perf = new Perfiles();
+        try{
+            $perfil=$perf->where('id_contacto','=',$id_perf);
+            if($opr=="aceptar"){
+                $upt = array("id_estado"=>"2");
+                $msg="Solicitud Aceptada.";
+            }else if($opr=="rechazar"){
+                $upt = array("id_estado"=>"3");
+                $msg="Solicitud Rechazada.";
+            }
+
+            $perfil->update($upt);
+            return new ApiResponse(
+                200,
+                $msg,
+                null
+            );
+
+        }catch (Exception $e){
+            return new ApiResponse(
+                500,
+                "error en la base de datos",
+                null
+            );
+        }
+
+    }
     static function actualizarPerfil($nomborg_rec,
                                      $numtel_rec,
                                      $numcel_rec,
@@ -144,4 +172,5 @@ class Perfiles extends Model{
         }
 
     }
+
 }

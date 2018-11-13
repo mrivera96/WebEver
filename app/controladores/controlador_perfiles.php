@@ -385,4 +385,31 @@ class controladorPerfiles{
         }
 
     }
+
+    public function gestionarSolicitud(Request $request,Response $response){
+        if(!Utilities::verificaToken($request,$response)){
+            if($_SESSION['rol']==1){
+                if(!Utilities::haveEmptyParameters(array('cto','opr'), $request, $response)){
+                    $request_data = $request->getParsedBody();
+
+                    $resp = Perfiles::gestionarSolicitud($request_data['cto'],$request_data['opr']);
+
+                    $response->write(json_encode($resp->toArray()));
+                    return $response->withHeader('Content-type', 'application/json')
+                        ->withStatus($resp->getStatus());
+                }else{
+                    return $response -> withHeader('Content-type','application/json')
+                        -> withStatus(400);
+                }
+            }else{
+                return $response -> withHeader('Content-type','application/json')
+                    -> withStatus(401);
+            }
+
+        }else{
+            return $response -> withHeader('Content-type','application/json')
+                -> withStatus(401);
+        }
+
+    }
 }
