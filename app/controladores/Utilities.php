@@ -2,6 +2,8 @@
 namespace App\controladores;
 use App\modelo\Token;
 use App\ApiResponse;
+use Slim\Http\Response as Response;
+use Slim\Http\Request as Request;
 /******************************************************************************************
  *                              UTILIDADES PARA LA API                                    *
  ******************************************************************************************/
@@ -34,9 +36,9 @@ class Utilities{
     /**
      * VERIFICA SI EL REQUEST TIENE HEADER VACÍOS O HACEN FALTA
      **/
-     static function verificaToken($request, $response){
+     static function verificaToken(Request $request,Response $response){
         $error = false;
-         $request_data=$request->getParsedBody();
+
 
         if(isset($_SESSION['token']) && !empty($_SESSION['token'])){
 
@@ -47,8 +49,8 @@ class Utilities{
                 $error=true;
             }
 
-        }else if(isset($request_data['tkn']) &&!empty($request_data['tkn'])){
-            $tokenAuth =$request_data['tkn'];
+        }else if($request->hasHeader('Authorization')){
+            $tokenAuth =$request->getHeader('Authorization')[0];
             if (Token::existeToken($tokenAuth) ){
 
             }else{

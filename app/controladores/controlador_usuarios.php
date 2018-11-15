@@ -7,7 +7,8 @@ use App\modelo\Token;
 use App\modelo\ModeloUsuarios;
 use App\ApiResponse;
 use App\controladores\Utilities;
-
+use Slim\Http\Response as Response;
+use Slim\Http\Request as Request;
 /**
  * CONTROLADOR PARA USUARIOS
  **/
@@ -17,7 +18,7 @@ class controladorUsuarios
     /**
      * CREA UN NUEVO USUARIO
      **/
-    public function crearUsuario($request, $response)
+    public function crearUsuario(Request $request,Response $response)
     {
         if (!Utilities::haveEmptyParameters(array(
             'usuarionombre',
@@ -81,7 +82,7 @@ class controladorUsuarios
      * ELIMINA UN USUARIO
      **/
 
-    public function eliminarUsuario($request, $response)
+    public function eliminarUsuario(Request $request,Response $response)
     {
         if (!Utilities::verificaToken($request, $response)) {
             if (!Utilities::haveEmptyParameters(array('usuario'), $request, $response)) {
@@ -111,9 +112,29 @@ class controladorUsuarios
     /**
      * VERIFICA QUE UN USUARIO EXISTA EN LA BD
      **/
-    public function existeUsuario($request, $response)
+    public function existeUsuario(Request $request,Response $response)
     {
-        if (!Utilities::verificaToken($request, $response)) {
+        if(isset($_SESSION['token']) && !empty($_SESSION['token'])){
+            if (!Utilities::verificaToken($request, $response)) {
+                if (!Utilities::haveEmptyParameters(array('usuario'), $request, $response)) {
+
+                    $request_data = $request->getParsedBody();
+                    $usr = $request_data['usuario'];
+                    $resp = ModeloUsuarios::usuarioExiste($usr);
+
+                    $response->write(json_encode($resp->toArray2()));
+                    return $response->withHeader('Content-type', 'application/json')
+                        ->withStatus($resp->getStatus());
+
+                } else {
+                    return $response->withHeader('Content-type', 'application/json')
+                        ->withStatus(400);
+                }
+            } else {
+                return $response->withHeader('Content-type', 'application/json')
+                    ->withStatus(401);
+            }
+        }else{
             if (!Utilities::haveEmptyParameters(array('usuario'), $request, $response)) {
 
                 $request_data = $request->getParsedBody();
@@ -128,10 +149,8 @@ class controladorUsuarios
                 return $response->withHeader('Content-type', 'application/json')
                     ->withStatus(400);
             }
-        } else {
-            return $response->withHeader('Content-type', 'application/json')
-                ->withStatus(401);
         }
+
 
 
     }
@@ -139,9 +158,29 @@ class controladorUsuarios
     /**
      * VERIFICA QUE UN EMAIL EXISTA EN LA BD
      **/
-    public function existeEmail($request, $response)
+    public function existeEmail(Request $request,Response $response)
     {
-        if (!Utilities::verificaToken($request, $response)) {
+        if(isset($_SESSION['token'])&&!empty($_SESSION['token'])){
+            if (!Utilities::verificaToken($request, $response)) {
+                if (!Utilities::haveEmptyParameters(array('usuarioemail'), $request, $response)) {
+
+                    $request_data = $request->getParsedBody();
+                    $mail = $request_data['usuarioemail'];
+                    $resp = ModeloUsuarios::emailExiste($mail);
+
+                    $response->write(json_encode($resp->toArray2()));
+                    return $response->withHeader('Content-type', 'application/json')
+                        ->withStatus($resp->getStatus());
+
+                } else {
+                    return $response->withHeader('Content-type', 'application/json')
+                        ->withStatus(400);
+                }
+            } else {
+                return $response->withHeader('Content-type', 'application/json')
+                    ->withStatus(401);
+            }
+        }else{
             if (!Utilities::haveEmptyParameters(array('usuarioemail'), $request, $response)) {
 
                 $request_data = $request->getParsedBody();
@@ -156,10 +195,8 @@ class controladorUsuarios
                 return $response->withHeader('Content-type', 'application/json')
                     ->withStatus(400);
             }
-        } else {
-            return $response->withHeader('Content-type', 'application/json')
-                ->withStatus(401);
         }
+
 
     }
 
@@ -167,7 +204,7 @@ class controladorUsuarios
      * ACTUALIZA UN USUARIO
      **/
 
-    public function actualizarUsuario($request, $response)
+    public function actualizarUsuario(Request $request,Response $response)
     {
         if (!Utilities::verificaToken($request, $response)) {
             if (!Utilities::haveEmptyParameters(array('usuario', 'usuarionombre', 'usuariopropio', 'usuarioemail'), $request, $response)) {
@@ -224,7 +261,7 @@ class controladorUsuarios
     /**
      * REALIZA EL LOGIN DE UN USUARIO
      **/
-    public function loginUsuario($request, $response)
+    public function loginUsuario(Request $request,Response $response)
     {
         if (!Utilities::haveEmptyParameters(array('nombre_usuario', 'contrasena'), $request, $response)) {
 
@@ -265,9 +302,27 @@ class controladorUsuarios
     /**
      * PARA REALIZAR PRUEBAS DEL MODELO
      **/
-    public function pruebas($request, $response)
+    public function pruebas(Request $request,Response $response)
     {
-        if (!Utilities::haveEmptyParameters(array('tkn', 'id'), $request, $response)) {
+        if($request->hasHeader('Authorization')){
+            $response->write(json_encode($request->getHeader('Authorization')[0]));
+            return $response->withHeader('Content-type', 'application/json')
+                ->withStatus(200);
+        }else{
+            $response->write(json_encode('Sin header'));
+            return $response->withHeader('Content-type', 'application/json')
+                ->withStatus(400);
+        }
+        /*if(isset($_SESSION['token']) && !empty($_SESSION['token'])){
+            $response->write(json_encode($_SESSION['token']));
+            return $response->withHeader('Content-type', 'application/json')
+                ->withStatus(200);
+        }else{
+            $response->write(json_encode('Sin sesion'));
+            return $response->withHeader('Content-type', 'application/json')
+                ->withStatus(400);
+        }*/
+        /*if (!Utilities::haveEmptyParameters(array('tkn', 'id'), $request, $response)) {
 
             $request_data = $request->getParsedBody();
             $tkn = $request_data['tkn'];
@@ -283,13 +338,13 @@ class controladorUsuarios
         } else {
             return $response->withHeader('Content-type', 'application/json')
                 ->withStatus(400);
-        }
+        }*/
     }
 
     /**
      * RECUPERA TODOS LOS USUARIOS DE LA BD
      **/
-    public function todos($request, $response)
+    public function todos(Request $request,Response $response)
     {
         if (!Utilities::verificaToken($request, $response)) {
             $resp = ViewUsuarios::todos();
@@ -308,7 +363,7 @@ class controladorUsuarios
      * CIERRA LA SESIÓN
      **/
 
-    public function cerrarSesion($request, $response)
+    public function cerrarSesion(Request $request,Response $response)
     {
 
         if(!Utilities::verificaToken($request,$response)){
@@ -334,7 +389,7 @@ class controladorUsuarios
     /**
      * RECUPERA UN USUARIO DE LA BD
      **/
-    public function obtenerUsuario($request, $response)
+    public function obtenerUsuario(Request $request,Response $response)
     {
         if (!Utilities::verificaToken($request, $response)) {
             if (!Utilities::haveEmptyParameters(array('usuario'), $request, $response)) {
