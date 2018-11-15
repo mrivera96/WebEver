@@ -7,6 +7,8 @@ include_once 'barra-de-navegacion-navbar.inc.php';
     <link href="css/estilos_alan.css" rel="stylesheet">
     <link href="css/estiloslogin.css" rel="stylesheet">
 
+    <form name="formulario" type="hidden" role="form" id="formulario">
+    </form>
 
     <div  id="contenedor_usuarios"class="container" >
         <div class="row"  id="fila"  >
@@ -35,7 +37,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
         </div>
     </div>
 
-    <a  href="nuevoUsuario" class="float">
+    <a id="float" href="nuevoUsuario" >
         <i class="glyphicon glyphicon-plus my-float"></i>
     </a>
 
@@ -43,5 +45,5 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 include_once 'documento-cierre.inc.php';
 ?>
 <script type="text/javascript" src="js/Errores.js"></script>
+<script type="text/javascript" src="js/modalerror.js"> </script>
 <script type="text/javascript" src="js/mostrar_usuarios.js"></script>
-

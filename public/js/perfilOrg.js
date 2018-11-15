@@ -5,7 +5,7 @@ $(document).on("ready", function () {
 var loadData = function ()
 {
   $.ajax({
-    type: "get",
+    type: "GET",
     url: 'obtenerPerfil',
     data: {'cto':cto},
     statusCode:{
@@ -73,7 +73,7 @@ var loadData = function ()
           );
 
           /************************************************************************************************/
-          $("#ubicacion").append('<a class="enlaces_de_listas_contactos float" href="mapa?numct='+informacionContacto[i].id_contacto+'">' +
+          $("#ubicacion").append('<a id="float" class="enlaces_de_listas_contactos " href="mapa?numct='+informacionContacto[i].id_contacto+'">' +
           '<i class="glyphicon glyphicon-map-marker my-float"></i>'+' </a>'
         );
 
@@ -96,7 +96,7 @@ var loadData = function ()
       }
     },
     500: function(data){
-      alert(data.message);
+      mostrarError(document.formulario.modal, ERROR40);
     }
   }
 

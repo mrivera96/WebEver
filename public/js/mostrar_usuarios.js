@@ -53,12 +53,12 @@ var loadData = function () {
                 }
             },
             500: function(){
-                alert(ERROR40);
+              mostrarError(document.formulario, ERROR40);
+
             },
             401:function () {
-
-                alert(ERROR39);
-                document.getElementById("colorIniciosecion").click();
+              mostrarError(document.formulario, ERROR39);
+              document.getElementById("botoncierreSession").click();
 
             }
 

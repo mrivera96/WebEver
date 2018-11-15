@@ -9,6 +9,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 <head><link href="css/estilos_melvin.css" rel="stylesheet"></head>
 
 <div id="encabezado_contactos_activos" class="container">
+  <form name="formulario" type="hidden" role="form" id="formulario">
     <div class="col-md-9 col-sm-9 col-xs-9">
 
         <h4 style="color: white"><i class="glyphicon glyphicon-ok-circle" aria-hidden="true"></i> Perfiles Activos</h4>
@@ -21,6 +22,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
             <input type="search" class="form-control" id="search">
         </div>
     </div>
+  </form>
 </div>
 
 <div class="container" id="contenedor_perfiles">
@@ -30,7 +32,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
     </div>
 
-    <a href="nuevoPerfilAdmin" class="float">
+    <a  id="float" href="nuevoPerfilAdmin" >
         <i class="glyphicon glyphicon-plus my-float"></i>
     </a>
 
@@ -39,4 +41,6 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 <?php
 include_once 'documento-cierre.inc.php';
 ?>
+<script type="text/javascript" src="js/Errores.js"></script>
+<script type="text/javascript" src="js/modalerror.js"> </script>
 <script src="js/administracionPerfiles.js"></script>

@@ -2,6 +2,7 @@ $(document).on("ready", function () {
     loadData();
 });
 
+  
 //Carga los perfiles de cierta categoria
 var loadData = function () {
     $.ajax({
@@ -48,8 +49,8 @@ var loadData = function () {
         }
       },
       500: function(data){
-        alert(data.message);
-      }
+        mostrarError(document.formulario, ERROR40);
+    }
 
 
     }

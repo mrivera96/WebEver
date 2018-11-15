@@ -21,20 +21,34 @@ $(document).on("ready", function () {
     loadData();
 });
 
+
  /**********************************************************************************************
      *            FUNCIÓN AJAX PARA MOSTRAR LOS PERFILES ACTIVOS
      **********************************************************************************************/
 var loadData = function () {
 
+
     $('\n' +
-        '                <li><a href="solicitudesNuevas"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Nuevas Solicitudes</a></li>\n' +
-        '                <li><a href="solicitudesRechazadas"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Solicitudes Rechazadas</a></li>\n' +
-        '                <li><a href="perfilesEliminados"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Perfiles Eliminados</a></li>'
+
+  '  <li id="boton" style="margin: 12px;" class="dropdown">'+
+  '  <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
+  '  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong>Administración de Perfiles</strong> <span class="caret"></span>'+
+  '  </button>'+
+  '  <ul id="despliege" class="dropdown-menu">'+
+  '  <li><a href="solicitudesNuevas"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>   Nuevas Solicitudes   </a></li>\n' +
+  '  <li><a href="solicitudesRechazadas"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>   Solicitudes Rechazadas   </a></li>\n' +
+  '  <li><a href="perfilesEliminados"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>   Perfiles Eliminados   </a></li>'+
+  '  <li role="separator" class="divider"></li>'+
+  '  </ul>'+
+  '  </li>'
+
+
+
         ).insertBefore("#boton");
     $.ajax({
         type: "GET",
         url: "listarPerfiles",
-        data:{'ste':2},
+        data:{'ste':'2'},
         statusCode:{
             200: function(data){
             var perfiles = data.content;
@@ -49,7 +63,7 @@ var loadData = function () {
             ;
 
             $("#fila").append(
-                    '<a class="enlaces_de_listas_contactos" href="editar-perfil.php?cto=' + perfiles[i].id_contacto + '"><div class = "col-md-4 col-sm-6">' +
+                    '<a class="enlaces_de_listas_contactos" href="editarPerfilAdmin?cto=' + perfiles[i].id_contacto + '"><div class = "col-md-4 col-sm-6">' +
                         '<div class="media">' +
                             '<div class="media-left">' +
                             '<img style="width:130px ; heigh:130px ;"  class="media-object img-circle circle-img" src=' + imagen + '> ' +
@@ -67,12 +81,12 @@ var loadData = function () {
         }
       },
       500: function(){
-          alert(ERROR40);
+        mostrarError(document.formulario, ERROR40);
       },
       401:function () {
+        mostrarError(document.formulario, ERROR39);
 
-          alert(ERROR39);
-          document.getElementById("colorIniciosecion").click();
+        //  document.getElementById("colorIniciosecion").click();
 
       }
 

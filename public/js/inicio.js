@@ -2,6 +2,8 @@ $(document).on("ready", function () {
     loadData();
 });
 
+
+
 var loadData = function () {
     $.ajax({
         type: "GET",
@@ -23,7 +25,10 @@ var loadData = function () {
                 }
             },
             500: function(data){
-                alert(data.message);
+              mostrarError(document.formulario, ERROR40);
+
+
+
             }
 
 

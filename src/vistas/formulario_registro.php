@@ -4,8 +4,6 @@ $titulo = 'Formulario de Registro';
 include_once 'documento-inicio.inc.php';
 include_once 'barra-de-navegacion-navbar.inc.php';
 ?>
-
-
     <link href="css/estilos_alan.css" rel="stylesheet">
     <div class="container" >
         <div class="row">
@@ -87,15 +85,8 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
     </div>
 
-
-
-
-
-
 <?php
 include_once 'documento-cierre.inc.php';
     ?>
 <script type="text/javascript" src="js/Errores.js"></script>
 <script type="text/javascript" src="js/formulario_registro.js"></script>
-
-

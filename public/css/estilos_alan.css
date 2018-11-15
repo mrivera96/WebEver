@@ -170,17 +170,17 @@ body{
     background-color:#005662;
 }
 
-.float{
-    position:fixed;
-    width:60px;
-    height:60px;
-    bottom:60px;
-    right:40px;
-    background-color:#005662;
-    color:#FFF;
-    border-radius:50px;
-    text-align:center;
-    box-shadow: 2px 2px 3px #999;
+#float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:60px;
+  right:40px;
+  background-color:#005662;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 2px 2px 3px #999;
 
 }
 
@@ -264,3 +264,23 @@ body{
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+#botoncierreSession{
+padding: 1px ;
+width: 30px;
+margin: 12px;
+background-color:#005662;
+color:#FFF;
+box-shadow: rgba(0,0,0,0.2) 8px 8px 8px;
+height:30px;
+bottom:30px;
+right:20px;
+border-radius:25px;
+}
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*DISEÑO DE EL BOTON DE BARRA DE NAVEGACION */
+#boton{
+  margin: 12px;
+
+}

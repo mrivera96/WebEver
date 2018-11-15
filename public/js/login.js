@@ -66,6 +66,9 @@ function loguear() {
                 },400: function(data){
                     mostrarError(document.log.pass,ERROR14);
 
+                },500: function(data){
+                    mostrarError(document.log.pass,ERROR40);
+
                 }
             }
 
@@ -73,4 +76,3 @@ function loguear() {
 
     }
 }
-

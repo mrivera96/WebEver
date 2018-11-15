@@ -8,6 +8,10 @@ $.ajax({
             for (var i in roles) {
                 $("#id_rol_usuario").append('<option value="' + roles[i].id_rol + '"> ' + roles[i].descripcion_rol + '</option >');
             }
+        },
+        500: function(){
+          mostrarError(document.formulario, ERROR40);
+
         }
     }
 });
@@ -44,8 +48,9 @@ $("#nombre_usuario").keyup(function escribiendoUsuario() {
     $.ajax({
         type: "POST",
         url: "existeUsuario",
-        data:{'usuario': $('#nombre_usuario').val()}
-    }).done(function (data) {
+        data:{'usuario': $('#nombre_usuario').val()},
+        statusCode:{
+            200: function(data){
         if (data.content === true) {
             $('#nombre_usuario').css("color", "red");
             mostrarError(document.formulario.usuarionombre, ERROR30);
@@ -54,9 +59,15 @@ $("#nombre_usuario").keyup(function escribiendoUsuario() {
         }
 
 
-    });
-});
+    },
+    500: function(data){
+      mostrarError(document.formulario, ERROR40);
+    }
 
+
+}
+});
+});
 function escribiendoEmail() {
     $.ajax({
         type: "POST",
@@ -73,7 +84,7 @@ function escribiendoEmail() {
 
             },
             500: function(data){
-                alert(data.message);
+              mostrarError(document.formulario, ERROR40);
             }
 
 
@@ -160,7 +171,7 @@ function validarFormulario() {
                     $("#Modal1").modal("show");
                 },
                 500: function(data){
-                    alert(data.message);
+                  mostrarError(document.formulario, ERROR40);
                 },
                 401:function () {
                     $("#Modal3").modal("show");
@@ -175,4 +186,3 @@ function validarFormulario() {
 
 
 }
-

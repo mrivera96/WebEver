@@ -11,17 +11,19 @@ include_once 'buscador.inc.php';
     <link href="css/estilos_alan.css" rel="stylesheet">
 </head>
 
+<form name="formulario" type="hidden" role="form" id="formulario">
+</form>
 
   <!--Contenedor Titulo de La organizacion-->
-  <div id="encabezado_lista_contactos" class="container responsive" >
-    <div class="row" id="titulo">
+  <div  id="encabezado_lista_contactos" class="container responsive" >
+    <div  class="row" id="titulo">
 
     </div>
   </div>
 
   <!--Contenedor de imagen de perfil -->
-  <div class="container" id="contenedor_perfiles" >
-    <div class="row" style="margin-top: 10px;" >
+  <div  class="container" id="contenedor_perfiles" >
+    <div  class="row" style="margin-top: 10px;" >
       <div class="form-group text-center" id="filaPorg">
 
       </div><br><br>
@@ -39,5 +41,8 @@ include_once 'buscador.inc.php';
   <?php
   include_once 'documento-cierre.inc.php';
   ?>
+  
 <script>var cto = <?php echo $_GET['cto']?>;</script>
+<script type="text/javascript" src="js/Errores.js"></script>
+<script type="text/javascript" src="js/modalerror.js"> </script>
 <script type="text/javascript" src="js/perfilOrg.js"></script>

@@ -6,6 +6,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
 <head><link href="css/estilos_melvin.css" rel="stylesheet"></head>
 
+
 <div class="container responsive">
   <br/>
   <div class="row">
@@ -19,6 +20,16 @@ include_once 'barra-de-navegacion-navbar.inc.php';
         <div class="panel-body">
           <form id="formularioCrear" name="formularioCrear" role="form" method="post">
             <br/>
+            <div class="group text-center">
+              <img class="img-circle circle-img" id="imgContc" src="imagenes/iconocontactowhite.png" width="90" height="90">
+            </div>
+            <div class="upload-btn-wrapper">
+              <button class="btn tt">Subir una imagen</button>
+              <input  onchange="encodeImagetoBase64(this)" style="display: none;" type="file" />
+              <br>
+              <br>
+            </div>
+
             <div class="group">
               <input type="text" required name="nomborg_rec" id="nombreOrg">
               <span class="highlight"></span>
@@ -140,7 +151,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
               <h5>Usuario</h5>
               <select class="form-control" id="usuario" name="id_usuario"></select>
               <br>
-              <input type="hidden" name="imagen" value=""/>
+              <input type="hidden" name="imagen" id="imagen" value=""/>
               <input type="hidden" name="nombre_imagen" value=""/>
               <button class="form-control" name="guardar" id="guardar"  type="button" style="background-color:#005662; color:white;" ><span class="glyphicon glyphicon-floppy-disk"></span>  Guardar</button>
 
@@ -158,8 +169,10 @@ include_once 'barra-de-navegacion-navbar.inc.php';
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-primary" onClick="javascript:(function () {
-                        window.location.href = 'administracion-de-perfiles.php';
+                        window.location.href = 'administrarPerfiles';
                       })()">Aceptar</button>
+
+                      
 
                     </div>
                   </div>
@@ -181,214 +194,10 @@ include_once 'barra-de-navegacion-navbar.inc.php';
   </div>
   <br>
 
-  <script src="../js/jquery-2.2.4.min.js"></script>
-  <script type="text/javascript">
-  <!--
-  $(document).on("ready", function () {
-    loadData();
-  });
-
-  var loadData = function () {
-    $.ajax({
-      type: "GET",
-      url: "../WebServices/consultarRegiones.php"
-    }).done(function (data) {
-      var regiones = JSON.parse(data);
-
-      for (var i in regiones) {
-        $("#region").append('<option value="' + regiones[i].id_region + '">' + regiones[i].nombre_region + '</option>');
-      }
-    });
-
-    $.ajax({
-      type: "GET",
-      url: "../WebServices/consultarCategorias.php"
-    }).done(function (data) {
-      var categorias = JSON.parse(data);
-
-      for (var i in categorias) {
-        $("#categoria").append('<option value="' + categorias[i].id_categoria + ' "> ' + categorias[i].nombre_categoria + '</option>');
-      }
-    });
-    $.ajax({
-      type: "POST",
-      url: "../WebServices/ConsultarTodosLosUsuarios.php",
-      data: {'estado': '1', 'tkn':"<?php echo $_SESSION['token']?>"}
-    }).done(function (data) {
-      var usuarios = JSON.parse(data);
-      if(usuarios == "El token recibido NO existe en la base de datos." || usuarios == "El Token ya expiró."){
-        document.getElementById("colorIniciosecion").click();
-      }else {
-        for (var i in usuarios) {
-          $("#usuario").append('<option value="' + usuarios[i].id_usuario + '">' + usuarios[i].nombre_usuario + '</option>');
-        }
-      }
 
 
-    });
-
-  };
-
-  document.getElementById("guardar").onclick = function () {
-    validarFormulario();
-  };
-
-  function mostrarError(componente, error) {
-
-    $("#formularioCrear").append('<div class="modal" id="Modal3" tabindex="-1" role="dialog">' +
-    '<div class="modal-dialog" role="document">' +
-    '<div class="modal-content">' +
-    '<div class="modal-header">' +
-    '<h5 class="modal-title">Error al crear el perfil</h5>' +
-    '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
-    '<span aria-hidden="true">&times;</span>' +
-    '</button>' +
-    '</div>' +
-    ' <div class="modal-body">' +
-    '<p>' + error + '</p>' +
-    '</div>' +
-    '<div class="modal-footer">' +
-    '<button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '</div>');
-    $("#Modal3").modal("show");
-    $('#Modal3').on('hidden.bs.modal', function () {
-      componente.focus();
-      $("#Modal3").detach();
-    });
-
-  }
-  function validarFormulario() {
-    var error_nomb = false;
-    var error_tel = false;
-    var error_cel = false;
-    var error_mail = false;
-    var error_desc = false;
-    var error_dir = false;
-    var error_reg = false;
-    var error_cat = false;
-
-
-    if (document.formularioCrear.nomborg_rec.value === "") {
-      error_nomb = true;
-      mostrarError(document.formularioCrear.nomborg_rec, "Debe ingresar un nombre de organización.");
-      return;
-    }
-
-    if (document.formularioCrear.email_rec.value === "") {
-
-    } else {
-      if (!document.formularioCrear.email_rec.value.includes("@") || !document.formularioCrear.email_rec.value.includes(".")) {
-        error_mail = true;
-
-        mostrarError(document.formularioCrear.email_rec, "Ingrese un e-mail válido.");
-        return;
-      }
-    }
-
-
-    if (document.formularioCrear.numtel_rec.value === "") {
-      if (document.formularioCrear.numcel_rec.value === "") {
-        error_tel = true;
-
-        mostrarError(document.formularioCrear.numtel_rec, "Debe ingresar al menos un número telefónico.");
-        return;
-      }
-    } else {
-      if (document.formularioCrear.numtel_rec.value.length < 8 || !document.formularioCrear.numtel_rec.value.startsWith("2") || document.formularioCrear.numtel_rec.value.length > 8) {
-        error_tel = true;
-
-        mostrarError(document.formularioCrear.numtel_rec, "El número telefónico ingresado no es válido.");
-        return;
-      }
-    }
-
-    if (document.formularioCrear.numcel_rec.value === "") {
-      if (document.formularioCrear.numtel_rec.value === "") {
-        error_cel = true;
-
-        mostrarError(document.formularioCrear.numcel_rec, "Debe ingresar al menos un número telefónico.");
-        return;
-      }
-    } else {
-      if (document.formularioCrear.numcel_rec.value.length < 8 || document.formularioCrear.numcel_rec.value.length > 8) {
-        error_cel = true;
-
-        mostrarError(document.formularioCrear.numcel_rec, "El número telefónico ingresado no es válido.");
-        return;
-      }
-    }
-
-    if (document.formularioCrear.direccion_rec.value === "") {
-      error_dir = true;
-      mostrarError(document.formularioCrear.direccion_rec, "Debe ingresar la dirección de la organización.");
-      return;
-    }
-    if (document.formularioCrear.desc_rec.value === "") {
-      error_desc = true;
-
-      mostrarError(document.formularioCrear.desc_rec, "Debe escribir una descripción de la organización.");
-      return;
-    }
-    if (document.formularioCrear.id_region.value < 3 && document.formularioCrear.id_region.value > 4) {
-      error_reg = true;
-      alert('La región seleccionada no existe.');
-      document.formularioEditar.id_region.focus();
-      return;
-    }
-    if (document.formularioCrear.id_categoria.value < 1 && document.formularioCrear.id_categoria.value > 11) {
-      error_cat = true;
-      alert('La categoría seleccionada no existe.');
-      document.formularioCrear.id_categoria.focus();
-      return;
-    }
-
-    if (error_nomb === false &&
-      error_tel === false &&
-      error_cel === false &&
-      error_dir === false &&
-      error_mail === false &&
-      error_desc === false &&
-      error_reg === false &&
-      error_cat === false) {
-        $.ajax({
-          type:"POST",
-          url:"../WebServices/crearPerfil.php",
-          data:{
-            'tkn':"<?php echo $_SESSION['token']?>",
-            'lat_rec':document.formularioCrear.lat_rec.value,
-            'longitud_rec':document.formularioCrear.longitud_rec.value,
-            'nomborg_rec':document.formularioCrear.nomborg_rec.value,
-            'email_rec':document.formularioCrear.email_rec.value,
-            'numtel_rec':document.formularioCrear.numtel_rec.value,
-            'numcel_rec':document.formularioCrear.numcel_rec.value,
-            'direccion_rec':document.formularioCrear.direccion_rec.value,
-            'desc_rec':document.formularioCrear.desc_rec.value,
-            'id_region':document.formularioCrear.id_region.value,
-            'id_categoria':document.formularioCrear.id_categoria.value,
-            'id_usuario':document.formularioCrear.id_usuario.value
-          }
-
-        }).done(function(data){
-          var resp = JSON.parse(data);
-          if(resp == "El token recibido NO existe en la base de datos." || resp == "El Token ya expiró."){
-            document.getElementById("colorIniciosecion").click();
-          }else {
-            $("#Modal1").modal('show');
-          }
-
-
-        });
-
-
-        return;
-      }
-    }
-    //-->
-    </script>
-    <?php
-    include_once 'documento-cierre.inc.php';
-    ?>
-    <script type="text/javascript" src="js/Errores.js"></script>
+  <?php
+  include_once 'documento-cierre.inc.php';
+  ?>
+  <script type="text/javascript" src="js/Errores.js"></script>
+  <script type="text/javascript" src="js/nuevoPerfil.js"></script>

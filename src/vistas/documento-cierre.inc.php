@@ -1,8 +1,23 @@
 
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript"
-        src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script>
+
+function funCerrar() {
+  $.ajax({
+    type: "GET",
+    url: "cerrarSession",
+    statusCode:{
+      200:function (data) {
+        window.location.href = 'inicio';
+
+      }
+    }
+  });
+};
+</script>
+
 <br>
 <br>
 
