@@ -12,7 +12,7 @@ class Token extends Model{
     public $timestamps = false;
 
     public static function getClave(){
-        $key = "@e%o$2&0!1/8";
+        $key = hash('md5','@e%o$2&0!1/8');
        return $key;
     }
     //Verifica la existencia de un token
