@@ -6,6 +6,9 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
 <head><link href="css/estilos_melvin.css" rel="stylesheet"></head>
 
+<form name="formulario" type="hidden" role="form" id="formulario">
+</form>
+
 <div id="encabezado_contactos_activos" class="container">
   <div class="col-md-9 col-sm-9 col-xs-9">
     <h4 style="color: white"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Perfiles Eliminados</h4>
@@ -31,4 +34,5 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 include_once 'documento-cierre.inc.php';
 ?>
 <script type="text/javascript" src="js/Errores.js"></script>
+<script type="text/javascript" src="js/modalerror.js"> </script>
 <script src="js/perfilesEliminados.js"></script>
