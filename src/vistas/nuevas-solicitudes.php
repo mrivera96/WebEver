@@ -6,6 +6,8 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
 <head><link href="css/estilos_melvin.css" rel="stylesheet"></head>
 
+<form name="formulario" type="hidden" role="form" id="formulario">
+</form>
 
 <div id="encabezado_contactos_activos" class="container">
   <div class="col-md-9 col-sm-9 col-xs-9">
@@ -37,7 +39,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
           </div>
           <div class="modal-footer">
             <button type="button" id="aceptar" onclick="javascript:(function () {
-              window.location.href = 'nuevas-solicitudes.php';
+              window.location.href = 'solicitudesNuevas';
             })()" class="btn btn-primary">Aceptar</button>
 
           </div>
@@ -58,7 +60,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
           </div>
           <div class="modal-footer">
             <button type="button" id="aceptar" onclick="javascript:(function () {
-              window.location.href = 'nuevas-solicitudes.php';})()" class="btn btn-primary">Aceptar</button>
+              window.location.href = 'solicitudesNuevas';})()" class="btn btn-primary">Aceptar</button>
 
             </div>
           </div>
@@ -72,5 +74,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
     <?php
     include_once 'documento-cierre.inc.php';
     ?>
+
     <script type="text/javascript" src="js/Errores.js"></script>
+    <script type="text/javascript" src="js/modalerror.js"> </script>
     <script src="js/nuevasSolicitudes.js"></script>

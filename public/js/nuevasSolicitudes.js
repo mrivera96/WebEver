@@ -1,4 +1,5 @@
 
+
 $(document).on("ready", function () { loadData(); });
 /**********************************************************************************************
 *            FUNCIÓN PARA BUSCAR ENTRE LOS PERFILES
@@ -27,21 +28,46 @@ var aceptarSolicitud = function(id_contacto) {
 
   $.ajax({
     type:'POST',
-    url: '../WebServices/aceptarSolicitud.php',
-    data: {'cto':  id_contacto  ,
-    'tkn':"<?php echo $_SESSION['token'] ?>"}
-  });
+    url: 'gestionarSolicitud',
+    data: {'cto': id_contacto,'opr':aceptar } ,
+    statusCode:{
+      200:function (data) {
+      },
+      500: function(){
+        mostrarError(document.formulario, ERROR40);
 
+      },
+      401:function () {
+        mostrarError(document.formulario, ERROR39);
+          //document.getElementById("colorIniciosecion").click();
+
+
+      }
+        }
+  });
 };
+
 
 var rechazarSolicitud = function(id_contacto) {
   $.ajax({
     type:'POST',
-    url: '../WebServices/rechazarSolicitud.php',
-    data: {'cto':  id_contacto  ,
-    'tkn': "<?php echo $_SESSION['token'] ?>"}
-  });
-};
+    url: 'gestionarSolicitud',
+      data: {'cto':  id_contacto,'opr':rechazar},
+    statusCode:{
+      200:function (data) {
+      },
+      500: function(){
+        mostrarError(document.formulario, ERROR40);
+
+      },
+      401:function () {
+        mostrarError(document.formulario, ERROR39);
+        //  document.getElementById("colorIniciosecion").click();
+
+        }
+          }
+      });
+      };
 
 var loadData = function () {
 
@@ -63,11 +89,12 @@ var loadData = function () {
 
       ).insertBefore("#boton");
   $.ajax({
-    type: "post",
-    url: "../WebServices/consultarPerfilesParaAdministracionPerfiles.php",
-    data: {'ste': '1'},
-    success: function (data) {
-      var perfiles = JSON.parse(data);
+    type: "GET",
+    url: "listarPerfiles",
+    data:{'ste':'1'},
+    statusCode:{
+        200: function(data){
+        var perfiles = data.content;
       if (perfiles!== "No hay resultados.") {
 
         var imagen;
@@ -77,7 +104,7 @@ var loadData = function () {
           if (perfiles[i].imagen !== "") {
             imagen = perfiles[i].imagen;
           } else {
-            imagen = "../imagenes/iconocontactowhite.png";
+            imagen = "imagenes/iconocontactowhite.png";
           }
           ;
 
@@ -104,14 +131,26 @@ var loadData = function () {
         } else {
           $("#fila").append(
             '<div class="col-md-12 text-center">' +
-            '<img  style="width:130px ; heigh:130px ;"  class="img-circle circle-img" src="https://cdn4.iconfinder.com/data/icons/rounded-white-basic-ui/139/Warning01-RoundedWhite-512.png"> ' +
+            '<img  style="width:130px ; heigh:130px ;"  class="img-circle circle-img" src="imagenes/warning.png"> ' +
             '</div>' +
             '<div class="col-md-12 text-center">' +
             '<h1>No hay nuevas solicitudes</h1> ' +
             '</div>'
-
           );
-        }
-      }
-    });
-  };
+          }
+          },
+          500: function(){
+          mostrarError(document.formulario, ERROR40);
+          },
+          401:function () {
+          mostrarError(document.formulario, ERROR39);
+
+          //  document.getElementById("colorIniciosecion").click();
+
+          }
+
+          }
+
+          });
+
+          };
