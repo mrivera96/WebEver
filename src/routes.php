@@ -324,7 +324,8 @@ $app -> get('/prueba', 'controladorUsuarios:pruebas');
 $app -> get('/listarPerfiles', 'controladorPerfiles:listarPerfiles');
 $app -> get('/obtenerPerfil', 'controladorPerfiles:obtenerPerfil');
 $app -> get('/buscar', 'controladorPerfiles:buscar');
-
+//Regiones
+$app -> get('/regiones', 'controladorRegiones:todasRegiones');
 
         /**
          * **************************************************************************************
@@ -346,8 +347,7 @@ $app -> get('/cerrarSession', 'controladorUsuarios:cerrarSesion');
 //Roles
 $app -> post('/roles', 'controladorRoles:todosRoles');
 
-//Regiones
-$app -> get('/regiones', 'controladorRegiones:todasRegiones');
+
 
 //Perfiles
 $app -> post('/crearPerfil', 'controladorPerfiles:crearPerfil');
