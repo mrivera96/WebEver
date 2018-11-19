@@ -388,7 +388,6 @@ class controladorPerfiles{
 
     public function gestionarSolicitud(Request $request,Response $response){
         if(!Utilities::verificaToken($request,$response)){
-            if($_SESSION['rol']==1){
                 if(!Utilities::haveEmptyParameters(array('cto','opr'), $request, $response)){
                     $request_data = $request->getParsedBody();
 
@@ -401,10 +400,7 @@ class controladorPerfiles{
                     return $response -> withHeader('Content-type','application/json')
                         -> withStatus(400);
                 }
-            }else{
-                return $response -> withHeader('Content-type','application/json')
-                    -> withStatus(401);
-            }
+
 
         }else{
             return $response -> withHeader('Content-type','application/json')
