@@ -21,11 +21,11 @@ include_once 'barra-de-navegacion-navbar.inc.php';
           <form id="formularioCrear" name="formularioCrear" role="form" method="post">
             <br/>
             <div class="group text-center">
-              <img class="img-circle circle-img" id="imgContc" src="imagenes/iconocontactowhite.png" width="90" height="90">
+              <img class="img-circle circle-img"  id="imgContc" src="imagenes/iconocontactowhite.png" width="90" height="90">
             </div>
             <div class="upload-btn-wrapper">
               <button class="btn tt">Subir una imagen</button>
-              <input  onchange="encodeImagetoBase64(this)" style="display: none;" type="file" />
+              <input  onchange="encodeImagetoBase64(this)" style="display: none;" type="file" name="imagen"  id="imagen"/>
               <br>
               <br>
             </div>
@@ -148,7 +148,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
               <h5>Categoría</h5>
               <select class="form-control" id="categoria" name="id_categoria"></select>
 
-              
+
               <br>
                <input  type="hidden" id="usuario"  name="id_usuario" value="<?php echo $_SESSION['idUrs'] ?>">
               <input type="hidden" name="imagen" id="imagen" value=""/>

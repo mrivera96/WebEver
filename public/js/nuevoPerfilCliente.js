@@ -195,17 +195,33 @@ function validarFormulario() {
       var  id_region= document.formularioCrear.id_region.value;
       var  id_categoria= document.formularioCrear.id_categoria.value;
       var  id_usuario= document.formularioCrear.id_usuario.value;
-      var  imagen= document.formularioCrear.imagen.value;
-      var  nombre_imagen= document.formularioCrear.nombre_imagen.value;
-      if(tieneFoto===true){
-        document.formularioCrear.nombre_imagen.value=document.formularioCrear.nomborg_rec.value+".jpg";
-      }
+      var inputFileImage = document.getElementById("imagen");
+
+      var imagen = inputFileImage.files[0];
+
+      var data = new FormData();
+
+      data.append('imagen',imagen);
+      data.append('lat_rec',lat_rec);
+      data.append('longitud_rec',longitud_rec);
+      data.append('nomborg_rec',nomborg_rec);
+      data.append('email_rec',email_rec);
+      data.append('numtel_rec',numtel_rec);
+      data.append('numcel_rec',numcel_rec);
+      data.append('direccion_rec',direccion_rec);
+      data.append('desc_rec',desc_rec);
+      data.append('id_region',id_region);
+      data.append('id_categoria',id_categoria);
+      data.append('id_usuario',id_usuario);
+      data.append('id_estado',1);
+      data.append('imagen',imagen);
+
       $.ajax({
         type:"POST",
+          contentType:false,
         url:"crearPerfil",
-        data:{'lat_rec':lat_rec,'longitud_rec':longitud_rec,'nomborg_rec':nomborg_rec,'email_rec':email_rec,'numtel_rec':numtel_rec,
-        'numcel_rec':numcel_rec,'direccion_rec':direccion_rec,'desc_rec':desc_rec,'id_region':id_region,'id_categoria':id_categoria,
-        'id_usuario':id_usuario,'id_estado':1,'imagen':imagen,'nombre_imagen':nombre_imagen},
+        data:data,
+          processData:false,
       statusCode:{
           200:function (data) {
           //  document.getElementById("colorIniciosecion").click();
