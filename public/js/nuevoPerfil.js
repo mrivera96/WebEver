@@ -105,7 +105,7 @@ function mostrarError(componente, error) {
     $("#Modal3").detach();
   });
 
-}
+};
 
 
 
@@ -228,10 +228,10 @@ function validarFormulario() {
         url:"crearPerfil",
         data:{'lat_rec':lat_rec,'longitud_rec':longitud_rec,'nomborg_rec':nomborg_rec,'email_rec':email_rec,'numtel_rec':numtel_rec,
         'numcel_rec':numcel_rec,'direccion_rec':direccion_rec,'desc_rec':desc_rec,'id_region':id_region,'id_categoria':id_categoria,
-        'id_usuario':id_usuario,'imagen':imagen,'nombre_imagen':nombre_imagen},
+        'id_usuario':id_usuario,'id_estado':2,'imagen':imagen,'nombre_imagen':nombre_imagen},
       statusCode:{
           200:function (data) {
-            //document.getElementById("colorIniciosecion").click();
+          //  document.getElementById("colorIniciosecion").click();
             $("#Modal1").modal('show');
           },
           500: function(data){
@@ -251,9 +251,9 @@ function validarFormulario() {
         }
       });
 
-        return;
+        //return;
       }
-    }
+    };
 
     function encodeImagetoBase64(element) {
 

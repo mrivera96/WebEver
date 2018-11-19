@@ -29,7 +29,7 @@ var aceptarSolicitud = function(id_contacto) {
   $.ajax({
     type:'POST',
     url: 'gestionarSolicitud',
-    data: {'cto': id_contacto,'opr':aceptar } ,
+    data: {'cto':id_contacto,'opr':"aceptar"},
     statusCode:{
       200:function (data) {
       },
@@ -52,7 +52,7 @@ var rechazarSolicitud = function(id_contacto) {
   $.ajax({
     type:'POST',
     url: 'gestionarSolicitud',
-      data: {'cto':  id_contacto,'opr':rechazar},
+      data: {'cto':id_contacto,'opr':"rechazar"},
     statusCode:{
       200:function (data) {
       },

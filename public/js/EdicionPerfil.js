@@ -48,7 +48,7 @@
   });
 
               $.ajax({
-                  type: "get",
+                  type: "GET",
                   url: "obtenerPerfil",
                   data: {'cto': cto},
                   statusCode:{
@@ -56,26 +56,26 @@
                       var perfiles  = data.content;
 
                   var imagen;
-                  //  document.getElementById("colorIniciosecion").click();
+                   //document.getElementById("colorIniciosecion").click();
 
-                    for (var i in perfiles["perfiles"]) {
-                        if (perfiles["perfiles"][i].imagen !== "") {
-                            imagen = perfiles["perfiles"][i].imagen;
+                    for (var i in perfiles) {
+                        if (perfiles[i].imagen !== "") {
+                            imagen = perfiles[i].imagen;
                         } else {
                             imagen = "imagenes/iconocontactowhite.png";
                         };
 
                         $("#imganenOrg").attr("src", imagen);
-                        $("#nombreOrg").attr("value", perfiles["perfiles"][i].nombre_organizacion);
-                        $("#numtelOrg").attr("value", perfiles["perfiles"][i].numero_fijo);
-                        $("#numcelOrg").attr("value", perfiles["perfiles"][i].numero_movil);
-                        $("#dirOrg").attr("value", perfiles["perfiles"][i].direccion);
-                        $("#emailOrg").attr("value", perfiles["perfiles"][i].e_mail);
-                        $("#descOrg").attr("value", perfiles["perfiles"][i].descripcion_organizacion);
-                        $("#latOrg").attr("value", perfiles["perfiles"][i].latitud);
-                        $("#longOrg").attr("value", perfiles["perfiles"][i].longitud);
-                        $("#region option[value=" + perfiles["perfiles"][i].id_region + "]").attr("selected", true);
-                        $("#categoria option[value=" + perfiles["perfiles"][i].id_categoria + "]").attr("selected", true);
+                        $("#nombreOrg").attr("value", perfiles[i].nombre_organizacion);
+                        $("#numtelOrg").attr("value", perfiles[i].numero_fijo);
+                        $("#numcelOrg").attr("value", perfiles[i].numero_movil);
+                        $("#dirOrg").attr("value", perfiles[i].direccion);
+                        $("#emailOrg").attr("value", perfiles[i].e_mail);
+                        $("#descOrg").attr("value", perfiles[i].descripcion_organizacion);
+                        $("#latOrg").attr("value", perfiles[i].latitud);
+                        $("#longOrg").attr("value", perfiles[i].longitud);
+                        $("#region option[value=" + perfiles[i].id_region + "]").attr("selected", true);
+                        $("#categoria option[value=" + perfiles[i].id_categoria + "]").attr("selected", true);
                     }//for
                   },
                   500: function(data){
@@ -102,7 +102,7 @@
 
                    document.getElementById("colorIniciosecion").click();
 
-                  window.location.href = 'administracion-de-perfiles.php';
+                  window.location.href = 'administrarPerfiles';
 
 
 
@@ -242,9 +242,8 @@
                 error_cat === false) {
                       $.ajax({
                         type:"POST",
-                        url:"../WebServices/actualizarPerfil.php",
+                        url:"actualizarPerfil",
                         data:{
-                          'tkn':"<?php echo $_SESSION['token']?>",
                           'lat_rec':document.formularioEditar.lat_rec.value,
                           'longitud_rec':document.formularioEditar.longitud_rec.value,
                           'nomborg_rec':document.formularioEditar.nomborg_rec.value,
@@ -256,19 +255,19 @@
                           'id_region':document.formularioEditar.id_region.value,
                           'id_categoria':document.formularioEditar.id_categoria.value,
                           'cto':document.formularioEditar.cto.value
-                        }
+                        },
+                        statusCode:{
+                          200:function (data) {
+                            $("#Modal1").modal('show');
+                            //document.getElementById("colorIniciosecion").click();
 
-                      }).done(function(data){
-                         var resp = JSON.parse(data);
-                         if(resp == "El token recibido NO existe en la base de datos." || resp == "El Token ya expiró."){
-                            document.getElementById("colorIniciosecion").click();
-                         }else {
-                           $("#Modal1").modal('show');
-                         }
+                          },
+                          500: function(data){
+                            mostrarError(document.formulario, ERROR40);
+                          }
+                        }});
+                        return;
 
+                      }
 
-                      });
-
-                      return;
-        }
-      };
+                    };

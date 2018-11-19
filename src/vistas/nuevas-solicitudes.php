@@ -74,7 +74,6 @@ include_once 'barra-de-navegacion-navbar.inc.php';
     <?php
     include_once 'documento-cierre.inc.php';
     ?>
-
-    <script type="text/javascript" src="js/Errores.js"></script>
+      <script type="text/javascript" src="js/Errores.js"></script>
     <script type="text/javascript" src="js/modalerror.js"> </script>
     <script src="js/nuevasSolicitudes.js"></script>

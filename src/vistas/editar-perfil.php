@@ -160,7 +160,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
                                         <p>Eliminará el perfil ¿Desea continuar?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" id="eliminar" class="btn btn-primary">Sí, borrar</button>
+                                        <button type="button" id="eliminar" class="btn btn-primary" onClick="javascript:(function(){window.location.href = 'administrarPerfiles';})()">Sí, borrar</button>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                     </div>
                                 </div>
@@ -180,7 +180,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
                                         <p>El Perfil se ha actualizado con éxito.</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" onClick="javascript:(function(){window.location.href = 'administracion-de-perfiles.php';})()">Aceptar</button>
+                                        <button type="button" class="btn btn-primary" onClick="javascript:(function(){window.location.href = 'administrarPerfiles';})()">Aceptar</button>
 
                                     </div>
                                 </div>
