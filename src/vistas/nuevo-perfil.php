@@ -25,7 +25,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
             </div>
             <div class="upload-btn-wrapper">
               <button class="btn tt">Subir una imagen</button>
-              <input  onchange="encodeImagetoBase64(this)" style="display: none;" type="file" />
+              <input  onchange="encodeImagetoBase64(this)" style="display: none;" type="file" name="imagen"  id="imagen"/>
               <br>
               <br>
             </div>
@@ -151,8 +151,6 @@ include_once 'barra-de-navegacion-navbar.inc.php';
               <h5>Usuario</h5>
               <select class="form-control" id="usuario" name="id_usuario"></select>
               <br>
-              <input type="hidden" name="imagen" id="imagen" value=""/>
-              <input type="hidden" name="nombre_imagen" value=""/>
               <button class="form-control" name="guardar" id="guardar"  type="button" style="background-color:#005662; color:white;" ><span class="glyphicon glyphicon-floppy-disk"></span>  Guardar</button>
 
               <div class="modal" id="Modal1" tabindex="-1" role="dialog">
