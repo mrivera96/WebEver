@@ -408,4 +408,26 @@ class controladorPerfiles{
         }
 
     }
+    public function obtenerPerfilesCliente(Request $request,Response $response){
+        if(!Utilities::verificaToken($request,$response)){
+                if(!Utilities::haveEmptyParameters(array('id'), $request, $response)){
+                    $request_data = $request->getParsedBody();
+                    $id=$request_data['id'];
+                    $resp = ModeloPerfiles::listarPerfilesCliente($id);
+
+                    $response->write(json_encode($resp->toArray2()));
+                    return $response->withHeader('Content-type', 'application/json')
+                        ->withStatus($resp->getStatus());
+                }else{
+                    return $response -> withHeader('Content-type','application/json')
+                        -> withStatus(400);
+                }
+
+
+        }else{
+            return $response -> withHeader('Content-type','application/json')
+                -> withStatus(401);
+        }
+
+    }
 }

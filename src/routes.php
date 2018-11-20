@@ -354,6 +354,7 @@ $app -> post('/crearPerfil', 'controladorPerfiles:crearPerfil');
 $app -> post('/eliminarPerfil', 'controladorPerfiles:eliminarPerfil');
 $app -> post('/actualizarPerfil', 'controladorPerfiles:actualizarPerfil');
 $app -> post('/gestionarSolicitud', 'controladorPerfiles:gestionarSolicitud');
+$app -> post('/obtenerPerfilesCliente', 'controladorPerfiles:obtenerPerfilesCliente');
 
 
 /**

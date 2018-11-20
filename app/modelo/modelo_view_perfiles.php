@@ -40,6 +40,27 @@ class ModeloPerfiles extends Model{
         }
 
     }
+    public static function listarPerfilesCliente($id){
+
+            try{
+                $perfs=new ModeloPerfiles();
+
+                $filtrada= $perfs->where([["id_usuario","=",$id],['id_estado','=',2]])
+                    ->orWhere([["id_usuario","=",$id],['id_estado','=',1]])
+                    ->get();
+                return new ApiResponse(200, "OK",
+                    $filtrada
+                );
+            }catch (Exception $e){
+                return new ApiResponse(
+                    500,
+                    "error en la base de datos",
+                    null
+                );
+            }
+
+
+    }
 
 
 
