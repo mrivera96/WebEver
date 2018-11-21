@@ -24,21 +24,6 @@ $(document).on("ready", function () {
  * FUNCIÓN AJAX PARA MOSTRAR LOS PERFILES ELIMINADOS
  ******************************************************************************************/
 var loadData = function () {
-  $('\n' +
-  '  <li id="boton" style="margin: 12px;" class="dropdown">'+
-  '  <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
-  '  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong>Administración de Perfiles</strong> <span class="caret"></span>'+
-  '  </button>'+
-  '  <ul id="despliege" class="dropdown-menu">'+
-  '  <li><a href="administrarPerfiles"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Perfiles activos</a></li>'+
-  '  <li><a href="solicitudesRechazadas"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Solicitudes Rechazadas</a></li>'+
-  '  <li><a href="perfilesEliminados"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Perfiles Eliminados</a></li>'+
-  '  <li role="separator" class="divider"></li>'+
-  '  </ul>'+
-  '  </li>'
-
-
-      ).insertBefore("#boton");
     $.ajax({
       type: "GET",
       url: "listarPerfiles",

@@ -21,36 +21,43 @@
         if (isset($_SESSION['token']) && !empty($_SESSION['token'])) {
           if (isset($_SESSION['rol']) && !empty($_SESSION['rol']) && $_SESSION['rol'] == 2) {
             ?>
-            <li id="boton" style="margin: 12px;" class="dropdown">
-              <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <strong>Panel de Control</strong> <span class="caret"></span>
-              </button>
+            <li><div  class="media ">
+              <img id="iconodeusuario" class="media-object img-circle circle-img " src="imagenes/admin.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <ul id="despliege" class="dropdown-menu">
-                <li> <a id = "colorIniciosecion" href = "./panelControlCliente"><img src="imagenes/config.png" height="15"></img> <strong>Panel de Control </strong></a></li>
-                <li><a href="./editarUsuarioCliente"><img src="imagenes/administracioncuenta.jpg" height="15"></img> <strong>Edición de Cuenta</strong></a></li>
+                <li> <a id = "colorIniciosecion" href = "./panelControlCliente"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Panel de Control </strong></a></li>
+                <li><a href="./editarUsuarioCliente"><strong><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edición de Cuenta</strong></a></li>
                 <li role="separator" class="divider"></li>
+              <!--  <li><button id="botoncierreSession" type="button" onclick="funCerrar()" class="btn btn-danger"><strong><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Cerrar Sesión</strong></button></li>-->
+                <li><button id="botoncierreSession" class="btn btn-danger ttboton " onclick="funCerrar()" ><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Cerrar Sesión</button></li>
+
               </ul>
-            </li>
+            </div>
+          </li>
 
 
-            <li> <button id="botoncierreSession" type="button"  id="guardar"  class="btn-card"   name="guardar" onclick="funCerrar()"
-              ><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <strong></strong></button></li>
               <?php
             } else {
               ?>
-              <li id="boton"  class="dropdown">
-                <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <strong>Panel de Control</strong> <span class="caret"></span>
-                </button>
+              <li><div  class="media ">
+                <img id="iconodeusuario" class="media-object img-circle circle-img " src="imagenes/admin.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <ul id="despliege" class="dropdown-menu">
-                  <li><a id = "colorIniciosecion" href="usuarios"><img src="imagenes/administracioncuenta.jpg" height="15"></img> <strong>Administración de Cuenta</strong></a></li>
-                  <li><a href="administrarPerfiles"><img src="imagenes/administracionperfil.jpg" height="15"></img> <strong>Administración de Perfil</strong></a></li>
+                  <li><a id = "colorIniciosecion" href="usuarios"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Administración de Cuenta</strong></a></li>
                   <li role="separator" class="divider"></li>
-                </ul>
-              </li>
+                  <li><a href="administrarPerfiles"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span><strong> Perfiles activos</strong></a></li>
+                  <li><a href="solicitudesNuevas"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Nuevas Solicitudes </a></li>
 
-              <li> <button id="botoncierreSession" type="button"  id="guardar"  class="btn-card"   name="guardar" onclick="funCerrar()"
-                ><span class="glyphicon glyphicon-off" aria-hidden="true"></span> <strong></strong></button></li>
+                  <li><a href="solicitudesRechazadas"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><strong> Solicitudes Rechazadas</strong></a></li>
+                  <li><a href="perfilesEliminados"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span><strong> Perfiles Eliminados</strong></a></li>
+                  <li role="separator" class="divider"></li>
+                <!--  <li><button id="botoncierreSession" type="button" onclick="funCerrar()" class="btn btn-danger"><strong><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Cerrar Sesión</strong></button></li>-->
+                  <li><button id="botoncierreSession" class="btn btn-danger ttboton " onclick="funCerrar()" ><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Cerrar Sesión</button></li>
+
+                </ul>
+              </div>
+            </li>
+
+
+
                 <?php
                 $message = 'Usuario o Contraseña incorrectas desde la sesion';
               }
