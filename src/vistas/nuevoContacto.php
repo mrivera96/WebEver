@@ -1,13 +1,11 @@
 <?php
-$titulo = 'Formulario Registro ';
+$titulo = "Nuevo Perfil";
 include_once 'documento-inicio.inc.php';
 include_once 'barra-de-navegacion-navbar.inc.php';
 ?>
 
-<head>
-  <link href="css/nuevoperfil.css" rel="stylesheet">
-  <link href="css/estilos_melvin.css" rel="stylesheet">
-</head>
+<head><link href="css/estilos_melvin.css" rel="stylesheet"></head>
+
 
 <div class="container responsive">
   <br/>
@@ -20,8 +18,18 @@ include_once 'barra-de-navegacion-navbar.inc.php';
         </div>
 
         <div class="panel-body">
-          <form id="formularioCrear" name="formularioCrear" role="form" method="post" action="../WebServices/insertarPerfilUsuario.php" target="formDestination">
+          <form id="formularioCrear" name="formularioCrear" role="form" method="post">
             <br/>
+            <div class="group text-center">
+              <img class="img-circle circle-img"  id="imgContc" src="imagenes/iconocontactowhite.png" width="90" height="90">
+            </div>
+            <div class="upload-btn-wrapper">
+              <button class="btn tt">Subir una imagen</button>
+              <input  onchange="encodeImagetoBase64(this)" style="display: none;" type="file" name="imagen"  id="imagen"/>
+              <br>
+              <br>
+            </div>
+
             <div class="group">
               <input type="text" required name="nomborg_rec" id="nombreOrg">
               <span class="highlight"></span>
@@ -88,17 +96,15 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
             <h5>Ingrese su Ubicación</h5>
 
-            <script type="text/javascript"
-            src="https://maps.google.com/maps/api/js?sensor=false">
-            </script>
 
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjOpSe_s3D6bX5abrOcQ5Yg8GGmUdhQn8&callback=initMap"
+
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEOxwsMZ7J9V7kqTr82JflRNORJchV4mM&callback=initMap"
             type="text/javascript"></script>
 
             <script type="text/javascript">
-            function getCoords(marker){
-              $("#latOrg").attr("value",marker.getPosition().lat());
-              $("#longOrg").attr("value",marker.getPosition().lng());
+            function getCoords(marker) {
+              $("#latOrg").attr("value", marker.getPosition().lat());
+              $("#longOrg").attr("value", marker.getPosition().lng());
 
             }
             function initialize() {
@@ -116,9 +122,9 @@ include_once 'barra-de-navegacion-navbar.inc.php';
               marker = new google.maps.Marker({
                 position: myLatlng,
                 draggable: true,
-                title:'danli'
+                title: 'danli'
               });
-              google.maps.event.addListener(marker, "dragend", function() {
+              google.maps.event.addListener(marker, "dragend", function () {
 
                 getCoords(marker);
 
@@ -132,7 +138,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
             </script>
             <body onload="initialize()">
-              <div id="map_canvas" style="width:100%; height:200px"></div><br>
+              <div id="map_canvas" style="width:100%; height:220px"></div><br>
 
               </body
 
@@ -143,9 +149,10 @@ include_once 'barra-de-navegacion-navbar.inc.php';
               <select class="form-control" id="categoria" name="id_categoria"></select>
 
 
-              <input type="hidden" name="imagen" value=""/>
+              <br>
+               <input  type="hidden" id="usuario"  name="id_usuario" value="<?php echo $_SESSION['idUrs'] ?>">
+              <input type="hidden" name="imagen" id="imagen" value=""/>
               <input type="hidden" name="nombre_imagen" value=""/>
-              <iframe class="oculto"  name="formDestination"></iframe>
               <button class="form-control" name="guardar" id="guardar"  type="button" style="background-color:#005662; color:white;" ><span class="glyphicon glyphicon-floppy-disk"></span>  Guardar</button>
 
               <div class="modal" id="Modal1" tabindex="-1" role="dialog">
@@ -161,15 +168,28 @@ include_once 'barra-de-navegacion-navbar.inc.php';
                       <p>El Perfil se ha creado con éxito.</p>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" onClick="javascript:(function(){window.location.href = 'contactosUsuario.php';})()">Aceptar</button>
+                      <button type="button" class="btn btn-primary" onClick="javascript:(function () {
+                        window.location.href = 'panelControlCliente';
+                      })()">Aceptar</button>
+
+
+
                     </div>
                   </div>
                 </div>
               </div>
             </form>
+
           </div>
+
+
+
+
         </div>
+
+
       </div>
+
     </div>
   </div>
   <br>
@@ -179,5 +199,6 @@ include_once 'barra-de-navegacion-navbar.inc.php';
   <?php
   include_once 'documento-cierre.inc.php';
   ?>
+
   <script type="text/javascript" src="js/Errores.js"></script>
-  <script src="js/vrcontactocrear.js"></script>
+  <script type="text/javascript" src="js/nuevoPerfilCliente.js"></script>

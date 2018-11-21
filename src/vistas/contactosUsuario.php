@@ -58,9 +58,10 @@ include_once 'barra-de-navegacion-navbar.inc.php';
   </div>
 
 
-  <a href="./nuevoPerfilCliente" class="float">
-    <i class="glyphicon glyphicon-plus my-float"></i>
+  <a id="float" href="nuevoPerfilCliente" >
+      <i class="glyphicon glyphicon-plus my-float"></i>
   </a>
+
   <?php
   include_once 'documento-cierre.inc.php';
   ?>
