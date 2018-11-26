@@ -413,7 +413,12 @@ class controladorPerfiles{
                 if(!Utilities::haveEmptyParameters(array('id'), $request, $response)){
                     $request_data = $request->getParsedBody();
                     $id=$request_data['id'];
-                    $resp = ModeloPerfiles::listarPerfilesCliente($id);
+                    if(isset($request_data['ste']) && !empty($request_data['ste'])){
+                        $ste=$request_data['ste'];
+                    }else{
+                        $ste=0;
+                    }
+                    $resp = ModeloPerfiles::listarPerfilesCliente($id,$ste);
 
                     $response->write(json_encode($resp->toArray2()));
                     return $response->withHeader('Content-type', 'application/json')
