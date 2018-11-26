@@ -191,12 +191,7 @@ body{
 .panel-body >form{
     padding-top: 15px
 }
-.oculto {
-    width:0;
-    height:0;
-    border:0;
-    border:none;
-}
+
 
 /*diseño de la lupa de el buscador de usuarios*/
 .form-control {
@@ -243,7 +238,7 @@ body{
     vertical-align: middle;
     border-radius: 8px;
     padding-top: 3px;
-    padding-bottom: 3px;
+   padding-bottom: 3px;
     height: 40px;
 }
 
@@ -264,18 +259,17 @@ body{
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*DISEÑO DE EL BOTTON DE CERRAR SESSCION EN EL dropdown */
 #botoncierreSession{
-  margin-left: 8%;
+  color: white;
+  text-align:left;
+  padding-left: 22px;
 }
+
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-/*DISEÑO DE EL BOTON DE BARRA DE NAVEGACION */
-#boton{
-  margin: 12px;
-
-}
-
+/*DISEÑO DE EL ICONO DE LA IMAGEN DEL USUARIO QUE SE LOGUEO*/
 #iconodeusuario{
 padding: 1px ;
 width: 40px;
@@ -287,14 +281,4 @@ height:40px;
 bottom:40px;
 right:40px;
 border-radius:35px;
-}
-
-.ttboton {
-  border: 2px solid gray;
-  color: gray;
-  background-color: white;
-  padding: 6px 6px;
-  border-radius: 8px;
-  font-size: 17px;
-  font-weight: bold;
 }

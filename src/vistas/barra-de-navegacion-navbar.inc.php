@@ -24,11 +24,10 @@
             <li><div  class="media ">
               <img id="iconodeusuario" class="media-object img-circle circle-img " src="imagenes/admin.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <ul id="despliege" class="dropdown-menu">
-                <li> <a id = "colorIniciosecion" href = "./panelControlCliente"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Panel de Control </strong></a></li>
+                <li> <a id = "colorIniciosecion" href = "./panelControlCliente"><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Panel de Control</strong></a></li>
                 <li><a href="./editarUsuarioCliente"><strong><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edición de Cuenta</strong></a></li>
                 <li role="separator" class="divider"></li>
-              <!--  <li><button id="botoncierreSession" type="button" onclick="funCerrar()" class="btn btn-danger"><strong><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Cerrar Sesión</strong></button></li>-->
-                <li><button id="botoncierreSession" class="btn btn-danger ttboton " onclick="funCerrar()" ><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Cerrar Sesión</button></li>
+               <li><a id = "botoncierreSession" class="btn"   onclick="funCerrar()"><strong><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Cerrar Sesión</strong></a></li>
 
               </ul>
             </div>
@@ -45,12 +44,11 @@
                   <li role="separator" class="divider"></li>
                   <li><a href="administrarPerfiles"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span><strong> Perfiles activos</strong></a></li>
                   <li><a href="solicitudesNuevas"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Nuevas Solicitudes </a></li>
-
                   <li><a href="solicitudesRechazadas"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><strong> Solicitudes Rechazadas</strong></a></li>
                   <li><a href="perfilesEliminados"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span><strong> Perfiles Eliminados</strong></a></li>
                   <li role="separator" class="divider"></li>
-                <!--  <li><button id="botoncierreSession" type="button" onclick="funCerrar()" class="btn btn-danger"><strong><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Cerrar Sesión</strong></button></li>-->
-                  <li><button id="botoncierreSession" class="btn btn-danger ttboton " onclick="funCerrar()" ><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Cerrar Sesión</button></li>
+                <li><a id = "botoncierreSession" class="btn"   onclick="funCerrar()"><strong><span class="glyphicon glyphicon-off" aria-hidden="true"></span>  Cerrar Sesión</strong></a></li>
+
 
                 </ul>
               </div>

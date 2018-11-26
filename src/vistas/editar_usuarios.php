@@ -42,8 +42,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
                             </div>
 
                             <!-- CUADRO MODAL DE ELIMINACION DE UN USUARIO-->
-                            <iframe class="oculto"  name="formDestination"></iframe>
-                            <button  type="button" onclick="validarFormulario()" id="btn" class="form-control"  name="Submit" style="width:100%; background-color:#005662; color:white;"> <span class="glyphicon glyphicon-floppy-disk"></span>  Guardar</button>
+                            <button  type="button" onclick="validarFormulario()" id="btn" class="form-control"  name="Submit" style="width:100%; background-color:#005662; color:white;"> <span class="glyphicon glyphicon-floppy-disk"></span>  Guardar Cambios</button>
                             <br>
                             <button class="form-control btn btn-danger " data-toggle="modal"  data-target="#Modal" type="button"  style="width:100%;  color:white;"> <span class="glyphicon glyphicon-trash"></span>  Eliminar Usuario</button>
 
