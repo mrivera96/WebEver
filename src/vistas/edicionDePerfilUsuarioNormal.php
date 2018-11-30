@@ -20,9 +20,19 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
         <div class="panel-body">
           <form id="formularioEditar" name="formularioEditar" role="form" method="post" target="formDestination">
-            <div class="form-group text-center">
-              <img style="width: 250px; height: 250px" class="img-circle img-circle" id="imganenOrg">
-            </div><br><br>
+
+            <br/>
+            <div class="group text-center">
+              <img class="img-circle circle-img"  id="imgContc" src="imagenes/iconocontactowhite.png" width="90" height="90">
+            </div>
+            <div class="upload-btn-wrapper">
+              <button class="btn tt">Subir una imagen</button>
+              <input  onchange="encodeImagetoBase64(this)" style="display: none;" type="file" name="imagen"  id="imagen"/>
+              <br>
+              <br>
+              <br>
+
+            </div>
 
 
             <div class="group" id="nombreDeOrg">
