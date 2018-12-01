@@ -19,7 +19,7 @@ include_once 'barra-de-navegacion-navbar.inc.php'?>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 subtext to-animate">
           <p style="font-size: 16px;">
-            Toda la información relevante de los desarrolladores y de las politicas de la pagina web y aplicación movil.</p>
+            Toda la información relevante de los desarrolladores y de las políticas de la página web y aplicación móvil. </p>
 				</div>
 			</div>
 		</div>
