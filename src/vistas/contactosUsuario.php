@@ -28,9 +28,9 @@ include_once 'barra-de-navegacion-navbar.inc.php';
           <div class="fh5co-person text-center to-animate">
             <figure><img id="suspendido" src="imagenes/pendiente.png" alt="Image"></figure>
             <h3>Contactos Pendientes</h3>
-            <span class="fh5co-position">Contactos en espera de ser aprovados</span>
+            <span class="fh5co-position">Contactos en espera de ser aprobados</span>
             <p style="font-size: 16px;">
-              Estos Son tus contactos que se han enviado a el administrador para su posterior aprovación.</p>
+            Estos Son tus contactos que se han enviado a el administrador para su posterior aprobación.</p>
                 </br>
             <p ><a id="botn" href="contactosPendientesCliente" class="btn btn-primary">Ver Contactos Pendientes</a></p>
           </div>
@@ -42,9 +42,9 @@ include_once 'barra-de-navegacion-navbar.inc.php';
           <div class="fh5co-person text-center to-animate">
             <figure><img id="suspendido"  src="imagenes/aprovados.png" alt="Image"></figure>
             <h3>Contactos Aprobados</h3>
-            <span class="fh5co-position">Contactos ya aprovados por el administardor</span>
+            <span class="fh5co-position">Contactos ya aprobados por el administrador</span>
             <p style="font-size: 16px;">
-              Estos son tus contactos que el administrador ya aprobó y que se encuentran en uso.</p>
+                Estos son tus contactos que el administrador ya aprobó y que se encuentran en uso.</p>
                 </br>
               <p ><a id="botn" href="contactosAprobadosCliente" class="btn btn-primary">Ver Contactos Aprobados</a>
               </div>

@@ -3,7 +3,6 @@ $(document).on("ready", function () {
   loadData();
 });
 
-$(document).on("ready", function () { loadData(); });
 
 
 /*****************************************************************************************
