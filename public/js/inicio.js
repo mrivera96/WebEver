@@ -35,5 +35,41 @@ var loadData = function () {
         }
 
     });
+    $.ajax({
+      type: "GET",
+      url: "regiones",
+      statusCode:{
+        200:function (data) {
+          var regiones = data.content;
+          for (var i in regiones) {
+            $("#region").append(
+                '<option value="' + regiones[i].id_region + '"> ' + regiones[i].nombre_region + '</option>'
+            );
+          }
+          $.ajax({
+            type: "GET",
+            url: "categorias",
+            statusCode:{
+              200:function (data) {
+                var categorias = data.content;
+                for (var i in categorias) {
+                  $("#categoria").append(
+                    '<option value="' + categorias[i].id_categoria + ' "> ' + categorias[i].nombre_categoria + '</option>'
+                  );
+                }
+              },
+              500: function(){
+                mostrarError(document.formulario, ERROR40);
+              }
+            }
+          });
+        },
+        500: function(){
+          mostrarError(document.formulario, ERROR40);
+
+        },
+
+      }
+    });
 
 };
