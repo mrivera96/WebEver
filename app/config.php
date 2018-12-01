@@ -27,9 +27,13 @@ $app = new \Slim\App([
 ]);
 
 $container = $app->getContainer();
+$container['renderer'] = new PhpRenderer(__DIR__ . "/../src/vistas");
 /******************************************************************************************
  *                              DEFINICIÓN DE LOS CONTROLADORES                           *
  ******************************************************************************************/
+$container['controladorVistas']= function ($container){
+    return new App\controladores\controladorVistas($container);
+};
 $container['controladorCategorias']= function ($container){
     return new App\controladores\controladorCategorias;
 };
@@ -49,7 +53,8 @@ $container['controladorRegiones']= function ($container){
 };
 
 
-$container['renderer'] = new PhpRenderer(__DIR__ . "/../src/vistas");
+
+
 
 /******************************************************************************************
  *                  CONFIGURACIÓN DE ELOQUENT PARA LA BASE DE DATOS                       *

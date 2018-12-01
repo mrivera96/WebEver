@@ -64,7 +64,7 @@ var loadData = function ()
           /************************************************************************************************/
 
 
-          if (informacionContacto[i].imagen != "") {
+          if (informacionContacto[i].imagen !==null) {
             imagen = informacionContacto[i].imagen;
           } else {
             imagen = "imagenes/iconocontactowhite.png";
