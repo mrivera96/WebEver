@@ -38,7 +38,7 @@ var loadData = function () {
 
 
           for (var i in contacto) {
-            if (contacto[i].imagen !== "") {
+            if (contacto[i].imagen !== null) {
               imagen = contacto[i].imagen;
             } else {
               imagen = "imagenes/iconocontactowhite.png";

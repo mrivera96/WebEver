@@ -83,7 +83,7 @@ var loadData = function () {
 
 
         for (var i in perfiles) {
-          if (perfiles[i].imagen !== "") {
+          if (perfiles[i].imagen !== null) {
             imagen = perfiles[i].imagen;
           } else {
             imagen = "imagenes/iconocontactowhite.png";

@@ -18,7 +18,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
         <div class="row">
           <div class="col-md-8 col-md-offset-2 subtext to-animate">
             <p style="font-size: 16px;">
-              En este panel podras agregar un nuevo contacto,ver tus contactos pendientes y cuales de ellos ya fuerón aprovados por el administrador.</p>
+              En este panel podrás agregar un nuevo contacto, ver tus contactos pendientes y cuáles de ellos ya fueron aprobados por el administrador.</p>
             </div>
           </div>
         </div>

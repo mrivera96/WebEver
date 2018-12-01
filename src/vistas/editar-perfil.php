@@ -19,7 +19,7 @@ include_once 'barra-de-navegacion-navbar.inc.php';
                     <form id="formularioEditar" name="formularioEditar" role="form" method="post" >
                       <br/>
                       <div class="group text-center">
-                        <img class="img-circle circle-img"  id="imgContc" src="imagenes/iconocontactowhite.png" width="250" height="250">
+                        <img class="img-circle circle-img"  id="imgContc"  width="250" height="250">
                       </div>
                       <div class="upload-btn-wrapper">
                         <button class="btn tt">Subir una imagen</button>

@@ -63,13 +63,13 @@ var loadData = function () {
         //document.getElementById("colorIniciosecion").click();
 
         for (var i in perfiles) {
-          if (perfiles[i].imagen !== "") {
+          if (perfiles[i].imagen !== null) {
             imagen = perfiles[i].imagen;
           } else {
             imagen = "imagenes/iconocontactowhite.png";
           };
 
-          $("#imganenOrg").attr("src", imagen);
+          $("#imgContc").attr("src", imagen);
           $("#nombreOrg").attr("value", perfiles[i].nombre_organizacion);
           $("#numtelOrg").attr("value", perfiles[i].numero_fijo);
           $("#numcelOrg").attr("value", perfiles[i].numero_movil);
