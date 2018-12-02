@@ -1,13 +1,9 @@
-<?php
-$titulo = 'Formulario de  Registro';
-include_once 'documento-inicio.inc.php';
-include_once 'barra-de-navegacion-navbar.inc.php';
-?>
+{% extends 'templates/platilla.twig' %}
 
+{% block content %}
 
-<head>
   <link href="css/estilos_alan.css" rel="stylesheet">
-</head>
+
 
 <h3 class="panel-title"> <strong><center style="color: #005662">   Registrar</center></strong><br></H3>
 
@@ -94,11 +90,8 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
 
 
-
-
-
-  <?php
-  include_once 'documento-cierre.inc.php';
-  ?>
+{% endblock %}
+{% block scriptPagina %}
   <script type="text/javascript" src="js/Errores.js"></script>
   <script type="text/javascript" src="js/registrarCuentaUsuario.js"></script>
+{% endblock %}

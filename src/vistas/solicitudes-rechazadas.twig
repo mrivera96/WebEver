@@ -1,17 +1,14 @@
-<?php
-$titulo = "Perfiles Eliminados";
-include_once 'documento-inicio.inc.php';
-include_once 'barra-de-navegacion-navbar.inc.php';
-?>
+{% extends 'templates/platilla.twig' %}
+{% block content %}
 
-<head><link href="css/estilos_melvin.css" rel="stylesheet"></head>
+<link href="css/estilos_melvin.css" rel="stylesheet">
 
 <form name="formulario" type="hidden" role="form" id="formulario">
 </form>
 
 <div id="encabezado_contactos_activos" class="container">
   <div class="col-md-9 col-sm-9 col-xs-9">
-    <h4 style="color: white"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Perfiles Eliminados</h4>
+    <h4 style="color: white"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Solicitudes Rechazadas</h4>
   </div>
   <div class="col-md-3 col-sm-3 col-xs-3 ">
 
@@ -29,10 +26,9 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
   </div>
 </div>
-
-<?php
-include_once 'documento-cierre.inc.php';
-?>
+{% endblock %}
+{% block scriptPagina %}
 <script type="text/javascript" src="js/Errores.js"></script>
 <script type="text/javascript" src="js/modalerror.js"> </script>
-<script src="js/perfilesEliminados.js"></script>
+<script src="js/solicitudesRechazadas.js"></script>
+{% endblock %}

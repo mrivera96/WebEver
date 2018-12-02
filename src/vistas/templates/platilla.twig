@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html  lang="es">
+
+<head>
+
+    {% block cabecera %}
+
+        <meta charset="UTF-8">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>{{ titulo }}</title>
+
+        <link rel="shortcut icon" href="imagenes/aeoico.ico" />
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/estilos.css" rel="stylesheet">
+
+    {% endblock %}
+</head>
+
+<body>
+
+{% include 'templates/barra-de-navegacion-navbar.twig' %}
+
+{% if buscador==true %}
+
+    {% include 'templates/buscador.twig' %}
+
+{% endif %}
+
+{% block content %}
+
+{% endblock %}
+
+<br>
+
+<br>
+
+{% include 'templates/footer.twig' %}
+
+{% block scriptsnativos %}
+    <script src="js/jquery-2.2.4.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+
+        function funCerrar() {
+            $.ajax({
+                type: "GET",
+                url: "cerrarSession",
+                statusCode:{
+                    200:function (data) {
+                        window.location.href = 'inicio';
+
+                    }
+                }
+            });
+        };
+    </script>
+{% endblock %}
+
+{% block scriptPagina %}
+
+{% endblock %}
+</body>
+
+</html>

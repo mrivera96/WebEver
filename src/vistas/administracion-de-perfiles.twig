@@ -1,12 +1,6 @@
-<?php
-
-$titulo = "Administración de Perfiles";
-
-include_once 'documento-inicio.inc.php';
-include_once 'barra-de-navegacion-navbar.inc.php';
-
-?>
-<head><link href="css/estilos_melvin.css" rel="stylesheet"></head>
+{% extends 'templates/platilla.twig' %}
+{% block content %}
+<link href="css/estilos_melvin.css" rel="stylesheet">
 
 <div id="encabezado_contactos_activos" class="container">
   <form name="formulario" type="hidden" role="form" id="formulario">
@@ -38,9 +32,9 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
 </div>
 
-<?php
-include_once 'documento-cierre.inc.php';
-?>
+{% endblock %}
+{% block scriptPagina %}
 <script type="text/javascript" src="js/Errores.js"></script>
 <script type="text/javascript" src="js/modalerror.js"> </script>
 <script src="js/administracionPerfiles.js"></script>
+{% endblock %}

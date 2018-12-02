@@ -5,36 +5,85 @@ use Slim\Http\Response as Response;
 use Slim\Http\Request as Request;
 class controladorVistas{
     private $container=null;
+
     public function __construct($container){
         $this->container=$container;
     }
 
     public function index(Request $request,Response $response){
-        return $this->container->renderer->render($response, "/inicio.php");
+
+        if (!isset($titulo) || empty($titulo)) {
+            $titulo = 'Agenda Electroníca Oriental';
+        }
+        $params=['titulo'=>$titulo,
+            'rol'=>$this->verificarLogin(),
+            'buscador'=>true];
+        return $this->container->renderer->render($response, "inicio.twig",$params);
     }
 
     public function acercade(Request $request,Response $response){
-        return $this->container->renderer->render($response, "/acercadeweb.php");
+        $titulo = 'Acerca de....';
+        $params=['titulo'=>$titulo,
+            'rol'=>$this->verificarLogin(),
+            'buscador'=>false
+        ];
+        return $this->container->renderer->render($response, "/acercadeweb.twig",$params);
     }
     public function resultados(Request $request,Response $response){
-        return $this->container->renderer->render($response, "/resultado_busqueda.php");
+        $titulo = 'Resultado de búsqueda';
+        $params=['titulo'=>$titulo,
+            'rol'=>$this->verificarLogin(),
+            'buscador'=>true,
+            'busqueda'=>$request->getParam('busqueda'),
+            'region'=>$request->getParam('region'),
+            'categoria'=>$request->getParam('categoria')
+        ];
+        return $this->container->renderer->render($response, "/resultado_busqueda.twig",$params);
     }
     public function perfiles(Request $request,Response $response){
-        return $this->container->renderer->render($response, "/listaDeContactos.php");
+        $titulo = 'Lista de Contactos';
+        $params=['titulo'=>$titulo,
+            'rol'=>$this->verificarLogin(),
+            'buscador'=>true,
+            'cty'=>$request->getParam('cty'),
+            'name_cty'=>$request->getParam('name_cty')];
+        return $this->container->renderer->render($response, "/listaDeContactos.twig",$params);
     }
     public function perfil(Request $request,Response $response){
-        return $this->container->renderer->render($response, "/PerfilOrganizacion.php");
+        $titulo = 'Perfil de Contacto';
+        $params=['titulo'=>$titulo,
+            'rol'=>$this->verificarLogin(),
+            'buscador'=>true,
+            'cto'=>$request->getParam('cto')
+            ];
+        return $this->container->renderer->render($response, "/PerfilOrganizacion.twig",$params);
     }
     public function mapa(Request $request,Response $response){
-        return $this->container->renderer->render($response, "/mapa.php");
+        $titulo = 'Ubicación';
+        $params=['titulo'=>$titulo,
+            'rol'=>$this->verificarLogin(),
+            'buscador'=>false,
+            'numct'=>$request->getParam('numct')
+        ];
+        return $this->container->renderer->render($response, "/mapa.twig",$params);
     }
     public function registro(Request $request,Response $response){
-        return $this->container->renderer->render($response, "/registrarCuentaUsuario.php");
+        $titulo = 'Formulario de  Registro';
+        $params=['titulo'=>$titulo,
+            'rol'=>$this->verificarLogin(),
+            'buscador'=>false,
+        ];
+        return $this->container->renderer->render($response, "/registrarCuentaUsuario.twig",$params);
     }
     public function login(Request $request,Response $response){
         switch($this->redirectionLogin()){
             case 0:
-                return $this->container->renderer->render($response, "/login.php");
+                $titulo = 'Acceder a la cuenta';
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                ];
+                return $this->container->renderer->render($response, "/login.twig",$params);
                 break;
             case 1:
                 return $response->withHeader('Location','usuarios');
@@ -48,7 +97,12 @@ class controladorVistas{
     public function usuarios(Request $request,Response $response){
         switch ($this->verificarLogin()){
             case 1:
-                return $this->container->renderer->render($response, "/mostrar_usuarios.php");
+                $titulo = 'Usuarios';
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                ];
+                return $this->container->renderer->render($response, "/mostrar_usuarios.twig",$params);
                 break;
             case 2:
                 return $response ->withHeader('Location','inicio');
@@ -61,7 +115,12 @@ class controladorVistas{
     public function nuevoUsuario(Request $request,Response $response){
         switch ($this->verificarLogin()){
             case 1:
-                return $this->container->renderer->render($response, "/formulario_registro.php");
+                $titulo = 'Formulario de Registro';
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                ];
+                return $this->container->renderer->render($response, "/formulario_registro.twig",$params);
                 break;
             case 2:
                 return $response ->withHeader('Location','inicio');
@@ -74,7 +133,14 @@ class controladorVistas{
     public function editarUsuario(Request $request,Response $response){
         switch ($this->verificarLogin()){
             case 1:
-                return $this->container->renderer->render($response, "/editar_usuarios.php");
+                $titulo = 'Edición de Cuenta';
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                    'usuario'=>$request->getParam('usuario'),
+                    'id_logueado'=>$_SESSION['idUrs']
+                ];
+                return $this->container->renderer->render($response, "/editar_usuarios.twig",$params);
                 break;
             case 2:
                 return $response ->withHeader('Location','inicio');
@@ -87,7 +153,12 @@ class controladorVistas{
     public function administrarPerfiles(Request $request,Response $response){
         switch ($this->verificarLogin()){
             case 1:
-                return $this->container->renderer->render($response, "/administracion-de-perfiles.php");
+                $titulo = "Administración de Perfiles";
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                ];
+                return $this->container->renderer->render($response, "/administracion-de-perfiles.twig",$params);
                 break;
             case 2:
                 return $response ->withHeader('Location','inicio');
@@ -100,7 +171,12 @@ class controladorVistas{
     public function nuevoPerfilAdmin(Request $request,Response $response){
         switch ($this->verificarLogin()){
             case 1:
-                return $this->container->renderer->render($response, "/nuevo-perfil.php");
+                $titulo = "Nuevo Perfil";
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                ];
+                return $this->container->renderer->render($response, "/nuevo-perfil.twig",$params);
                 break;
             case 2:
                 return $response ->withHeader('Location','inicio');
@@ -113,7 +189,13 @@ class controladorVistas{
     public function editarPerfilAdmin(Request $request,Response $response){
         switch ($this->verificarLogin()){
             case 1:
-                return $this->container->renderer->render($response, "/editar-perfil.php");
+                $titulo = "Edición de Perfil";
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                    'cto'=>$request->getParam('cto')
+                ];
+                return $this->container->renderer->render($response, "/editar-perfil.twig",$params);
                 break;
             case 2:
                 return $response ->withHeader('Location','inicio');
@@ -126,7 +208,12 @@ class controladorVistas{
     public function solicitudesNuevas(Request $request,Response $response){
         switch ($this->verificarLogin()){
             case 1:
-                return $this->container->renderer->render($response, "/nuevas-solicitudes.php");
+                $titulo = "Nuevas Solicitudes";
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                ];
+                return $this->container->renderer->render($response, "/nuevas-solicitudes.twig",$params);
                 break;
             case 2:
                 return $response ->withHeader('Location','inicio');
@@ -139,7 +226,12 @@ class controladorVistas{
     public function solicitudesRechazadas(Request $request,Response $response){
         switch ($this->verificarLogin()){
             case 1:
-                return $this->container->renderer->render($response, "/solicitudes-rechazadas.php");
+                $titulo = "Solicitudes Rechazadas";
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                ];
+                return $this->container->renderer->render($response, "/solicitudes-rechazadas.twig",$params);
                 break;
             case 2:
                 return $response ->withHeader('Location','inicio');
@@ -152,7 +244,12 @@ class controladorVistas{
     public function perfilesEliminados(Request $request,Response $response){
         switch ($this->verificarLogin()){
             case 1:
-                return $this->container->renderer->render($response, "/perfiles-eliminados.php");
+                $titulo = "Perfiles Eliminados";
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                ];
+                return $this->container->renderer->render($response, "/perfiles-eliminados.twig",$params);
                 break;
             case 2:
                 return $response ->withHeader('Location','inicio');
@@ -168,7 +265,12 @@ class controladorVistas{
                 return $response ->withHeader('Location','inicio');
                 break;
             case 2:
-                return $this->container->renderer->render($response, "/contactosUsuario.php");
+                $titulo = 'Contactos';
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                ];
+                return $this->container->renderer->render($response, "/contactosUsuario.twig",$params);
                 break;
             case 0:
                 return $response ->withHeader('Location','inicio');
@@ -181,33 +283,33 @@ class controladorVistas{
                 return $response ->withHeader('Location','inicio');
                 break;
             case 2:
-                return $this->container->renderer->render($response, "/contactosUsuarioAprobado.php");
+                $titulo = 'Contactos Aprobados';
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                    'id_logueado'=>$_SESSION['idUrs']
+                ];
+                return $this->container->renderer->render($response, "/contactosUsuarioAprobado.twig",$params);
                 break;
             case 0:
                 return $response ->withHeader('Location','inicio');
                 break;
         }
     }
-    public function contactosEliminadosCliente(Request $request,Response $response){
-        switch ($this->verificarLogin()){
-            case 1:
-                return $response ->withHeader('Location','inicio');
-                break;
-            case 2:
-                return $this->container->renderer->render($response, "/contactosUsuarioEliminado.php");
-                break;
-            case 0:
-                return $response ->withHeader('Location','inicio');
-                break;
-        }
-    }
+
     public function contactosPendientesCliente(Request $request,Response $response){
         switch ($this->verificarLogin()){
             case 1:
                 return $response ->withHeader('Location','inicio');
                 break;
             case 2:
-                return $this->container->renderer->render($response, "/contactosUsuariosPendientes.php");
+                $titulo = 'Contactos Pendientes';
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                    'id_logueado'=>$_SESSION['idUrs']
+                ];
+                return $this->container->renderer->render($response, "/contactosUsuariosPendientes.twig",$params);
                 break;
             case 0:
                 return $response ->withHeader('Location','inicio');
@@ -220,7 +322,13 @@ class controladorVistas{
                 return $response ->withHeader('Location','inicio');
                 break;
             case 2:
-                return $this->container->renderer->render($response, "/editarUsuarioNormal.php");
+                $titulo = 'Edición de Cuenta';
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                    'id_logueado'=>$_SESSION['idUrs']
+                ];
+                return $this->container->renderer->render($response, "/editarUsuarioNormal.twig",$params);
                 break;
             case 0:
                 return $response ->withHeader('Location','inicio');
@@ -233,7 +341,13 @@ class controladorVistas{
                 return $response ->withHeader('Location','inicio');
                 break;
             case 2:
-                return $this->container->renderer->render($response, "/edicionDePerfilUsuarioNormal.php");
+                $titulo = "Edición de Perfil";
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false,
+                    'cto'=>$request->getParam('cto')
+                ];
+                return $this->container->renderer->render($response, "/edicionDePerfilUsuarioNormal.twig",$params);
                 break;
             case 0:
                 return $response ->withHeader('Location','inicio');
@@ -246,7 +360,12 @@ class controladorVistas{
                 return $response ->withHeader('Location','inicio');
                 break;
             case 2:
-                return $this->container->renderer->render($response, "/nuevoContacto.php");
+                $titulo = "Nuevo Perfil";
+                $params=['titulo'=>$titulo,
+                    'rol'=>$this->verificarLogin(),
+                    'buscador'=>false
+                ];
+                return $this->container->renderer->render($response, "/nuevoContacto.twig",$params);
                 break;
             case 0:
                 return $response ->withHeader('Location','inicio');

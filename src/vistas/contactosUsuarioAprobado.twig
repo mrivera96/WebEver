@@ -1,13 +1,9 @@
-<?php
-$titulo = 'Contactos Aprobados';
-include_once 'documento-inicio.inc.php';
-include_once 'barra-de-navegacion-navbar.inc.php';
-?>
+{% extends 'templates/platilla.twig' %}
+{% block content %}
 
-        <head>
             <link href="css/estiloslogin.css" rel="stylesheet">
             <link href="css/estilos_melvin.css" rel="stylesheet">
-        </head>
+
 
 
 
@@ -35,11 +31,11 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
 
 
-        <?php
-        include_once 'documento-cierre.inc.php';
-            ?>
+{% endblock %}
+{% block scriptPagina %}
             <script type="text/javascript">
-                var id_logueado=<?php echo $_SESSION['idUrs']; ?>;
+                var id_logueado={{ id_logueado }};
                 </script>
                 <script type="text/javascript" src="js/Errores.js"></script>
                 <script type="text/javascript" src="js/coctactosusuarioaprovados.js"></script>
+{% endblock %}

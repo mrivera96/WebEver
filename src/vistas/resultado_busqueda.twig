@@ -1,9 +1,5 @@
-<?php
-include_once 'documento-inicio.inc.php';
-include_once 'barra-de-navegacion-navbar.inc.php';
-include_once 'buscador.inc.php';
-?>
-
+{% extends 'templates/platilla.twig' %}
+{% block content %}
 <link href="css/estilos_alan.css" rel="stylesheet">
 
 
@@ -28,10 +24,8 @@ include_once 'buscador.inc.php';
     </div>
 </div>
 
-
-<?php
-include_once 'documento-cierre.inc.php';
-?>
+{% endblock %}
+{% block scriptPagina %}
 <script>
     $(document).on("ready", function(){ loadData(); });
     var loadData = function(){
@@ -70,7 +64,7 @@ include_once 'documento-cierre.inc.php';
         $.ajax({
             type:"GET",
             url:"buscar",
-            data: {'busqueda':'<?php echo $_GET['busqueda']?>','region':"<?php echo $_GET['region']?>",'categoria':"<?php echo $_GET['categoria']?>"},
+            data: {'busqueda':'{{ busqueda }}','region':"{{ region }}",'categoria':"{{ categoria }}"},
 
             statusCode:{
                 200: function(data){
@@ -82,10 +76,10 @@ include_once 'documento-cierre.inc.php';
                     var telefono;
 
                     for (var i in perfiles){
-                        if(perfiles[i].imagen!=""){
+                        if(perfiles[i].imagen!==null){
                             imagen=perfiles[i].imagen;
                         }else{
-                            imagen="https://cdn.icon-icons.com/icons2/37/PNG/512/contacts_3695.png";
+                            imagen="imagenes/iconocontactowhite.png";
                         };
                         if(perfiles[i].numero_fijo!=""){
                             telefono=perfiles[i].numero_fijo;
@@ -118,3 +112,4 @@ include_once 'documento-cierre.inc.php';
     }
 
 </script>
+{% endblock %}

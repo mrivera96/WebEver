@@ -1,13 +1,9 @@
-<?php
-$titulo = 'Contactos Pendientes';
-include_once 'documento-inicio.inc.php';
-include_once 'barra-de-navegacion-navbar.inc.php';
-?>
+{% extends 'templates/platilla.twig' %}
+{% block content %}
 
-<head>
   <link href="css/estiloslogin.css" rel="stylesheet">
   <link href="css/estilos_melvin.css" rel="stylesheet">
-</head>
+
 
         <div id="encabezado_contactos_activos" class="container">
           <div class="col-md-9 col-sm-9 col-xs-9">
@@ -31,11 +27,11 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 </div>
 
 
-<?php
-include_once 'documento-cierre.inc.php';
-?>
+{% endblock %}
+{% block scriptPagina %}
 <script type="text/javascript">
-    var id_logueado=<?php echo $_SESSION['idUrs']; ?>;
+    var id_logueado={{ id_logueado }};
     </script>
         <script type="text/javascript" src="js/Errores.js"></script>
         <script type="text/javascript" src="js/contactosusuariospendientes.js"></script>
+{% endblock %}

@@ -1,8 +1,5 @@
-<?php
-$titulo = 'Edición de Cuenta';
-include_once 'documento-inicio.inc.php';
-include_once 'barra-de-navegacion-navbar.inc.php';
-?>
+{% extends 'templates/platilla.twig' %}
+{% block content %}
 
     <link href="css/estilos_alan.css" rel="stylesheet">
 
@@ -79,33 +76,25 @@ include_once 'barra-de-navegacion-navbar.inc.php';
                                             <p>El Usuario se ha actualizado con éxito.</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" onClick="javascript:(function () {
-                                                                window.location.href = 'usuarios';
-                                                            })()">Aceptar</button>
-
+                                                <button type="button" class="btn btn-primary" onClick="javascript:(function () {
+                                                     window.location.href = 'cerrarSession';
+                                                               })()">Aceptar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
-
-
-<?php
-include_once 'documento-cierre.inc.php';
-?>
+{% endblock %}
+{% block scriptPagina %}
 <script type="text/javascript">
-    var usuario=<?php echo $_GET['usuario']; ?>;
-    var id_logueado=<?php echo $_SESSION['idUrs']; ?>;
+    var id_logueado={{ id_logueado }};
 </script>
 <script src="js/Errores.js"></script>
-<script src="js/editar_usuarios.js">
-
-</script>
+<script src="js/editar_usuario_normal.js"></script>
+{% endblock %}

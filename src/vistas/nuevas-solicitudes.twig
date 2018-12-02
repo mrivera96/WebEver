@@ -1,10 +1,6 @@
-<?php
-$titulo = "Nuevas Solicitudes";
-include_once 'documento-inicio.inc.php';
-include_once 'barra-de-navegacion-navbar.inc.php';
-?>
-
-<head><link href="css/estilos_melvin.css" rel="stylesheet"></head>
+{% extends 'templates/platilla.twig' %}
+{% block content %}
+<link href="css/estilos_melvin.css" rel="stylesheet">
 
 <form name="formulario" type="hidden" role="form" id="formulario">
 </form>
@@ -71,9 +67,9 @@ include_once 'barra-de-navegacion-navbar.inc.php';
   </div>
 
 
-    <?php
-    include_once 'documento-cierre.inc.php';
-    ?>
+{% endblock %}
+{% block scriptPagina %}
       <script type="text/javascript" src="js/Errores.js"></script>
     <script type="text/javascript" src="js/modalerror.js"> </script>
     <script src="js/nuevasSolicitudes.js"></script>
+{% endblock %}

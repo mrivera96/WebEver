@@ -1,10 +1,5 @@
-<?php
-include_once 'documento-inicio.inc.php';
-include_once 'barra-de-navegacion-navbar.inc.php'?>
-
-<?php $titulo = 'Acerca de....'; ?>
-
-
+{% extends 'templates/platilla.twig' %}
+{% block content %}
   <link href="css/estilos_alan.css" rel="stylesheet">
 
 
@@ -69,4 +64,4 @@ include_once 'barra-de-navegacion-navbar.inc.php'?>
 
   </div>
 
-  <?php include_once 'documento-cierre.inc.php'; ?>
+{% endblock %}

@@ -1,15 +1,6 @@
-<?php
-
-include_once 'documento-inicio.inc.php';
-include_once 'barra-de-navegacion-navbar.inc.php';
-$titulo = 'Acceder a la cuenta';
-
-?>
-<head>
+{% extends 'templates/platilla.twig' %}
+{% block content %}
     <link href="css/estiloslogin.css" rel="stylesheet">
-</head>
-
-
 
 <!--FORMULARIO DE LOGUIN-->
 <div  class="container well" id="contenedor">
@@ -45,9 +36,8 @@ $titulo = 'Acceder a la cuenta';
 
 </div>
 
-
-<?php
-include_once 'documento-cierre.inc.php';
-?>
+{% endblock %}
+{% block scriptPagina %}
 <script type="text/javascript" src="js/Errores.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
+{% endblock %}

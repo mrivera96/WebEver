@@ -1,9 +1,5 @@
-<?php
-$titulo = 'Usuarios';
-include_once 'documento-inicio.inc.php';
-include_once 'barra-de-navegacion-navbar.inc.php';
-?>
-
+{% extends 'templates/platilla.twig' %}
+{% block content %}
     <link href="css/estilos_alan.css" rel="stylesheet">
     <link href="css/estiloslogin.css" rel="stylesheet">
 
@@ -41,9 +37,9 @@ include_once 'barra-de-navegacion-navbar.inc.php';
         <i class="glyphicon glyphicon-plus my-float"></i>
     </a>
 
-<?php
-include_once 'documento-cierre.inc.php';
-?>
+{% endblock %}
+{% block scriptPagina %}
 <script type="text/javascript" src="js/Errores.js"></script>
 <script type="text/javascript" src="js/modalerror.js"> </script>
 <script type="text/javascript" src="js/mostrar_usuarios.js"></script>
+{% endblock %}
