@@ -6,59 +6,62 @@ include_once 'barra-de-navegacion-navbar.inc.php';
 
 <link href="css/estiloslogin.css" rel="stylesheet">
 <link href="css/estilos_melvin.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
 
-
-<section id="fh5co-about" data-section="about">
-  <div class="container">
+<div class="container" id="">
+  <div class="row" style="margin-top: 10px;" id="contedidodecategoriascontacto">
     <div class="row">
-      <div class="col-md-12 section-heading text-center">
-        <h2 class="to-animate">Panel de Control</h2>
-        <hr id="diseñoseparador">
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2 subtext to-animate">
-            <p style="font-size: 16px;">
-              En este panel podrás agregar un nuevo contacto, ver tus contactos pendientes y cuáles de ellos ya fueron aprobados por el administrador.</p>
+      <div class="col-sm-6 col-md-6">
+        <div class="panel panel-default">
+          <div  class="panel-heading" style="height: 40px">
+            <h3 class="panel-title">
+              <center>Contactos Pendientes<br><br></center>
+              <br>
+              <br>
+            </h3>
+          </div>
+          <div class="coll">
+            <center>
+              <img src="imagenes/pendiente.png" height="200px" class="img-fluid imagenAcercadeWeb " alt="Imagen no Disponible" title="Imagen Agenda Electronica Digital" >
+            </center>
+          </div>
+          <div class="panel-body">
+            <center>
+              <p ><a href="contactosPendientesCliente" class="btn btn-primary">Ver Contactos Pendientes</a></p>
+            </center>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-6">
+        <div class="panel panel-default">
+          <div  class="panel-heading" style="height: 40px">
+            <h3 class="panel-title">
+              <center>Contactos Aprobados<br><br></center>
+              <br>
+              <br>
+            </h3>
+          </div>
+          <div class="coll">
+            <center>
+              <img class="card-img-top" height="200px" src="imagenes/aprovados.png" alt="Imagen no Disponible">
+            </center>
+          </div>
+          <div class="panel-body">
+            <center>
+              <p ><a href="contactosAprobadosCliente" class="btn btn-primary">Ver Contactos Aprobados</a>
+              </center>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="fh5co-person text-center to-animate">
-            <figure><img id="suspendido" src="imagenes/pendiente.png" alt="Image"></figure>
-            <h3>Contactos Pendientes</h3>
-            <span class="fh5co-position">Contactos en espera de ser aprobados</span>
-            <p style="font-size: 16px;">
-            Estos Son tus contactos que se han enviado a el administrador para su posterior aprobación.</p>
-                </br>
-            <p ><a id="botn" href="contactosPendientesCliente" class="btn btn-primary">Ver Contactos Pendientes</a></p>
-          </div>
-        </div>
+    </div>
+  </div>
 
 
-
-        <div class="col-md-6">
-          <div class="fh5co-person text-center to-animate">
-            <figure><img id="suspendido"  src="imagenes/aprovados.png" alt="Image"></figure>
-            <h3>Contactos Aprobados</h3>
-            <span class="fh5co-position">Contactos ya aprobados por el administrador</span>
-            <p style="font-size: 16px;">
-                Estos son tus contactos que el administrador ya aprobó y que se encuentran en uso.</p>
-                </br>
-              <p ><a id="botn" href="contactosAprobadosCliente" class="btn btn-primary">Ver Contactos Aprobados</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <a id="float" href="nuevoPerfilCliente" >
-        <i class="glyphicon glyphicon-plus my-float"></i>
-      </a>
-
-      <?php
-      include_once 'documento-cierre.inc.php';
-      ?>
-      <script type="text/javascript" src="js/Errores.js"></script>
+  <a href="./nuevoPerfilCliente" class="float">
+    <i class="glyphicon glyphicon-plus my-float"></i>
+  </a>
+  <?php
+  include_once 'documento-cierre.inc.php';
+  ?>
+  <script type="text/javascript" src="js/Errores.js"></script>
