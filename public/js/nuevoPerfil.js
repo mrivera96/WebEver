@@ -237,7 +237,6 @@ function validarFormulario() {
       data.append('id_categoria',id_categoria);
       data.append('id_usuario',id_usuario);
       data.append('id_estado',2);
-      data.append('imagen',imagen);
 
       $.ajax({
         type:"POST",

@@ -24,14 +24,14 @@ var loadData = function ()
 
         );
 
-        if (coordenadas[i].latitud && coordenadas[i].longitud != "") {
+        if (coordenadas[i].latitud && coordenadas[i].longitud !== "") {
             var myLatlng = new google.maps.LatLng(latitud = coordenadas[i].latitud, longitud = coordenadas[i].longitud);
 
             var myOptions = {
                 zoom: 15,
                 center: myLatlng,
                 mapTypeId:google.maps.MapTypeId.ROADMAP,
-            }
+            };
             var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
             marker = new google.maps.Marker({
@@ -39,17 +39,8 @@ var loadData = function ()
                 title: coordenadas[i].nombre_organizacion,
 
             });
-            google.maps.event.addListener(marker, "dragend", function () {
-
-                getCoords(marker);
-
-            });
 
             marker.setMap(map);
-            getCoords(marker);
-
-
-
 
         } else {
             latitud = "No disponible";

@@ -299,47 +299,6 @@ class controladorUsuarios
 
     }
 
-    /**
-     * PARA REALIZAR PRUEBAS DEL MODELO
-     **/
-    public function pruebas(Request $request,Response $response)
-    {
-        if($request->hasHeader('Authorization')){
-            $response->write(json_encode($request->getHeader('Authorization')[0]));
-            return $response->withHeader('Content-type', 'application/json')
-                ->withStatus(200);
-        }else{
-            $response->write(json_encode('Sin header'));
-            return $response->withHeader('Content-type', 'application/json')
-                ->withStatus(400);
-        }
-        /*if(isset($_SESSION['token']) && !empty($_SESSION['token'])){
-            $response->write(json_encode($_SESSION['token']));
-            return $response->withHeader('Content-type', 'application/json')
-                ->withStatus(200);
-        }else{
-            $response->write(json_encode('Sin sesion'));
-            return $response->withHeader('Content-type', 'application/json')
-                ->withStatus(400);
-        }*/
-        /*if (!Utilities::haveEmptyParameters(array('tkn', 'id'), $request, $response)) {
-
-            $request_data = $request->getParsedBody();
-            $tkn = $request_data['tkn'];
-            $id = $request_data['id'];
-
-
-            $resp = Token::generarToken($id);
-
-            $response->write(json_encode($resp->toArray2()));
-            return $response->withHeader('Content-type', 'application/json')
-                ->withStatus($resp->getStatus());
-
-        } else {
-            return $response->withHeader('Content-type', 'application/json')
-                ->withStatus(400);
-        }*/
-    }
 
     /**
      * RECUPERA TODOS LOS USUARIOS DE LA BD

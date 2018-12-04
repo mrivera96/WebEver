@@ -194,7 +194,7 @@ function validarFormulario() {
       var  desc_rec= document.formularioCrear.desc_rec.value;
       var  id_region= document.formularioCrear.id_region.value;
       var  id_categoria= document.formularioCrear.id_categoria.value;
-      var  id_usuario= document.formularioCrear.id_usuario.value;
+
       var inputFileImage = document.getElementById("imagen");
 
       var imagen = inputFileImage.files[0];
@@ -214,7 +214,7 @@ function validarFormulario() {
       data.append('id_categoria',id_categoria);
       data.append('id_usuario',id_usuario);
       data.append('id_estado',1);
-      data.append('imagen',imagen);
+
 
       $.ajax({
         type:"POST",
@@ -244,7 +244,7 @@ function validarFormulario() {
         }
       });
 
-        //return;
+
       }
     };
 

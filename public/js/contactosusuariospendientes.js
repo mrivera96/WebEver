@@ -39,7 +39,7 @@ var loadData = function () {
 
 
           for (var i in contacto) {
-            if (contacto[i].imagen !== "") {
+            if (contacto[i].imagen !== null) {
               imagen = contacto[i].imagen;
             } else {
               imagen = "imagenes/iconocontactowhite.png";
@@ -82,10 +82,4 @@ var loadData = function () {
         mostrarError(document.formulario, ERROR35);
       }
     }});
-};
-
-
-
-document.getElementById("guardar").onclick = function () {
-    validarFormulario();
 };

@@ -363,7 +363,8 @@ class controladorVistas{
                 $titulo = "Nuevo Perfil";
                 $params=['titulo'=>$titulo,
                     'rol'=>$this->verificarLogin(),
-                    'buscador'=>false
+                    'buscador'=>false,
+                    'id_usuario'=>$_SESSION['idUrs']
                 ];
                 return $this->container->renderer->render($response, "/nuevoContacto.twig",$params);
                 break;

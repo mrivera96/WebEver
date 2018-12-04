@@ -254,7 +254,6 @@ function validarFormulario() {
       var  desc_rec= document.formularioEditar.desc_rec.value;
       var  id_region= document.formularioEditar.id_region.value;
       var  id_categoria= document.formularioEditar.id_categoria.value;
-      var cto = document.formularioEditar.cto.value;
       var inputFileImage = document.getElementById("imagen");
 
       var imagen = inputFileImage.files[0];
@@ -273,7 +272,6 @@ function validarFormulario() {
       data.append('id_region',id_region);
       data.append('id_categoria',id_categoria);
       data.append('cto',cto);
-      data.append('imagen',imagen);
 
       $.ajax({
         type:"POST",
