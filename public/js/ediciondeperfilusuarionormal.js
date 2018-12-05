@@ -3,7 +3,6 @@ $(document).on("ready", function () {
   loadData();
 });
 
-$(document).on("ready", function () { loadData(); });
 
 
 /*****************************************************************************************
@@ -127,10 +126,10 @@ function mostrarError(componente, error) {
   '<div class="modal-dialog" role="document">' +
   '<div class="modal-content">' +
   '<div class="modal-header">' +
-  '<h5 class="modal-title">Error al actualizar el perfil</h5>' +
   '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
   '<span aria-hidden="true">&times;</span>' +
   '</button>' +
+  '<h5 class="modal-title">Error al actualizar el perfil</h5>' +
   '</div>' +
   ' <div class="modal-body">' +
   '<p>' + error + '</p>' +
@@ -282,6 +281,8 @@ function validarFormulario() {
         statusCode:{
           200:function (data) {
             $("#Modal1").modal('show');
+            
+
             //document.getElementById("colorIniciosecion").click();
 
           },

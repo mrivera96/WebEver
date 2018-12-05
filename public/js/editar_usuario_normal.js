@@ -4,10 +4,10 @@ function mostrarError(componente, error) {
         '<div class="modal-dialog" role="document">' +
         '<div class="modal-content">' +
         '<div class="modal-header">' +
-        '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span> Error al actualizar el usuario</h5>' +
         '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
         '<span aria-hidden="true">&times;</span>' +
         '</button>' +
+        '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span> Error al actualizar el usuario</h5>' +
         '</div>' +
         ' <div class="modal-body">' +
         '<p>' + error + '</p>' +
@@ -106,17 +106,38 @@ function validarFormulario() {
         var nombre = document.formulario_editar.usuarionombre.value;
         var nombrepropio = document.formulario_editar.usuariopropio.value;
         var email = document.formulario_editar.usuarioemail.value;
+        var data = new FormData();
 
-
-
+        data.append('usuarionombre',nombre);
+        data.append('usuariopropio',nombrepropio);
+        data.append('usuarioemail',email);
+        data.append('usuario',iUsuario);
         $.ajax({
-            type:"POST",
-            url:"actualizarUsuario",
-            data:{'usuario':iUsuario,'usuarionombre':nombre,'usuariopropio':nombrepropio,'usuarioemail':email},
-            statusCode:{
-                200:function (data) {
-                    $("#Modal1").modal('show');
-                }
+          type:"POST",
+          contentType:false,
+          url:"actualizarUsuario",
+          data:data,
+          processData:false,
+          statusCode:{
+            200:function (data) {
+              $("#Modal1").modal('show');
+
+                    },
+                  500: function(data){
+                    mostrarError(document.formulario_editar, ERROR39);
+                  },
+                  403: function(data){
+                    mostrarError(document.formulario_editar.usuarionombre, ERROR30);
+                  },
+                  401:function () {
+                    $("#Modal3").modal("show");
+                    mostrarError(document.formulario_editar, ERROR39);
+                  },
+                  400: function(data){
+                    mostrarError(document.formulario_editar.usuarioemail, ERROR31);
+                  }
+
+
             }});
         return;
 
@@ -130,25 +151,29 @@ $(document).on("ready", function () {
     loadData();
 });
 var loadData = function () {
-
-    $.ajax({
-        type: "POST",
-        url: "obtenerUsuario",
-        data: {'usuario':id_logueado}
-}).done(function (data)
-{
-
-    var editar = data.content;
-    for (var i in editar) {
-
+  $.ajax({
+    type: "POST",
+    url: "obtenerUsuario",
+    data: {'usuario':id_logueado},
+    statusCode:{
+      200:function (data) {
+        var editar = data.content;
+        for (var i in editar) {
 
         $("#nombre_usuario").attr('value', editar[i].nombre_usuario);
         $("#nombre_propio").attr('value', editar[i].nombre_propio);
         $("#correo").attr('value', editar[i].correo);
         //  $("#contrasena").attr('value', editar[i].contrasena);
         $("#id_usuario").attr('value', editar[i].id_usuario);
-    }
-});
+            }//for
+      },
+      500: function(data){
+        mostrarError(document.formulario, ERROR40);
+      },
+      400:function () {
+        mostrarError(document.formulario, ERROR35);
+      }
+    }});
     $("#editar_usuarios").submit(function () {
 
     });

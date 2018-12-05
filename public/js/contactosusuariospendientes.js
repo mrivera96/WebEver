@@ -66,7 +66,7 @@ var loadData = function () {
         } else {
           $("#contenedorContacto").append(
             '<div class="col-md-12 text-center">' +
-            '<img  style="width:130px ; heigh:130px ;"  class="img-circle circle-img" src="https://cdn4.iconfinder.com/data/icons/rounded-white-basic-ui/139/Warning01-RoundedWhite-512.png"> ' +
+            '<img  style="width:130px ; heigh:130px ;"  class="img-circle circle-img" src="imagenes/warning.png"> ' +
             '</div>' +
             '<div class="col-md-12 text-center">' +
             '<h3>No tiene contactos aprobados </h3> ' +

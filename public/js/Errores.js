@@ -79,4 +79,6 @@ const ERROR39="Token de autenticación inválido o expirado.";
 
 const ERROR40="Error en la base de datos";
 
+const ERROR41="El tamaño de la imagen excede el límite permitido.";
 
+const ERROR42="Parámetros incorrectos";

@@ -42,7 +42,7 @@ var loadData = function () {
               imagen = contacto[i].imagen;
             } else {
               imagen = "imagenes/iconocontactowhite.png";
-            }
+            };
 
 
             $("#contenedorContacto").append(

@@ -5,10 +5,10 @@ function mostrarError(componente, error) {
         '<div class="modal-dialog" role="document">' +
         '<div class="modal-content">' +
         '<div class="modal-header">' +
-        '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span> Error al ingresar un usuario.</h5>' +
         '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
         '<span aria-hidden="true">&times;</span>' +
         '</button>' +
+        '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span> Error al ingresar un usuario.</h5>' +
         '</div>' +
         ' <div class="modal-body">' +
         '<p>' + error + '</p>' +
@@ -58,9 +58,6 @@ function escribiendoEmail() {
                     $('#correo').css("color", "black");
                 }
 
-            },
-            500: function(data){
-                alert(data.message);
             }
 
 
@@ -134,24 +131,41 @@ function validarFormulario() {
         var nombrepropio = document.formulario.usuariopropio.value;
         var email = document.formulario.usuarioemail.value;
         var pass = document.formulario.usariopassword.value;
+        var data = new FormData();
 
-
-
+        data.append('usuarionombre',nombre);
+        data.append('usuariopropio',nombrepropio);
+        data.append('usuarioemail',email);
+        data.append('usuariopassword',pass);
         $.ajax({
-            type:"POST",
-            url:"crearUsuario",
-            data:{'usuarionombre':nombre,'usuariopropio':nombrepropio,'usuarioemail':email,'usuariopassword':pass},
-            statusCode:{
-                200: function(){
-                    $("#Modal1").modal("show");
-                },
-                500: function(data){
-                    alert(data.message);
-                },
-                401:function () {
-                    $("#Modal3").modal("show");
-                    mostrarError(document.formulario, ERROR39);
-                }
+          type:"POST",
+          contentType:false,
+          url:"crearUsuario",
+          data:data,
+          processData:false,
+          statusCode:{
+            200:function (data) {
+              $("#Modal1").modal('show');
+               $("#formulario")[0].reset();
+
+
+             },
+             500: function(data){
+               mostrarError(document.formulario, ERROR39);
+             },
+             403: function(data){
+               mostrarError(document.formulario.usuarionombre, ERROR30);
+             },
+             401:function () {
+               $("#Modal3").modal("show");
+               mostrarError(document.formulario, ERROR39);
+             },
+             400: function(data){
+               mostrarError(document.formulario.usuarioemail, ERROR31);
+             },
+             400: function(data){
+               mostrarError(document.formulario, ERROR42);
+             }
 
 
             }});

@@ -9,10 +9,10 @@ function mostrarError(componente, error) {
         '<div class="modal-dialog" role="document">' +
         '<div class="modal-content">' +
         '<div class="modal-header">' +
-        '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span> Error al Acceder ala Cuenta.</h5>' +
         '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
         '<span aria-hidden="true">&times;</span>' +
         '</button>' +
+        '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span> Error al Acceder ala Cuenta.</h5>' +
         '</div>' +
         ' <div class="modal-body">' +
         '<p>' + error + '</p>' +
@@ -30,7 +30,6 @@ function mostrarError(componente, error) {
     });
 
 }
-
 function loguear() {
 
     var error_nomUsuario = false;
@@ -66,8 +65,8 @@ function loguear() {
                 },400: function(data){
                     mostrarError(document.log.pass,ERROR14);
 
-                },500: function(data){
-                    mostrarError(document.log.pass,ERROR40);
+                },500: function(){
+                  mostrarError(document.log.pass, ERROR40);
 
                 }
             }
@@ -76,3 +75,12 @@ function loguear() {
 
     }
 }
+//FUNCION QUE AVILITA EL ENTER DEL TECLADO
+$('#pas').keypress(function(e){
+  var keycode=(e.keycode ? e.keycode : e.which);
+  if(keycode=='13'){
+    loguear();
+    e.preventDefault();
+    return false;
+  }
+});

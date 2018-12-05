@@ -135,7 +135,7 @@ class ModeloUsuarios extends Model {
 
         }else{
             return new ApiResponse(
-                400,
+                403,
                 "el usuario ya existe",
                 null
             );

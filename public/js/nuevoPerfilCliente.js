@@ -62,10 +62,10 @@ function mostrarError(componente, error) {
   '<div class="modal-dialog" role="document">' +
   '<div class="modal-content">' +
   '<div class="modal-header">' +
-  '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span>Error al crear el perfil</h5>' +
   '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
   '<span aria-hidden="true">&times;</span>' +
   '</button>' +
+  '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span>Error al crear el perfil</h5>' +
   '</div>' +
   ' <div class="modal-body">' +
   '<p>' + error + '</p>' +
@@ -90,6 +90,7 @@ document.getElementById("guardar").onclick = function () {
     validarFormulario();
 };
 
+
 function validarFormulario() {
   var error_nomb = false;
   var error_tel = false;
@@ -101,7 +102,8 @@ function validarFormulario() {
   var error_cat = false;
 
 
-  if (document.formularioCrear.nomborg_rec.value === "") {
+
+  if (document.formularioCrear.nomborg_rec.value === "" || document.formularioCrear.nomborg_rec.value.trim()=="") {
     error_nomb = true;
     mostrarError(document.formularioCrear.nomborg_rec, "Debe ingresar un nombre de organización.");
     return;
@@ -151,13 +153,13 @@ function validarFormulario() {
     }
   }
 
-  if (document.formularioCrear.direccion_rec.value === "") {
+  if (document.formularioCrear.direccion_rec.value === "" || document.formularioCrear.direccion_rec.value.trim()=="" ) {
     error_dir = true;
 
     mostrarError(document.formularioCrear.direccion_rec, "Debe ingresar la dirección de la organización.");
     return;
   }
-  if (document.formularioCrear.desc_rec.value === "") {
+  if (document.formularioCrear.desc_rec.value === "" || document.formularioCrear.desc_rec.value.trim()=="") {
     error_desc = true;
 
     mostrarError(document.formularioCrear.desc_rec, "Debe escribir una descripción de la organización.");
@@ -176,6 +178,8 @@ function validarFormulario() {
     return;
   }
 
+
+
   if (error_nomb === false &&
     error_tel === false &&
     error_cel === false &&
@@ -183,7 +187,9 @@ function validarFormulario() {
     error_mail === false &&
     error_desc === false &&
     error_reg === false &&
-    error_cat === false) {
+    error_cat === false
+
+) {
       var  lat_rec =document.formularioCrear.lat_rec.value;
       var  longitud_rec =document.formularioCrear.longitud_rec.value;
       var  nomborg_rec =document.formularioCrear.nomborg_rec.value;
@@ -194,7 +200,6 @@ function validarFormulario() {
       var  desc_rec= document.formularioCrear.desc_rec.value;
       var  id_region= document.formularioCrear.id_region.value;
       var  id_categoria= document.formularioCrear.id_categoria.value;
-
       var inputFileImage = document.getElementById("imagen");
 
       var imagen = inputFileImage.files[0];
@@ -226,6 +231,9 @@ function validarFormulario() {
           200:function (data) {
           //  document.getElementById("colorIniciosecion").click();
             $("#Modal1").modal('show');
+            document.getElementById("formularioCrear").reset();
+
+
           },
           500: function(data){
             mostrarError(document.formularioCrear.desc_rec,ERROR40 );
@@ -236,6 +244,12 @@ function validarFormulario() {
             $("#Modal3").modal("show");
             mostrarError(document.formulario, ERROR39);
             document.getElementById("botoncierreSession").click();
+
+
+          },
+          400: function(){
+            $("#Modal3").modal("show");
+            mostrarError(document.formularioCrear.desc_rec,ERROR41 );
 
 
           }
@@ -256,7 +270,6 @@ function validarFormulario() {
 
       reader.onload = function(e) {
 
-        $("#imagen").attr("value",reader.result.substring(22));
         $("#imgContc").attr("src",e.target.result);
         tieneFoto=true;
 

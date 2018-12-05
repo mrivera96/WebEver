@@ -17,12 +17,6 @@ var loadData = function () {
       500: function(){
         mostrarError(document.formulario, ERROR40);
 
-      },
-      401:function () {
-        mostrarError(document.formulario, ERROR39);
-        //  document.getElementById("colorIniciosecion").click();
-
-
       }
     }
   });
@@ -40,12 +34,6 @@ var loadData = function () {
       },
       500: function(){
         mostrarError(document.formulario, ERROR40);
-
-      },
-      401:function () {
-        mostrarError(document.formulario, ERROR39);
-          document.getElementById("colorIniciosecion").click();
-
 
       }
     }
@@ -67,10 +55,9 @@ var loadData = function () {
         mostrarError(document.formulario, ERROR40);
 
       },
-      401:function () {
+      401:function (data) {
         mostrarError(document.formulario, ERROR39);
-        //  document.getElementById("colorIniciosecion").click();
-
+        document.getElementById("botoncierreSession").click();
 
       }
     }
@@ -85,10 +72,10 @@ function mostrarError(componente, error) {
   '<div class="modal-dialog" role="document">' +
   '<div class="modal-content">' +
   '<div class="modal-header">' +
-  '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span>Error al crear el perfil</h5>' +
   '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
   '<span aria-hidden="true">&times;</span>' +
   '</button>' +
+  '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span>Error al crear el perfil</h5>' +
   '</div>' +
   ' <div class="modal-body">' +
   '<p>' + error + '</p>' +
@@ -248,18 +235,22 @@ function validarFormulario() {
           200:function (data) {
           //  document.getElementById("colorIniciosecion").click();
             $("#Modal1").modal('show');
+            document.getElementById("formularioCrear").reset();
+
           },
           500: function(data){
             mostrarError(document.formularioCrear.desc_rec,ERROR40 );
 
 
           },
-          401:function () {
-            $("#Modal3").modal("show");
+          401:function (data) {
+            $("#Modal").modal("show");
             mostrarError(document.formulario, ERROR39);
             document.getElementById("botoncierreSession").click();
 
-
+          },
+          400:function () {
+            mostrarError(document.formulario, ERROR42);
           }
 
 
@@ -278,7 +269,6 @@ function validarFormulario() {
 
       reader.onload = function(e) {
 
-        $("#imagen").attr("value",reader.result.substring(22));
         $("#imgContc").attr("src",e.target.result);
         tieneFoto=true;
 

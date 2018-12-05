@@ -3,14 +3,14 @@
     **********************************************************************************************/
     function mostrarError(componente, error) {
 
-      $("#formulario").append('<div class="modal fade" id="Modal3" tabindex="-1" role="dialog">' +
+      $("#modarerror").append('<div class="modal fade" id="Modal3" tabindex="-1" role="dialog">' +
       '<div class="modal-dialog" role="document">' +
       '<div class="modal-content">' +
       '<div class="modal-header">' +
-      '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span> Error al Cargar.</h5>' +
       '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
       '<span aria-hidden="true">&times;</span>' +
       '</button>' +
+      '<h5 class="modal-title"><span class="glyphicon glyphicon-remove-circle"></span> Error al Cargar.</h5>' +
       '</div>' +
       ' <div class="modal-body">' +
       '<p>' + error + '</p>' +
