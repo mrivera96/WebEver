@@ -85,7 +85,7 @@ function validarFormulario() {
   var error_nomPropio = false;
   var error_correo = false;
   var error_contrasena = false;
-  if (document.formulario_editar.usuarionombre.value === "") {
+  if (document.formulario_editar.usuarionombre.value === ""|| document.formulario_editar.usuarionombre.value.trim()=="") {
     error_nomUsuario = true;
     mostrarError(document.formulario_editar.usuarionombre, ERROR10);
     return;
@@ -93,7 +93,7 @@ function validarFormulario() {
   }
 
 
-  if (document.formulario_editar.usuariopropio.value === "") {
+  if (document.formulario_editar.usuariopropio.value === ""|| document.formulario_editar.usuariopropio.value.trim()=="") {
     error_nomPropio = true;
     $("#Modal3").modal("show");
     mostrarError(document.formulario_editar.usuariopropio, ERROR11);
