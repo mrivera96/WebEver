@@ -102,13 +102,13 @@ function validarFormulario() {
     var error_contrasena = false;
     var error_contrasena1 = false;
 
-    if (document.formulario.usuarionombre.value === "") {
+    if (document.formulario.usuarionombre.value === ""|| document.formulario.usuarionombre.value.trim()=="") {
         error_nomUsuario = true;
         mostrarError(document.formulario.usuarionombre,ERROR10);
         return;
     }
 
-    if (document.formulario.usuariopropio.value === "") {
+    if (document.formulario.usuariopropio.value === ""|| document.formulario.usuariopropio.value.trim()=="") {
         error_nomPropio = true;
         $("#Modal3").modal("show");
         mostrarError(document.formulario.usuariopropio,ERROR11);

@@ -160,7 +160,7 @@ function validarFormulario() {
   var error_cat = false;
 
 
-  if (document.formularioEditar.nomborg_rec.value === "") {
+  if (document.formularioEditar.nomborg_rec.value === ""|| document.formularioEditar.nomborg_rec.value.trim()=="") {
     error_nomb = true;
     mostrarError(document.formularioEditar.nomborg_rec, "Debe ingresar un nombre de organización.");
     return;
@@ -210,13 +210,13 @@ function validarFormulario() {
     }
   }
 
-  if (document.formularioEditar.direccion_rec.value === "") {
+  if (document.formularioEditar.direccion_rec.value === ""|| document.formularioEditar.direccion_rec.value.trim()=="") {
     error_dir = true;
 
     mostrarError(document.formularioEditar.direccion_rec, "Debe ingresar la dirección de la organización.");
     return;
   }
-  if (document.formularioEditar.desc_rec.value === "") {
+  if (document.formularioEditar.desc_rec.value === ""|| document.formularioEditar.desc_rec.value.trim()=="") {
     error_desc = true;
 
     mostrarError(document.formularioEditar.desc_rec, "Debe escribir una descripción de la organización.");
@@ -281,7 +281,7 @@ function validarFormulario() {
         statusCode:{
           200:function (data) {
             $("#Modal1").modal('show');
-            
+
 
             //document.getElementById("colorIniciosecion").click();
 
