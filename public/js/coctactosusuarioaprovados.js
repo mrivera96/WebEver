@@ -28,9 +28,9 @@ var loadData = function () {
     data: {'id':id_logueado,'ste':'2'},
     statusCode:{
       200:function (data) {
+        var contacto = data.content;
 
-        if (data !== "No hay resultados") {
-          var contacto = data.content;
+        if (contacto !== null) {
           var imagen;
 
           var estado;
@@ -54,21 +54,23 @@ var loadData = function () {
               '<div class="media-body">' +
               '<h4 class = "media-heading">' + contacto[i].nombre_organizacion + '</h4>' + '<br>' +
               '<p>Estado del Contacto:</p>' +
-              '<p style="color:#388e3c">' + "Aprobado" + '</p>' +
+              '<p style="color:#388e3c">' + "Pendiente" + '</p>' +
               '</div>' +
               '</div>' +
               '<hr style="margin-left:140px"/>' +
               '</div>' +
               '</a>'
             );
+
+
           }
         } else {
           $("#contenedorContacto").append(
-            '<div class="col-md-12 text-center">' +
-            '<img  style="width:130px ; heigh:130px ;"  class="img-circle circle-img" src="https://cdn4.iconfinder.com/data/icons/rounded-white-basic-ui/139/Warning01-RoundedWhite-512.png"> ' +
+            '<div class="col-md-12 text-center enlaces_de_listas_contactos">' +
+            '<img  style="width:130px ; heigh:130px ;"  class="img-circle circle-img" src="imagenes/warning.png"> ' +
             '</div>' +
             '<div class="col-md-12 text-center">' +
-            '<h3>No tiene contactos aprobados </h3> ' +
+            '<h3>No tiene contactos aprobados. </h3> ' +
             '</div>'
 
           );
@@ -79,6 +81,9 @@ var loadData = function () {
       },
       400:function () {
         mostrarError(document.formulario, ERROR35);
+      },
+      404:function(){
+        mostrarError(document.formulario,ERROR43);
       }
     }});
   };

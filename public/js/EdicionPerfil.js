@@ -86,6 +86,9 @@ var loadData = function () {
       },
       400:function () {
         mostrarError(document.formulario, ERROR35);
+      },
+      404:function(){
+        mostrarError(document.formulario,ERROR43);
       }
     }
   });

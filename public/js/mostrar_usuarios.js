@@ -56,10 +56,9 @@ var loadData = function () {
               mostrarError(document.formulario, ERROR40);
 
             },
-            401:function () {
-              mostrarError(document.formulario, ERROR39);
-              document.getElementById("botoncierreSession").click();
-
+            401:function (data) {
+            mostrarErrorToken();
+            // alert("funciona");
             }
 
         }

@@ -29,9 +29,9 @@ var loadData = function () {
     data: {'id':id_logueado,'ste':'1'},
     statusCode:{
       200:function (data) {
+        var contacto = data.content;
 
-        if (data !== "No hay resultados") {
-          var contacto = data.content;
+        if (contacto !== "No hay resultados") {
           var imagen;
 
           var estado;
@@ -62,14 +62,16 @@ var loadData = function () {
               '</div>' +
               '</a>'
             );
+
+
           }
         } else {
           $("#contenedorContacto").append(
-            '<div class="col-md-12 text-center">' +
+            '<div class="col-md-12 text-center enlaces_de_listas_contactos">' +
             '<img  style="width:130px ; heigh:130px ;"  class="img-circle circle-img" src="imagenes/warning.png"> ' +
             '</div>' +
             '<div class="col-md-12 text-center">' +
-            '<h3>No tiene contactos aprobados </h3> ' +
+            '<h3>No tiene contactos pendientes. </h3> ' +
             '</div>'
 
           );
@@ -80,6 +82,9 @@ var loadData = function () {
       },
       400:function () {
         mostrarError(document.formulario, ERROR35);
+      },
+      404:function(){
+        mostrarError(document.formulario,ERROR43);
       }
     }});
 };

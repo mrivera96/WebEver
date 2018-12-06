@@ -28,23 +28,7 @@ $(document).on("ready", function () {
 var loadData = function () {
 
 
-    $('\n' +
 
-  '  <li id="boton" style="margin: 12px;" class="dropdown">'+
-  '  <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+
-  '  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong>Administración de Perfiles</strong> <span class="caret"></span>'+
-  '  </button>'+
-  '  <ul id="despliege" class="dropdown-menu">'+
-  '  <li><a href="solicitudesNuevas"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>   Nuevas Solicitudes   </a></li>\n' +
-  '  <li><a href="solicitudesRechazadas"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>   Solicitudes Rechazadas   </a></li>\n' +
-  '  <li><a href="perfilesEliminados"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>   Perfiles Eliminados   </a></li>'+
-  '  <li role="separator" class="divider"></li>'+
-  '  </ul>'+
-  '  </li>'
-
-
-
-        ).insertBefore("#boton");
     $.ajax({
         type: "GET",
         url: "listarPerfiles",
@@ -88,6 +72,9 @@ var loadData = function () {
 
         //  document.getElementById("colorIniciosecion").click();
 
+      },
+      404:function(){
+        mostrarError(document.formulario,ERROR43);
       }
 
   }

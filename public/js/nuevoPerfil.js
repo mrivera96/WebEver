@@ -56,9 +56,8 @@ var loadData = function () {
 
       },
       401:function (data) {
-        mostrarError(document.formulario, ERROR39);
-        document.getElementById("botoncierreSession").click();
-
+      mostrarErrorToken();
+      // alert("funciona");
       }
     }
   });
@@ -233,7 +232,6 @@ function validarFormulario() {
           processData:false,
       statusCode:{
           200:function (data) {
-          //  document.getElementById("colorIniciosecion").click();
             $("#Modal1").modal('show');
             document.getElementById("formularioCrear").reset();
 
@@ -244,9 +242,7 @@ function validarFormulario() {
 
           },
           401:function (data) {
-            $("#Modal").modal("show");
-            mostrarError(document.formulario, ERROR39);
-            document.getElementById("botoncierreSession").click();
+          mostrarErrortolken();
 
           },
           400:function () {

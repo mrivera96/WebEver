@@ -82,3 +82,5 @@ const ERROR40="Error en la base de datos";
 const ERROR41="El tamaño de la imagen excede el límite permitido.";
 
 const ERROR42="Parámetros incorrectos";
+
+const ERROR43="Error al cargar la imagen";

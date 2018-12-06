@@ -86,6 +86,9 @@ var loadData = function () {
       },
       400:function () {
         mostrarError(document.formulario, ERROR35);
+      },
+      404:function(){
+        mostrarError(document.formulario,ERROR43);
       }
     }
   });
@@ -281,7 +284,7 @@ function validarFormulario() {
         statusCode:{
           200:function (data) {
             $("#Modal1").modal('show');
-            
+
 
             //document.getElementById("colorIniciosecion").click();
 
