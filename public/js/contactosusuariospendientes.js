@@ -31,7 +31,7 @@ var loadData = function () {
       200:function (data) {
         var contacto = data.content;
 
-        if (contacto !== "No hay resultados") {
+        if (contacto.length>0) {
           var imagen;
 
           var estado;
@@ -67,7 +67,7 @@ var loadData = function () {
           }
         } else {
           $("#contenedorContacto").append(
-            '<div class="col-md-12 text-center enlaces_de_listas_contactos">' +
+            '<div class="col-md-12 text-center">' +
             '<img  style="width:130px ; heigh:130px ;"  class="img-circle circle-img" src="imagenes/warning.png"> ' +
             '</div>' +
             '<div class="col-md-12 text-center">' +

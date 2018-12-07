@@ -30,7 +30,7 @@ var loadData = function () {
       200:function (data) {
         var contacto = data.content;
 
-        if (contacto !== null) {
+        if (contacto.length>0) {
           var imagen;
 
           var estado;
@@ -54,7 +54,7 @@ var loadData = function () {
               '<div class="media-body">' +
               '<h4 class = "media-heading">' + contacto[i].nombre_organizacion + '</h4>' + '<br>' +
               '<p>Estado del Contacto:</p>' +
-              '<p style="color:#388e3c">' + "Pendiente" + '</p>' +
+              '<p style="color:#388e3c">' + "Aprobado" + '</p>' +
               '</div>' +
               '</div>' +
               '<hr style="margin-left:140px"/>' +

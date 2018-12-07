@@ -1,5 +1,4 @@
 
-
 $(document).on("ready", function () { loadData(); });
 /**********************************************************************************************
 *            FUNCIÓN PARA BUSCAR ENTRE LOS PERFILES
@@ -77,7 +76,7 @@ var loadData = function () {
     statusCode:{
         200: function(data){
         var perfiles = data.content;
-      if (perfiles!== "No hay resultados.") {
+      if (perfiles.length>0) {
 
         var imagen;
 
