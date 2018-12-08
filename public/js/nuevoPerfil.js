@@ -279,6 +279,4 @@ function validarFormulario() {
 
       reader.readAsDataURL(file);
 
-
-
     }

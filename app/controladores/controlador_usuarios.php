@@ -273,6 +273,11 @@ class controladorUsuarios
 
 
             if ($resp->getContent()['ste'] != 2) {
+                if(isset($_SESSION['token']) && isset($_SESSION['idUrs'])&& isset($_SESSION['rol'])){
+                    session_unset();
+
+                    session_destroy();
+                }
                 $_SESSION['token'] = $resp->getContent()['token'];
                 $_SESSION['idUrs'] = $resp->getContent()['idUrs'];
                 $_SESSION['rol'] = $resp->getContent()['rol'];
@@ -325,8 +330,10 @@ class controladorUsuarios
     public function cerrarSesion(Request $request,Response $response)
     {
 
-        if(!Utilities::verificaToken($request,$response)){
+        if(isset($_SESSION['token'])) {
             Token::revocarToken($_SESSION['token']);
+        }
+
             session_unset();
 
             session_destroy();
@@ -339,8 +346,6 @@ class controladorUsuarios
             $response->write(json_encode($err->toArray()));
             return $response->withHeader('Content-type', 'application/json')
                 ->withStatus($err->getStatus());
-
-        }
 
 
     }

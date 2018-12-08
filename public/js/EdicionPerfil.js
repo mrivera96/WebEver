@@ -118,9 +118,9 @@ $("#eliminar").click(function () {
 });
 
 
-document.getElementById("guardar").onclick = function () {
-  validarFormulario();
-};
+$("#guardar").click(function () {
+    validarFormulario();
+}) ;
 
 
 function mostrarError(componente, error) {
@@ -283,6 +283,7 @@ function validarFormulario() {
         processData:false,
         statusCode:{
           200:function (data) {
+              $('#formularioCrear')[0].reset();
             $("#Modal1").modal('show');
             //document.getElementById("colorIniciosecion").click();
             document.getElementById("formularioEditar").reset();

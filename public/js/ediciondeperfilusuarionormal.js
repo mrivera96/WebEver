@@ -313,14 +313,11 @@ function validarFormulario() {
 
       reader.onload = function(e) {
 
-        $("#imagen").attr("value",reader.result.substring(22));
+
         $("#imgContc").attr("src",e.target.result);
         tieneFoto=true;
 
-      }
+      };
 
       reader.readAsDataURL(file);
-
-
-
     }
