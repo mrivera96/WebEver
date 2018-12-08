@@ -38,7 +38,7 @@ class Utilities{
      **/
      static function verificaToken(Request $request,Response $response){
         $error = false;
-
+        $request_params = $request -> getParams();
 
         if(isset($_SESSION['token']) && !empty($_SESSION['token'])){
 
@@ -49,8 +49,8 @@ class Utilities{
                 $error=true;
             }
 
-        }else if($request->hasHeader('Authorization')){
-            $tokenAuth =$request->getHeader('Authorization')[0];
+        }else if( isset($request_params['Authorization']) && !empty($request_params['Authorization'])){
+            $tokenAuth = $request_params['Authorization'];
             if (Token::existeToken($tokenAuth) ){
 
             }else{

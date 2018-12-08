@@ -352,6 +352,7 @@ class controladorPerfiles{
 
                     $uploadedFiles = $request->getUploadedFiles();
                     $imagen=$uploadedFiles['imagen'];
+                    $ruta_img=null;
                     if($imagen!=null){
                         if($imagen->getSize()>500*KB){
                             $err = new ApiResponse(
@@ -366,8 +367,6 @@ class controladorPerfiles{
                         if ($imagen->getError() === UPLOAD_ERR_OK) {
                             $filename = $this->moveUploadedFile($this->upload_directory, $imagen);
                             $ruta_img=$request->getUri()->getBasePath().'/imagenes/'. $filename;
-                        }else{
-                            $filename=null;
                         }
                     }
 

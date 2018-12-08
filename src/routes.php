@@ -13,6 +13,7 @@
          * **************************************************************************************
          **/
 $app -> get('/inicio', 'controladorVistas:index');
+$app -> get('/', 'controladorVistas:index');
 
 $app -> get('/acercade', 'controladorVistas:acercade');
 $app -> get('/resultados', 'controladorVistas:resultados');
