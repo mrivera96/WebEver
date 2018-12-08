@@ -183,7 +183,7 @@ class controladorPerfiles{
                     if($imagen!=null){
                         if($imagen->getSize()>500*KB){
                             $err = new ApiResponse(
-                                400,
+                                406,
                                 "El tamaño de la imagen excede el límite permitido.",
                                 null
                             );
@@ -356,7 +356,7 @@ class controladorPerfiles{
                     if($imagen!=null){
                         if($imagen->getSize()>500*KB){
                             $err = new ApiResponse(
-                                400,
+                                406,
                                 "El tamaño de la imagen excede el límite permitido.",
                                 null
                             );
