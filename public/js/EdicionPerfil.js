@@ -285,13 +285,17 @@ function validarFormulario() {
           200:function (data) {
             $("#Modal1").modal('show');
             //document.getElementById("colorIniciosecion").click();
+            document.getElementById("formularioEditar").reset();
 
           },
           500: function(data){
             mostrarError(document.formulario, ERROR40);
           },
           400: function(data){
-            mostrarError(document.formulario, ERROR42);
+            mostrarError(document.formularioEditar, ERROR42);
+          },
+          406: function(data){
+            mostrarError(document.formularioEditar, ERROR41);
           }
         }});
 

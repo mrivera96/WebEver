@@ -13,7 +13,7 @@ class controladorVistas{
     public function index(Request $request,Response $response){
 
         if (!isset($titulo) || empty($titulo)) {
-            $titulo = 'Agenda Electroníca Oriental';
+            $titulo = 'SmartBuss';
         }
         $params=['titulo'=>$titulo,
             'rol'=>$this->verificarLogin(),

@@ -246,8 +246,15 @@ function validarFormulario() {
 
           },
           400:function () {
-            mostrarError(document.formulario, ERROR42);
-          }
+            $("#Modal3").modal("show");
+            mostrarError(document.formularioCrear, ERROR42);
+          },
+          406: function(){
+            $("#Modal3").modal("show");
+            mostrarError(document.formularioCrear,ERROR41 );
+
+
+            }
 
 
         }

@@ -167,13 +167,13 @@ function validarFormulario() {
   }
   if (document.formularioCrear.id_region.value < 3 && document.formularioCrear.id_region.value > 4) {
     error_reg = true;
-    alert('La región seleccionada no existe.');
+    mostrarError(document.formularioCrear.id_region,"La región seleccionada no existe.");
     document.formularioEditar.id_region.focus();
     return;
   }
   if (document.formularioCrear.id_categoria.value < 1 && document.formularioCrear.id_categoria.value > 11) {
     error_cat = true;
-    alert('La categoría seleccionada no existe.');
+    mostrarError(document.formularioCrear.id_categoria,"La categoría seleccionada no existe.");
     document.formularioCrear.id_categoria.focus();
     return;
   }
@@ -247,12 +247,16 @@ function validarFormulario() {
 
 
           },
-          400: function(){
+          406: function(){
             $("#Modal3").modal("show");
-            mostrarError(document.formularioCrear.desc_rec,ERROR41 );
+            mostrarError(document.formularioCrear,ERROR41 );
 
 
-          }
+            },
+            400:function () {
+              $("#Modal3").modal("show");
+              mostrarError(document.formularioCrear, ERROR42);
+            }
 
 
         }
@@ -261,6 +265,15 @@ function validarFormulario() {
 
       }
     };
+    //FUNCION QUE AVILITA EL ENTER DEL TECLADO
+    $('#desc_rec').keypress(function(e){
+      var keycode=(e.keycode ? e.keycode : e.which);
+      if(keycode=='13'){
+      validarFormulario();
+        e.preventDefault();
+        return false;
+      }
+    });
 
     function encodeImagetoBase64(element) {
 

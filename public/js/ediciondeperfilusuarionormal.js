@@ -291,6 +291,12 @@ function validarFormulario() {
           },
           500: function(data){
             mostrarError(document.formulario, ERROR40);
+          },
+          400: function(data){
+            mostrarError(document.formularioEditar, ERROR42);
+          },
+          406: function(data){
+            mostrarError(document.formularioEditar, ERROR41);
           }
         }});
         return;
