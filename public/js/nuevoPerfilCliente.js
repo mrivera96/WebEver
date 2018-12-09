@@ -18,11 +18,9 @@ var loadData = function () {
         mostrarError(document.formulario, ERROR40);
 
       },
-      401:function () {
-        mostrarError(document.formulario, ERROR39);
-        //  document.getElementById("colorIniciosecion").click();
-
-
+      401:function (data) {
+        mostrarError(document.formulario,ERROR39 );
+        document.getElementById("botoncierreSession").click();
       }
     }
   });
@@ -42,11 +40,9 @@ var loadData = function () {
         mostrarError(document.formulario, ERROR40);
 
       },
-      401:function () {
-        mostrarError(document.formulario, ERROR39);
-          document.getElementById("colorIniciosecion").click();
-
-
+      401:function (data) {
+        mostrarError(document.formulario,ERROR39 );
+        document.getElementById("botoncierreSession").click();
       }
     }
   });
@@ -87,7 +83,7 @@ function mostrarError(componente, error) {
 
 
 document.getElementById("guardar").onclick = function () {
-    validarFormulario();
+  validarFormulario();
 };
 
 
@@ -189,107 +185,102 @@ function validarFormulario() {
     error_reg === false &&
     error_cat === false
 
-) {
-      var  lat_rec =document.formularioCrear.lat_rec.value;
-      var  longitud_rec =document.formularioCrear.longitud_rec.value;
-      var  nomborg_rec =document.formularioCrear.nomborg_rec.value;
-      var  email_rec =document.formularioCrear.email_rec.value;
-      var  numtel_rec =document.formularioCrear.numtel_rec.value;
-      var  numcel_rec = document.formularioCrear.numcel_rec.value;
-      var  direccion_rec= document.formularioCrear.direccion_rec.value;
-      var  desc_rec= document.formularioCrear.desc_rec.value;
-      var  id_region= document.formularioCrear.id_region.value;
-      var  id_categoria= document.formularioCrear.id_categoria.value;
-      var inputFileImage = document.getElementById("imagen");
+  ) {
+    var  lat_rec =document.formularioCrear.lat_rec.value;
+    var  longitud_rec =document.formularioCrear.longitud_rec.value;
+    var  nomborg_rec =document.formularioCrear.nomborg_rec.value;
+    var  email_rec =document.formularioCrear.email_rec.value;
+    var  numtel_rec =document.formularioCrear.numtel_rec.value;
+    var  numcel_rec = document.formularioCrear.numcel_rec.value;
+    var  direccion_rec= document.formularioCrear.direccion_rec.value;
+    var  desc_rec= document.formularioCrear.desc_rec.value;
+    var  id_region= document.formularioCrear.id_region.value;
+    var  id_categoria= document.formularioCrear.id_categoria.value;
+    var inputFileImage = document.getElementById("imagen");
 
-      var imagen = inputFileImage.files[0];
+    var imagen = inputFileImage.files[0];
 
-      var data = new FormData();
+    var data = new FormData();
 
-      data.append('imagen',imagen);
-      data.append('lat_rec',lat_rec);
-      data.append('longitud_rec',longitud_rec);
-      data.append('nomborg_rec',nomborg_rec);
-      data.append('email_rec',email_rec);
-      data.append('numtel_rec',numtel_rec);
-      data.append('numcel_rec',numcel_rec);
-      data.append('direccion_rec',direccion_rec);
-      data.append('desc_rec',desc_rec);
-      data.append('id_region',id_region);
-      data.append('id_categoria',id_categoria);
-      data.append('id_usuario',id_usuario);
-      data.append('id_estado',1);
+    data.append('imagen',imagen);
+    data.append('lat_rec',lat_rec);
+    data.append('longitud_rec',longitud_rec);
+    data.append('nomborg_rec',nomborg_rec);
+    data.append('email_rec',email_rec);
+    data.append('numtel_rec',numtel_rec);
+    data.append('numcel_rec',numcel_rec);
+    data.append('direccion_rec',direccion_rec);
+    data.append('desc_rec',desc_rec);
+    data.append('id_region',id_region);
+    data.append('id_categoria',id_categoria);
+    data.append('id_usuario',id_usuario);
+    data.append('id_estado',1);
 
 
-      $.ajax({
-        type:"POST",
-          contentType:false,
-        url:"crearPerfil",
-        data:data,
-          processData:false,
+    $.ajax({
+      type:"POST",
+      contentType:false,
+      url:"crearPerfil",
+      data:data,
+      processData:false,
       statusCode:{
-          200:function (data) {
-          //  document.getElementById("colorIniciosecion").click();
-            $("#Modal1").modal('show');
-            document.getElementById("formularioCrear").reset();
+        200:function (data) {
+          $("#Modal1").modal('show');
+          document.getElementById("formularioCrear").reset();
 
 
-          },
-          500: function(data){
-            mostrarError(document.formularioCrear.desc_rec,ERROR40 );
+        },
+        500: function(data){
+          mostrarError(document.formularioCrear.desc_rec,ERROR40 );
 
 
-          },
-          401:function () {
-            $("#Modal3").modal("show");
-            mostrarError(document.formulario, ERROR39);
-            document.getElementById("botoncierreSession").click();
+        },
+        401:function (data) {
+          mostrarErrorToken();
+        },
+        406: function(){
+          $("#Modal3").modal("show");
+          mostrarError(document.formularioCrear,ERROR41 );
 
 
-          },
-          406: function(){
-            $("#Modal3").modal("show");
-            mostrarError(document.formularioCrear,ERROR41 );
-
-
-            },
-            400:function () {
-              $("#Modal3").modal("show");
-              mostrarError(document.formularioCrear, ERROR42);
-            }
-
-
+        },
+        400:function () {
+          $("#Modal3").modal("show");
+          mostrarError(document.formularioCrear, ERROR42);
         }
-      });
 
 
-      }
-    };
-    //FUNCION QUE AVILITA EL ENTER DEL TECLADO
-    $('#desc_rec').keypress(function(e){
-      var keycode=(e.keycode ? e.keycode : e.which);
-      if(keycode=='13'){
-      validarFormulario();
-        e.preventDefault();
-        return false;
       }
     });
 
-    function encodeImagetoBase64(element) {
 
-      var file = element.files[0];
+  }
+};
+//FUNCION QUE AVILITA EL ENTER DEL TECLADO
+$('#desc_rec').keypress(function(e){
+  var keycode=(e.keycode ? e.keycode : e.which);
+  if(keycode=='13'){
+    validarFormulario();
+    e.preventDefault();
+    return false;
+  }
+});
 
-      var reader = new FileReader();
+function encodeImagetoBase64(element) {
 
-      reader.onload = function(e) {
+  var file = element.files[0];
 
-        $("#imgContc").attr("src",e.target.result);
-        tieneFoto=true;
+  var reader = new FileReader();
 
-      }
+  reader.onload = function(e) {
 
-      reader.readAsDataURL(file);
+    $("#imgContc").attr("src",e.target.result);
+    tieneFoto=true;
+
+  }
+
+  reader.readAsDataURL(file);
 
 
 
-    }
+}

@@ -24,11 +24,8 @@ var loadData = function () {
         mostrarError(document.formulario, ERROR40);
 
       },
-      401:function () {
-        mostrarError(document.formulario, ERROR39);
-        //  document.getElementById("colorIniciosecion").click();
-
-
+      401:function (data) {
+        mostrarErrorToken();
       }
     }
   });
@@ -84,6 +81,10 @@ var loadData = function () {
       500: function(data){
         mostrarError(document.formulario, ERROR40);
       },
+      401:function (data) {
+        mostrarError(document.formulario,ERROR39 );
+        document.getElementById("botoncierreSession").click();
+      },
       400:function () {
         mostrarError(document.formulario, ERROR35);
       },
@@ -119,7 +120,7 @@ $("#eliminar").click(function () {
 
 
 $("#guardar").click(function () {
-    validarFormulario();
+  validarFormulario();
 }) ;
 
 
@@ -283,14 +284,16 @@ function validarFormulario() {
         processData:false,
         statusCode:{
           200:function (data) {
-              $('#formularioCrear')[0].reset();
+            $('#formularioEditar')[0].reset();
             $("#Modal1").modal('show');
             //document.getElementById("colorIniciosecion").click();
-            document.getElementById("formularioEditar").reset();
 
           },
           500: function(data){
             mostrarError(document.formulario, ERROR40);
+          },
+          401:function (data) {
+            mostrarErrorToken();
           },
           400: function(data){
             mostrarError(document.formularioEditar, ERROR42);

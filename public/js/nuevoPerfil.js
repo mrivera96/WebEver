@@ -56,8 +56,7 @@ var loadData = function () {
 
       },
       401:function (data) {
-      mostrarErrorToken();
-      // alert("funciona");
+        mostrarErrorToken();
       }
     }
   });
@@ -96,7 +95,7 @@ function mostrarError(componente, error) {
 
 
 document.getElementById("guardar").onclick = function () {
-    validarFormulario();
+  validarFormulario();
 };
 
 function validarFormulario() {
@@ -226,11 +225,11 @@ function validarFormulario() {
 
       $.ajax({
         type:"POST",
-          contentType:false,
+        contentType:false,
         url:"crearPerfil",
         data:data,
-          processData:false,
-      statusCode:{
+        processData:false,
+        statusCode:{
           200:function (data) {
             $("#Modal1").modal('show');
             document.getElementById("formularioCrear").reset();
@@ -242,7 +241,7 @@ function validarFormulario() {
 
           },
           401:function (data) {
-          mostrarErrortolken();
+            mostrarErrortolken();
 
           },
           400:function () {
@@ -254,29 +253,29 @@ function validarFormulario() {
             mostrarError(document.formularioCrear,ERROR41 );
 
 
-            }
+          }
 
 
         }
       });
 
-        //return;
-      }
-    };
+      //return;
+    }
+  };
 
-    function encodeImagetoBase64(element) {
+  function encodeImagetoBase64(element) {
 
-      var file = element.files[0];
+    var file = element.files[0];
 
-      var reader = new FileReader();
+    var reader = new FileReader();
 
-      reader.onload = function(e) {
+    reader.onload = function(e) {
 
-        $("#imgContc").attr("src",e.target.result);
-        tieneFoto=true;
-
-      }
-
-      reader.readAsDataURL(file);
+      $("#imgContc").attr("src",e.target.result);
+      tieneFoto=true;
 
     }
+
+    reader.readAsDataURL(file);
+
+  }
